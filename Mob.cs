@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Mob : MonoBehaviour {
 
+    public string title = "Miszorek";
     public int bodyDamage;
     private GameObject bulletSource;
     public int HP;
@@ -15,7 +16,7 @@ public class Mob : MonoBehaviour {
     public float speed;
     public Weapons_Module.Weapon[] Inventory;
 
-    public Mob(int toughness,int InventorySize, int MaxHP = 100, string StartingItem = null, GameObject bulletSource=null)
+    public Mob(int toughness,int InventorySize, int MaxHP = 100, string StartingItem = null, GameObject bulletSource=null, string title = "Miszorek")
     {
         this.HP = MaxHP;
         this.MaxHP = MaxHP;
@@ -25,6 +26,7 @@ public class Mob : MonoBehaviour {
         startingWeapon.bulletSource = bulletSource;
         this.Inventory[0] = Weapons_Module.GetWeapon(StartingItem);
         this.HP = MaxHP;
+        this.title = title;
     }
 
     //returns true if the mob dies
