@@ -5,16 +5,37 @@ using UnityEngine;
 
 public class Mob : MonoBehaviour { 
 
-    public int HP;
+    private int HP;
     private int MaxHP;
-    public const int InventorySize=5;
-    public Weapons_Module.Weapon[] Inventory = new Weapons_Module.Weapon[InventorySize];
+    private float toughness; // it is a multiplier of a damage 
+    private const int InventorySize=5;
+    public string startingWeaponStr;
+    private Weapons_Module.Weapon[] Inventory;
 
-    public Mob(int MaxHP=100, Weapons_Module.Weapon StartingItem =null)
+    public Mob(float toughness,int InventorySize, int MaxHP = 100, Weapons_Module.Weapon StartingItem = null)
     {
+        
+        this.HP = MaxHP;
         this.MaxHP = MaxHP;
-        this.Inventory[0] = StartingItem;
+        this.toughness = toughness;
+        Inventory = new Weapons_Module.Weapon[InventorySize];
+        // this.Inventory[0] = Weapons_Module.getWeapon();
         this.HP = MaxHP;
     }
-    
+
+    //returns true if the mob dies
+    public bool hit_received(int damage)
+    {
+        HP = (int)((float)HP - ((float)damage) * toughness);
+        if (HP > 0)
+        {
+            return false;
+        }
+        else
+        {
+            GameObject.Destroy(this.gameObject);
+            return true;
+        }
+    }
+
 }
