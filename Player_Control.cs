@@ -41,6 +41,7 @@ public class Player_Control : MonoBehaviour
         //Quaternion playerRotation =Quaternion.Euler(new Vector3(0, 0, playerRotationAngle));
 
         playerTransform.SetPositionAndRotation(currentPos+ movementVector*moveSpeed, Quaternion.identity);
+       //MOZNA TO PRZEZ TO DODAC: gameObject.GetComponent<Rigidbody2D>().AddForce()
     }
 
     private void CameraFollowing()
