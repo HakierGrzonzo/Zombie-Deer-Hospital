@@ -5,9 +5,6 @@ using UnityEngine;
 
 public class Mob : MonoBehaviour {
 
-    public GameObject normalBulletPrefab;
-    public GameObject waterBulletPrefab;
-
     public int bodyDamage;
     public GameObject bulletSource;
     public int HP;
@@ -19,23 +16,21 @@ public class Mob : MonoBehaviour {
     public Weapons_Module.Weapon currentWeapon;
     public Weapons_Module.Weapon[] Inventory;
 
-    public Mob(int toughness,int InventorySize, int MaxHP = 100, string StartingItem = null, GameObject bulletSource=null)
+    public Mob(int toughness,int InventorySize, int MaxHP = 100, string StartingItemStr = null, GameObject bulletSource=null)
     {
 
         this.HP = MaxHP;
         this.MaxHP = MaxHP;
         this.toughness = toughness;
         Inventory = new Weapons_Module.Weapon[InventorySize];
-        this.Inventory[0] = GetWeapon(StartingItem);
+        this.Inventory[0] = GetWeapon(StartingItemStr);
         this.HP = MaxHP;
     }
 
 
     private void Start()
     {
-        currentWeapon = GetWeapon(startingWeaponStr);
-       // currentWeapon = new Weapons_Module.Weapon(bulletSource, normalBulletPrefab, 10, 0.75f, 7.0f, 1.7f, 0f, false, false);
-        Debug.Log(currentWeapon);
+        currentWeapon = Inventory[0];
     }
 
     public Weapons_Module.Weapon GetWeapon(string weaponName)
@@ -44,19 +39,19 @@ public class Mob : MonoBehaviour {
         switch (weaponName)
         {
             case "shotgun":
-                Weapons_Module.Weapon shotgun = new Weapons_Module.Weapon(bulletSource, normalBulletPrefab, 20, 0.90f, speedMult*5.5f, 0.9f, 6.5f, true, false);
+                Weapons_Module.Weapon shotgun = new Weapons_Module.Weapon(bulletSource, Weapons_Module.normalBulletPrefab, 20, 0.90f, speedMult*5.5f, 0.9f, 6.5f, true, false);
                 return (shotgun);
 
             case "water_gun":
-                Weapons_Module.Weapon water_gun = new Weapons_Module.Weapon(bulletSource, normalBulletPrefab, 15, 0.30f, speedMult * 5.0f, 1.5f, 0, false, false);
+                Weapons_Module.Weapon water_gun = new Weapons_Module.Weapon(bulletSource, Weapons_Module.normalBulletPrefab, 15, 0.30f, speedMult * 5.0f, 1.5f, 0, false, false);
                 return (water_gun);
 
             case "pistol":
-                Weapons_Module.Weapon pistol = new Weapons_Module.Weapon(bulletSource, normalBulletPrefab, 10, 0.75f, speedMult * 7.0f, 1.7f, 0f, false, false);
+                Weapons_Module.Weapon pistol = new Weapons_Module.Weapon(bulletSource, Weapons_Module.normalBulletPrefab, 10, 0.75f, speedMult * 7.0f, 1.7f, 0f, false, false);
                 return (pistol);
 
             case "machine_Gun":
-                Weapons_Module.Weapon machine_Gun = new Weapons_Module.Weapon(bulletSource, normalBulletPrefab, 10, 0.75f, speedMult * 7.0f, 1.7f, 0f, false, false);
+                Weapons_Module.Weapon machine_Gun = new Weapons_Module.Weapon(bulletSource, Weapons_Module.normalBulletPrefab, 10, 0.75f, speedMult * 7.0f, 1.7f, 0f, false, false);
                 return (machine_Gun);
 
         }

@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Weapons_Module : MonoBehaviour {
+    //Load a normalBulletPrefab from (Assets/bulletPrefabs/normalBulletPrefab)
+    public static GameObject normalBulletPrefab = Resources.Load<GameObject>("bulletPrefabs/normalBulletPrefab");
+    //Load a waterBulletPrefab from (Assets/bulletPrefabs/waterBulletPrefab)
+    public static GameObject waterBulletPrefab = Resources.Load<GameObject>("bulletPrefabs/waterBulletPrefab");
+
+    
 
 
     public class Weapon
