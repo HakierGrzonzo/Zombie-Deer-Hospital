@@ -6,6 +6,7 @@ public class Player_Control : MonoBehaviour
 {
     private Transform playerTransform;
     private float moveSpeed;
+    private float lastTimeShot;
     public int CameraHeight;
 
     // Start is called before the first frame update
@@ -13,6 +14,7 @@ public class Player_Control : MonoBehaviour
     {
         playerTransform = GetComponent<Transform>();
         moveSpeed = this.gameObject.GetComponent<Mob>().speed;
+        lastTimeShot = Time.time;
     }
 
     // Update is called once per frame
@@ -22,6 +24,24 @@ public class Player_Control : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         Move(vertical, horizontal);
         CameraFollowing();
+        if (Input.GetMouseButtonDown(0) & canShoot())
+        {
+            lastTimeShot = Time.time;
+            this.gameObject.GetComponent<Mob>().Inventory[0].Shoot();
+        }
+    }
+
+    //returns true if the weapon can shoot
+    private bool canShoot()
+    {
+        if (Time.time - lastTimeShot > this.gameObject.GetComponent<Mob>().Inventory[0].fireRate)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     private void Move(float Vertical, float Horizontal)

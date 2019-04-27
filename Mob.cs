@@ -12,7 +12,7 @@ public class Mob : MonoBehaviour {
     public const int InventorySize=5;
     public string startingWeaponStr;
     public float speed;
-    private Weapons_Module.Weapon[] Inventory;
+    public Weapons_Module.Weapon[] Inventory;
 
     public Mob(float toughness,int InventorySize, int MaxHP = 100, Weapons_Module.Weapon StartingItem = null)
     {
