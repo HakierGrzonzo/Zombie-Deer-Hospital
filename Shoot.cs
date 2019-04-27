@@ -2,12 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shoot : MonoBehaviour {
+public class Weapons_Module : MonoBehaviour {
 
-    void Shoot_Weapon(GameObject bulletSource, float destroyTime, int bulletSpeed)
+    public class Weapon
     {
-        Transform bulletSourceTransform = bulletSource.GetComponent<Transform>();
-        GameObject Bullet = Instantiate(bulletSource, bulletSourceTransform.position, bulletSourceTransform.rotation);
-        Bullet.GetComponent<Rigidbody>().AddForce(gameObject.transform.right * bulletSpeed);
+
+
+        public GameObject bulletPrefab;
+        public GameObject bulletSource;
+        public int damage;
+        public int fireRate;
+        public int bulletSpeed;
+        public float bulletDistance;
+        public int spread;
+
+        void Shoot()
+        {
+
+            Transform bulletSourceTransform = bulletSource.GetComponent<Transform>();
+            GameObject Bullet = Instantiate(bulletPrefab, bulletSourceTransform.position, bulletSourceTransform.rotation);
+            Bullet.GetComponent<Rigidbody>().AddForce(Bullet.transform.right * bulletSpeed);
+        }
     }
 }
