@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mob : MonoBehaviour
+public class Mob
 {
 
     public int HP;
     private int MaxHP;
-    private const int InventorySize = 5;
+    public const int InventorySize=5;
     public Item[] Inventory = new Item[InventorySize];
-
+    
     public bool UseItem(Item UsedItem)
     {
+        return false;
         //Use selected item from the inventory, returned value shows if the item was used
     }
 

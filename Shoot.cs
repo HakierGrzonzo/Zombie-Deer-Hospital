@@ -4,44 +4,33 @@ using UnityEngine;
 
 public class Shoot : MonoBehaviour {
 
-    private float LocalFireRate;
-    private float FireRateCtrl;
+    public float FireRate;
     public GameObject BulletSource;
 
 	// Use this for initialization
 	void Start ()
     {
-        FireRateCtrl = 0;
 
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
+        float timeStart = Time.time;
         if (Input.GetKey(KeyCode.Mouse0))
         {
+            Debug.Log(timeStart-Time.time);
 
-            if (Time.time> FireRateCtrl + LocalFireRate)
+            if (timeStart - Time.time> FireRate)
             {
+                timeStart = Time.time;
                 GameObject Bullet = Instantiate(BulletSource, transform.position, Quaternion.identity);
                 Bullet.GetComponent<Rigidbody>().AddForce(gameObject.transform.right);
-                Debug.Log(gameObject.transform.up);
-                FireRateCtrl = Time.time;
             }
 
 
 
-
-            foreach (Item itchild in gameObject.GetComponentsInChildren<Item>())
-            {
-                if (itchild.CurrentlyEquipped == true)
-                {
-                    LocalFireRate = itchild.FireRate;
-                }
-            }
-
-
-
+          
         }
     }
 }
