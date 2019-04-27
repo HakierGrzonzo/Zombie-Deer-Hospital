@@ -5,12 +5,13 @@ using UnityEngine;
 public class Player_Control : MonoBehaviour
 {
     private Transform playerTransform;
-    public float moveSpeed;
+    private float moveSpeed;
 
     // Start is called before the first frame update
     void Start()
     {
         playerTransform = GetComponent<Transform>();
+        moveSpeed = this.gameObject.GetComponent<Mob>().speed;
     }
 
     // Update is called once per frame
