@@ -2,39 +2,55 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Mob : MonoBehaviour { 
 
-    public int HP;
-    private int MaxHP;
+    public int bodyDamage;
+    private int HP;
+    public int MaxHP;
+    public float toughness; // it is a multiplier of a damage 
     public const int InventorySize=5;
-    public Item[] Inventory = new Item[InventorySize];
-    
-    /*
-    public bool UseItem(Item UsedItem)
+    public string startingWeaponStr;
+    public float speed;
+    private Weapons_Module.Weapon[] Inventory;
+
+    public Mob(float toughness,int InventorySize, int MaxHP = 100, Weapons_Module.Weapon StartingItem = null)
     {
-        return false;
-        //Use selected item from the inventory, returned value shows if the item was used
-    }
-    */
-    /*
-    public Mob(int MaxHP=100, Item StartingItem=null)
-    {
+        this.HP = MaxHP;
         this.MaxHP = MaxHP;
-        this.Inventory[0] = StartingItem;
+        this.toughness = toughness;
+        Inventory = new Weapons_Module.Weapon[InventorySize];
+        // this.Inventory[0] = Weapons_Module.getWeapon();
         this.HP = MaxHP;
     }
-    */
-    /*
-    // Start is called before the first frame update
-    void Start()
+
+    //returns true if the mob dies
+    public bool hit_received(int damage)
     {
+        HP = (int)((float)HP - ((float)damage) * toughness);
+        if (HP > 0)
+        {
+            return false;
+        }
+        else
+        {
+            GameObject.Destroy(this.gameObject);
+            return true;
+        }
+
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (this.gameObject.CompareTag("Player")){
+            if (collision.collider.CompareTag("Enemy"))
+            {
+                Debug.Log("Collision");
+                this.gameObject.GetComponent<Mob>().hit_received(bodyDamage);
+                GameObject.Destroy(collision.collider.gameObject);
+            }
+        }
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-*/
 }
