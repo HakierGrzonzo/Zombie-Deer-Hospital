@@ -2,13 +2,15 @@
 
 public class Item : MonoBehaviour
 {
+    public string Name;
     public static int SpawnRate; //lower value => higher tier
     public float FireRate;
     public static float CostPerShot;
-    public static float Spread;
+    public float Spread;
+    public bool IsShotgun;
     public bool CurrentlyEquipped;
-    // Start is called before the first frame update
     public string SpritePath; //nazwa pliku z grafiką
+
     void Start()
     {
 
