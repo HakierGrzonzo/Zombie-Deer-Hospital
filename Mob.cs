@@ -79,6 +79,20 @@ public class Mob : MonoBehaviour {
     }
 
 
+    private void Update()
+    {
+        if (HP > 0)
+        { }
+        else
+        {
+            GameObject.Destroy(this.gameObject);
+        }
+        if (HP> MaxHP)
+        {
+            HP = MaxHP;
+        }
+    }
+
     void OnCollisionEnter(Collision collision)
     {
         if (this.gameObject.CompareTag("Enemy")){

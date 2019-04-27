@@ -13,7 +13,7 @@ public class statusEffect : MonoBehaviour
     private int tickCompleate;
     private float timepassed = 0;
 
-    public int EffectDuration() { return tickLength * (tickNum - tickCompleate); } 
+    public int EffectDuration() => tickLength * (tickNum - tickCompleate);
 
     // Start is called before the first frame update
     void Start()
