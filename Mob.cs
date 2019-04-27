@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Mob : MonoBehaviour { 
+public class Mob : MonoBehaviour {
 
     public int bodyDamage;
     private int HP;
     public int MaxHP;
-    public float toughness; // it is a multiplier of a damage 
+    public float toughness; // it is a multiplier of a damage
     public const int InventorySize=5;
     public string startingWeaponStr;
     public float speed;
@@ -51,7 +51,7 @@ public class Mob : MonoBehaviour {
                 GameObject.Destroy(this.gameObject);
             }
         }
-        
+
     }
 
 }

@@ -11,7 +11,7 @@ public class Weapons_Module : MonoBehaviour {
         GameObject bulletPrefeb;
         GameObject bulletSource;
         int damage;
-        float fireRate;
+        public float fireRate;
         float bulletSpeed;
         float bulletFlightTime;
         float spread;
@@ -46,7 +46,7 @@ public class Weapons_Module : MonoBehaviour {
             return Weapons_dict[weaponName];
         }
 
-        void Shoot()
+        public void Shoot()
         {
 
             Transform bulletSourceTransform = bulletSource.GetComponent<Transform>();
