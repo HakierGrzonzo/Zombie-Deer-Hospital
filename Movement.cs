@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    public GameObject self;
     public int speed;
     public Vector3 position;
     public Vector3 playerPos;
@@ -20,12 +19,17 @@ public class Movement : MonoBehaviour
     void Update()
     {
         //construct movement vector
-        position = self.transform.position;
+        position = gameObject.GetComponent<Rigidbody>().transform.position;
         playerPos = playerObject.transform.position;
         Debug.Log(playerPos);
         Vector3 move = playerPos - position;
         //normalize
         move = move.normalized*speed;
-        //rotate self
+        gameObject.GetComponent<Rigidbody>().velocity = move;
+    }
+
+    public Movement(int speed)
+    {
+        this.speed = speed;
     }
 }

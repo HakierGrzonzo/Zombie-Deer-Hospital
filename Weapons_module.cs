@@ -5,7 +5,7 @@ using UnityEngine;
 public class Weapons_Module : MonoBehaviour {
     public GameObject normalBulletPrefab;
     public GameObject waterBulletPrefab;
-    
+
     public class Weapon
     {
         GameObject bulletPrefeb;
@@ -17,8 +17,8 @@ public class Weapons_Module : MonoBehaviour {
         int spread;
         bool isShotgun;
         bool isMelee;
-        
-        
+
+
         public Weapon(GameObject bulletPrefeb, GameObject bulletSource, int damage, int fireRate, int bulletSpeed, float bulletFlightTime, int spread, bool isShotgun, bool isMelee)
         {
             this.bulletPrefeb = bulletPrefeb;
