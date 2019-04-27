@@ -31,6 +31,10 @@ public class Player_Control : MonoBehaviour
         Move(vertical, horizontal);
         CameraFollowing();
         SpriteUpdate();
+        if (Input.GetMouseButtonDown(0) & this.gameObject.GetComponent<Mob>().currentWeapon.CanShoot())
+        {
+            this.gameObject.GetComponent<Mob>().currentWeapon.Shoot();
+        }
     }
 
     private void Move(float Vertical, float Horizontal)
@@ -41,6 +45,7 @@ public class Player_Control : MonoBehaviour
         //Quaternion playerRotation =Quaternion.Euler(new Vector3(0, 0, playerRotationAngle));
 
         playerTransform.SetPositionAndRotation(currentPos+ movementVector*moveSpeed, Quaternion.identity);
+       //MOZNA TO PRZEZ TO DODAC: gameObject.GetComponent<Rigidbody2D>().AddForce()
     }
 
     private void CameraFollowing()
@@ -55,7 +60,7 @@ public class Player_Control : MonoBehaviour
         mousePos.y = mousePos.y - objectPos.y;
         float playerRotationAngle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
 
-
+        /*
         if (playerRotationAngle      < -157.5 || playerRotationAngle  > 157.5) { gameObject.GetComponent<SpriteRenderer>().sprite = L; }
         else if (playerRotationAngle > -22.5  &&  playerRotationAngle < 22.5)  { gameObject.GetComponent<SpriteRenderer>().sprite = R;  }
         else if(playerRotationAngle  <  -67.5 &&  playerRotationAngle > -112.5) { gameObject.GetComponent<SpriteRenderer>().sprite = U; }
@@ -66,7 +71,7 @@ public class Player_Control : MonoBehaviour
 
         else if(playerRotationAngle  <   157.5  &&  playerRotationAngle > 112.5) { gameObject.GetComponent<SpriteRenderer>().sprite = DR;}
         else if(playerRotationAngle  >   -157.5  &&  playerRotationAngle < -112.5) { gameObject.GetComponent<SpriteRenderer>().sprite = UR;  }
-
+        */
 
     }
 }

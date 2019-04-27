@@ -3,23 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Weapons_Module : MonoBehaviour {
-    public static GameObject normalBulletPrefab;
-    public static GameObject waterBulletPrefab;
-
-    public static Weapon GetWeapon(string weaponName)
-    {
-        var Weapons_dict = new Dictionary<string, Weapon>()
-            {
-                //{"Knife", new Weapon(GameObject bulletPrefeb, GameObject bulletSource, int damage, int fireRate, int bulletSpeed, float bulletFlightTime, int spread, bool false, bool true)},
-                //{"Scythe", new Weapon(GameObject bulletPrefeb, GameObject bulletSource, int damage, int fireRate, int bulletSpeed, float bulletFlightTime, int spread, bool false, bool true)},
-                {"Water_Gun", new Weapon(normalBulletPrefab, 15,  0.30f,  5.0f,  1.5f,  0,  false,  false)},
-                {"Machine_Gun", new Weapon(normalBulletPrefab, 25,  0.15f,  7.0f,  2.0f ,  0,  false,  false)},
-                {"Pistol", new Weapon(normalBulletPrefab, 10 ,  0.75f,  7.0f,  1.7f,  0f,  false,  false)},
-                {"Shotgun",new Weapon(normalBulletPrefab, 20,  0.90f,  5.5f,  0.9f,  6.5f,  true, false) }
-            };
-        return Weapons_dict[weaponName];
-    }
-
 
 
     public class Weapon
@@ -33,10 +16,12 @@ public class Weapons_Module : MonoBehaviour {
         float spread;
         bool isShotgun;
         bool isMelee;
+        private float lastShotTime = Time.time;
 
 
-        public Weapon(GameObject bulletPrefeb, int damage, float fireRate, float bulletSpeed, float bulletFlightTime, float spread, bool isShotgun, bool isMelee)
+        public Weapon(GameObject bulletSource, GameObject bulletPrefeb, int damage, float fireRate, float bulletSpeed, float bulletFlightTime, float spread, bool isShotgun, bool isMelee)
         {
+            this.bulletSource = bulletSource;
             this.bulletPrefeb = bulletPrefeb;
             this.damage = damage;
             this.fireRate = fireRate;
@@ -47,15 +32,46 @@ public class Weapons_Module : MonoBehaviour {
             this.isMelee = isMelee;
         }
 
-        
+        public bool CanShoot()
+        {
+            if (Time.time - lastShotTime > fireRate)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
         public void Shoot()
         {
-
+            lastShotTime = Time.time;
             Transform bulletSourceTransform = bulletSource.GetComponent<Transform>();
             GameObject Bullet = Instantiate(bulletPrefeb, bulletSourceTransform.position, bulletSourceTransform.rotation);
             Bullet.GetComponent<Rigidbody>().AddForce(Bullet.transform.right * bulletSpeed);
-            GameObject.Destroy(Bullet,bulletFlightTime);
+            GameObject.Destroy(Bullet, bulletFlightTime);
+
+            /*
+            if (isShotgun)
+            {
+                GameObject Bullet2 = Instantiate(bulletPrefeb, bulletSourceTransform.position + bulletSourceTransform.forward * 10, Quaternion.identity);
+                GameObject Bullet3 = Instantiate(bulletPrefeb, bulletSourceTransform.position + bulletSourceTransform.forward * 5, Quaternion.identity);
+                GameObject Bullet4 = Instantiate(bulletPrefeb, bulletSourceTransform.position + bulletSourceTransform.forward * -5, Quaternion.identity);
+                GameObject Bullet5 = Instantiate(bulletPrefeb, bulletSourceTransform.position + bulletSourceTransform.forward * -10, Quaternion.identity);
+
+                FirDir = (bulletSourceTransform.right * 500);
+
+                FirDir = RotateAroundAxis(FirDir, LocalSpread, bulletSourceTransform.up);
+                Bullet2.GetComponent<Rigidbody>().AddForce(FirDir);
+                FirDir = RotateAroundAxis(FirDir, LocalSpread, bulletSourceTransform.up);
+                Bullet3.GetComponent<Rigidbody>().AddForce(FirDir);
+                FirDir = RotateAroundAxis(FirDir, -3 * LocalSpread, bulletSourceTransform.up);
+                Bullet4.GetComponent<Rigidbody>().AddForce(FirDir);
+                FirDir = RotateAroundAxis(FirDir, -1 * LocalSpread, bulletSourceTransform.up);
+                Bullet5.GetComponent<Rigidbody>().AddForce(FirDir);
+            }
+            */
         }
     }
 }
