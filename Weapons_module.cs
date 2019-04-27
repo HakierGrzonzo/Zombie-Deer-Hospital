@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Weapons_Module : MonoBehaviour {
+    /*
     public GameObject normalBulletPrefab;
     public GameObject waterBulletPrefab;
     public GameObject 
@@ -18,7 +19,7 @@ public class Weapons_Module : MonoBehaviour {
                 { "Pistol", new Weapon(GameObject bulletPrefeb, GameObject bulletSource, int damage, int fireRate, int bulletSpeed, float bulletFlightTime, int spread, bool isShotgun, bool isMelee)},
                 {"Shotgun",new Weapon(GameObject bulletPrefeb, GameObject bulletSource, int damage, int fireRate, int bulletSpeed, float bulletFlightTime, int spread, bool isShotgun, bool isMelee) }
             };
-    }
+    } */
     public class Weapon
     {
         GameObject bulletPrefeb;
