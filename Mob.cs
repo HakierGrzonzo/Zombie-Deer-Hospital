@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Mob : MonoBehaviour {
 
+    public string title = "Miszorek";
     public int bodyDamage;
     public GameObject bulletSource;
     public int HP;
@@ -16,15 +17,16 @@ public class Mob : MonoBehaviour {
     public Weapons_Module.Weapon currentWeapon;
     public Weapons_Module.Weapon[] Inventory;
 
-    public Mob(int toughness,int InventorySize, int MaxHP = 100, string StartingItemStr = null, GameObject bulletSource=null)
+    public Mob(string title, int toughness, int InventorySize, int MaxHP = 100, string StartingItem = null, GameObject bulletSource=null)
     {
-
+        this.title = title;
         this.HP = MaxHP;
         this.MaxHP = MaxHP;
         this.toughness = toughness;
         Inventory = new Weapons_Module.Weapon[InventorySize];
         this.Inventory[0] = GetWeapon(StartingItemStr);
         this.HP = MaxHP;
+        this.title = title;
     }
 
 
