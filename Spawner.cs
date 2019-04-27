@@ -15,7 +15,7 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerObject = GameObject.Find("Player");
+        playerObject = GameObject.FindWithTag("Player");
     }
 
     private float distanceToPlayer() //calculate distance form player
