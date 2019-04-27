@@ -40,42 +40,32 @@ public class Mob : MonoBehaviour {
 
     public Weapons_Module.Weapon GetWeapon(string weaponName)
     {
+        float speedMult = 40f;
         switch (weaponName)
         {
             case "shotgun":
-                Weapons_Module.Weapon shotgun = new Weapons_Module.Weapon(bulletSource, normalBulletPrefab, 20, 0.90f, 5.5f, 0.9f, 6.5f, true, false);
+                Weapons_Module.Weapon shotgun = new Weapons_Module.Weapon(bulletSource, normalBulletPrefab, 20, 0.90f, speedMult*5.5f, 0.9f, 6.5f, true, false);
                 return (shotgun);
 
             case "water_gun":
-                Weapons_Module.Weapon water_gun = new Weapons_Module.Weapon(bulletSource, normalBulletPrefab, 15, 0.30f, 5.0f, 1.5f, 0, false, false);
+                Weapons_Module.Weapon water_gun = new Weapons_Module.Weapon(bulletSource, normalBulletPrefab, 15, 0.30f, speedMult * 5.0f, 1.5f, 0, false, false);
                 return (water_gun);
 
             case "pistol":
-                Weapons_Module.Weapon pistol = new Weapons_Module.Weapon(bulletSource, normalBulletPrefab, 10, 0.75f, 7.0f, 1.7f, 0f, false, false);
+                Weapons_Module.Weapon pistol = new Weapons_Module.Weapon(bulletSource, normalBulletPrefab, 10, 0.75f, speedMult * 7.0f, 1.7f, 0f, false, false);
                 return (pistol);
 
             case "machine_Gun":
-                Weapons_Module.Weapon machine_Gun = new Weapons_Module.Weapon(bulletSource, normalBulletPrefab, 10, 0.75f, 7.0f, 1.7f, 0f, false, false);
+                Weapons_Module.Weapon machine_Gun = new Weapons_Module.Weapon(bulletSource, normalBulletPrefab, 10, 0.75f, speedMult * 7.0f, 1.7f, 0f, false, false);
                 return (machine_Gun);
 
         }
         return null;
     }
 
-    //returns true if the mob dies
-    public bool hit_received(int damage)
+    public void hit_received(int damage)
     {
         HP = (int)((float)HP - ((float)damage) * toughness);
-        if (HP > 0)
-        {
-            return false;
-        }
-        else
-        {
-            GameObject.Destroy(this.gameObject);
-            return true;
-        }
-
     }
 
 
