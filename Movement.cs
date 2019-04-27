@@ -22,7 +22,7 @@ public class Movement : MonoBehaviour
         //construct movement vector
         position = gameObject.GetComponent<Rigidbody>().transform.position;
         playerPos = playerObject.transform.position;
-        Debug.Log(playerPos);
+        //Debug.Log(playerPos);
         Vector3 move = playerPos - position;
         //normalize
         move = move.normalized*speed;
