@@ -7,16 +7,15 @@ public class Mob : MonoBehaviour {
 
     public int bodyDamage;
     private GameObject bulletSource;
-    private int HP;
+    public int HP;
     public int MaxHP;
-    public float toughness; // it is a multiplier of a damage
+    public int toughness; // it is a multiplier of a damage dealt and recived
     public const int InventorySize=5;
     public string startingWeaponStr;
     public float speed;
-    public float spawnrate; // delay beetween spawns
     public Weapons_Module.Weapon[] Inventory;
 
-    public Mob(float toughness,int InventorySize, int MaxHP = 100, string StartingItem = null, GameObject bulletSource=null)
+    public Mob(int toughness,int InventorySize, int MaxHP = 100, string StartingItem = null, GameObject bulletSource=null)
     {
         this.HP = MaxHP;
         this.MaxHP = MaxHP;
@@ -44,17 +43,22 @@ public class Mob : MonoBehaviour {
 
     }
 
+
     void OnCollisionEnter(Collision collision)
     {
         if (this.gameObject.CompareTag("Enemy")){
             if (collision.collider.CompareTag("Player"))
             {
                 Debug.Log("Collision");
-                collision.collider.GetComponent<Mob>().hit_received(bodyDamage);
+                collision.collider.GetComponent<Mob>().hit_received(bodyDamage*toughness);
                 GameObject.Destroy(this.gameObject);
             }
         }
 
     }
-
+    //deconstructor - death sequence
+    ~Mob()
+    {
+        //drop weapon, NEED WEAPON PREFAB
+    }
 }
