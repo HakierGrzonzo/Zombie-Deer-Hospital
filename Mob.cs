@@ -11,7 +11,7 @@ public class Mob : MonoBehaviour {
     public float toughness; // it is a multiplier of a damage 
     public const int InventorySize=5;
     public string startingWeaponStr;
-    public int speed;
+    public float speed;
     private Weapons_Module.Weapon[] Inventory;
 
     public Mob(float toughness,int InventorySize, int MaxHP = 100, Weapons_Module.Weapon StartingItem = null)

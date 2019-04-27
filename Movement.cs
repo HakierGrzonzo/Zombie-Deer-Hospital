@@ -13,6 +13,7 @@ public class Movement : MonoBehaviour
     void Start()
     {
         playerObject = GameObject.Find("Player");
+        speed = gameObject.GetComponent<Mob>().speed;
     }
 
     // Update is called once per frame
@@ -30,6 +31,5 @@ public class Movement : MonoBehaviour
 
     public Movement()
     {
-        this.speed = gameObject.GetComponent<Mob>().speed;
     }
 }
