@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    public GameObject self;
+    public Rigidbody self;
     public int speed;
     public Vector3 position;
     public Vector3 playerPos;
@@ -26,6 +26,12 @@ public class Movement : MonoBehaviour
         Vector3 move = playerPos - position;
         //normalize
         move = move.normalized*speed;
-        //rotate self
+        self.velocity = move;
+    }
+
+    public Movement(Rigidbody self, int speed)
+    {
+        this.self = self;
+        this.speed = speed;
     }
 }
