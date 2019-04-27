@@ -28,7 +28,7 @@ public class statusEffect : MonoBehaviour
         timepassed = +Time.deltaTime;
         if (timepassed > tickLength)
         {
-            gameObject.GetComponent<Mob>().HP = -HPEffect;
+            gameObject.GetComponent<Mob>().HP -= HPEffect;
             timepassed = 0;
             tickCompleate++;
         }
