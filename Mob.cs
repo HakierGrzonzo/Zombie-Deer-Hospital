@@ -43,12 +43,12 @@ public class Mob : MonoBehaviour {
 
     void OnCollisionEnter(Collision collision)
     {
-        if (this.gameObject.CompareTag("Player")){
-            if (collision.collider.CompareTag("Enemy"))
+        if (this.gameObject.CompareTag("Enemy")){
+            if (collision.collider.CompareTag("Player"))
             {
                 Debug.Log("Collision");
-                this.gameObject.GetComponent<Mob>().hit_received(bodyDamage);
-                GameObject.Destroy(collision.collider.gameObject);
+                collision.collider.GetComponent<Mob>().hit_received(bodyDamage);
+                GameObject.Destroy(this.gameObject);
             }
         }
         
