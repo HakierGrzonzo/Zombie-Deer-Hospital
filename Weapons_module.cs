@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Weapons_Module : MonoBehaviour {
     //Load a normalBulletPrefab from (Assets/bulletPrefabs/normalBulletPrefab)
-    public static GameObject normalBulletPrefab = Resources.Load<GameObject>("bulletPrefabs/normalBulletPrefab");
+    public static GameObject normalBulletPrefab = Resources.Load<GameObject>("BulletPrefabs/normalBulletPrefab");
     //Load a waterBulletPrefab from (Assets/bulletPrefabs/waterBulletPrefab)
-    public static GameObject waterBulletPrefab = Resources.Load<GameObject>("bulletPrefabs/waterBulletPrefab");
+    public static GameObject waterBulletPrefab = Resources.Load<GameObject>("BulletPrefabs/waterBulletPrefab");
 
     
 
