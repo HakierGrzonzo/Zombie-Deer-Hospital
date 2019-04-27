@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    public int speed;
-    public Vector3 position;
-    public Vector3 playerPos;
+    public float speed;
+    private Vector3 position;
+    private Vector3 playerPos;
     private Vector3 move;
     private GameObject playerObject;
     // Start is called before the first frame update
@@ -28,8 +28,8 @@ public class Movement : MonoBehaviour
         gameObject.GetComponent<Rigidbody>().velocity = move;
     }
 
-    public Movement(int speed)
+    public Movement()
     {
-        this.speed = speed;
+        this.speed = gameObject.GetComponent<Mob>().speed;
     }
 }
