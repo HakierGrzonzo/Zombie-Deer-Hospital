@@ -6,12 +6,28 @@ public class Weapons_Module : MonoBehaviour {
     public static GameObject normalBulletPrefab;
     public static GameObject waterBulletPrefab;
 
+    public static Weapon GetWeapon(string weaponName)
+    {
+        var Weapons_dict = new Dictionary<string, Weapon>()
+            {
+                //{"Knife", new Weapon(GameObject bulletPrefeb, GameObject bulletSource, int damage, int fireRate, int bulletSpeed, float bulletFlightTime, int spread, bool false, bool true)},
+                //{"Scythe", new Weapon(GameObject bulletPrefeb, GameObject bulletSource, int damage, int fireRate, int bulletSpeed, float bulletFlightTime, int spread, bool false, bool true)},
+                {"Water_Gun", new Weapon(normalBulletPrefab, 15,  0.30f,  5.0f,  1.5f,  0,  false,  false)},
+                {"Machine_Gun", new Weapon(normalBulletPrefab, 25,  0.15f,  7.0f,  2.0f ,  0,  false,  false)},
+                {"Pistol", new Weapon(normalBulletPrefab, 10 ,  0.75f,  7.0f,  1.7f,  0f,  false,  false)},
+                {"Shotgun",new Weapon(normalBulletPrefab, 20,  0.90f,  5.5f,  0.9f,  6.5f,  true, false) }
+            };
+        return Weapons_dict[weaponName];
+    }
+
+
+
     public class Weapon
     {
         GameObject bulletPrefeb;
-        GameObject bulletSource;
+        public GameObject bulletSource;
         int damage;
-        float fireRate;
+        public float fireRate;
         float bulletSpeed;
         float bulletFlightTime;
         float spread;
@@ -19,10 +35,9 @@ public class Weapons_Module : MonoBehaviour {
         bool isMelee;
 
 
-        public Weapon(GameObject bulletPrefeb, GameObject bulletSource, int damage, float fireRate, float bulletSpeed, float bulletFlightTime, float spread, bool isShotgun, bool isMelee)
+        public Weapon(GameObject bulletPrefeb, int damage, float fireRate, float bulletSpeed, float bulletFlightTime, float spread, bool isShotgun, bool isMelee)
         {
             this.bulletPrefeb = bulletPrefeb;
-            this.bulletSource = bulletSource;
             this.damage = damage;
             this.fireRate = fireRate;
             this.bulletSpeed = bulletSpeed;
@@ -32,21 +47,9 @@ public class Weapons_Module : MonoBehaviour {
             this.isMelee = isMelee;
         }
 
-        public Weapon GetWeapon(string weaponName,GameObject bulletSource)
-        {
-            var Weapons_dict = new Dictionary<string, Weapon>()
-            {
-                //{"Knife", new Weapon(GameObject bulletPrefeb, GameObject bulletSource, int damage, int fireRate, int bulletSpeed, float bulletFlightTime, int spread, bool false, bool true)},
-                //{"Scythe", new Weapon(GameObject bulletPrefeb, GameObject bulletSource, int damage, int fireRate, int bulletSpeed, float bulletFlightTime, int spread, bool false, bool true)},
-                {"Water_Gun", new Weapon(normalBulletPrefab, bulletSource, 15,  0.30f,  5.0f,  1.5f,  0,  false,  false)},
-                {"Machine_Gun", new Weapon(normalBulletPrefab, bulletSource, 25,  0.15f,  7.0f,  2.0f ,  0,  false,  false)},
-                { "Pistol", new Weapon(normalBulletPrefab, bulletSource, 10 ,  0.75f,  7.0f,  1.7f,  0f,  false,  false)},
-                {"Shotgun",new Weapon(normalBulletPrefab, bulletSource, 20,  0.90f,  5.5f,  0.9f,  6.5f,  true, false) }
-            };
-            return Weapons_dict[weaponName];
-        }
+        
 
-        void Shoot()
+        public void Shoot()
         {
 
             Transform bulletSourceTransform = bulletSource.GetComponent<Transform>();

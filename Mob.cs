@@ -3,25 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Mob : MonoBehaviour { 
+public class Mob : MonoBehaviour {
 
     public int bodyDamage;
+    private GameObject bulletSource;
     private int HP;
     public int MaxHP;
-    public float toughness; // it is a multiplier of a damage 
+    public float toughness; // it is a multiplier of a damage
     public const int InventorySize=5;
     public string startingWeaponStr;
     public float speed;
     public float spawnrate; // delay beetween spawns
-    private Weapons_Module.Weapon[] Inventory;
+    public Weapons_Module.Weapon[] Inventory;
 
-    public Mob(float toughness,int InventorySize, int MaxHP = 100, Weapons_Module.Weapon StartingItem = null)
+    public Mob(float toughness,int InventorySize, int MaxHP = 100, string StartingItem = null, GameObject bulletSource=null)
     {
         this.HP = MaxHP;
         this.MaxHP = MaxHP;
         this.toughness = toughness;
         Inventory = new Weapons_Module.Weapon[InventorySize];
-        // this.Inventory[0] = Weapons_Module.getWeapon();
+        Weapons_Module.Weapon startingWeapon = Weapons_Module.GetWeapon(StartingItem);
+        startingWeapon.bulletSource = bulletSource;
+        this.Inventory[0] = Weapons_Module.GetWeapon(StartingItem);
         this.HP = MaxHP;
     }
 
@@ -51,7 +54,7 @@ public class Mob : MonoBehaviour {
                 GameObject.Destroy(this.gameObject);
             }
         }
-        
+
     }
 
 }
