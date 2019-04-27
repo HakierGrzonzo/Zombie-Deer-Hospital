@@ -47,7 +47,7 @@ public class Mob : MonoBehaviour {
             {
                 Debug.Log("Collision");
                 this.gameObject.GetComponent<Mob>().hit_received(bodyDamage);
-                GameObject.Destroy(collision.collider.gameObject)
+                GameObject.Destroy(collision.collider.gameObject);
             }
         }
         
