@@ -5,20 +5,7 @@ using UnityEngine;
 public class Weapons_Module : MonoBehaviour {
     public GameObject normalBulletPrefab;
     public GameObject waterBulletPrefab;
-    public GameObject 
-
-    void Start()
-    {
-        var Weapons_dict = new Dictionary<string, Weapons_Module.Weapon>()
-            {
-                {"Knife", new Weapon(GameObject bulletPrefeb, GameObject bulletSource, int damage, int fireRate, int bulletSpeed, float bulletFlightTime, int spread, bool isShotgun, bool isMelee)},
-                {"Scythe", new Weapon(GameObject bulletPrefeb, GameObject bulletSource, int damage, int fireRate, int bulletSpeed, float bulletFlightTime, int spread, bool isShotgun, bool isMelee)},
-                {"Water_Gun", new Weapon(GameObject bulletPrefeb, GameObject bulletSource, int damage, int fireRate, int bulletSpeed, float bulletFlightTime, int spread, bool isShotgun, bool isMelee)},
-                {"Machine_Gun", new Weapon(GameObject bulletPrefeb, GameObject bulletSource, int damage, int fireRate, int bulletSpeed, float bulletFlightTime, int spread, bool isShotgun, bool isMelee)},
-                { "Pistol", new Weapon(GameObject bulletPrefeb, GameObject bulletSource, int damage, int fireRate, int bulletSpeed, float bulletFlightTime, int spread, bool isShotgun, bool isMelee)},
-                {"Shotgun",new Weapon(GameObject bulletPrefeb, GameObject bulletSource, int damage, int fireRate, int bulletSpeed, float bulletFlightTime, int spread, bool isShotgun, bool isMelee) }
-            };
-    }
+    
     public class Weapon
     {
         GameObject bulletPrefeb;
@@ -44,7 +31,22 @@ public class Weapons_Module : MonoBehaviour {
             this.isShotgun = isShotgun;
             this.isMelee = isMelee;
         }
-        
+        /*
+        public Weapon GetWeapon(string weaponName)
+        {
+            var Weapons_dict = new Dictionary<string, Weapon>()
+            {
+                {"Knife", new Weapon(GameObject bulletPrefeb, GameObject bulletSource, int damage, int fireRate, int bulletSpeed, float bulletFlightTime, int spread, bool isShotgun, bool isMelee)},
+                {"Scythe", new Weapon(GameObject bulletPrefeb, GameObject bulletSource, int damage, int fireRate, int bulletSpeed, float bulletFlightTime, int spread, bool isShotgun, bool isMelee)},
+                {"Water_Gun", new Weapon(GameObject bulletPrefeb, GameObject bulletSource, int damage, int fireRate, int bulletSpeed, float bulletFlightTime, int spread, bool isShotgun, bool isMelee)},
+                {"Machine_Gun", new Weapon(GameObject bulletPrefeb, GameObject bulletSource, int damage, int fireRate, int bulletSpeed, float bulletFlightTime, int spread, bool isShotgun, bool isMelee)},
+                { "Pistol", new Weapon(GameObject bulletPrefeb, GameObject bulletSource, int damage, int fireRate, int bulletSpeed, float bulletFlightTime, int spread, bool isShotgun, bool isMelee)},
+                {"Shotgun",new Weapon(GameObject bulletPrefeb, GameObject bulletSource, int damage, int fireRate, int bulletSpeed, float bulletFlightTime, int spread, bool isShotgun, bool isMelee) }
+            };
+            return Weapons_dict[weaponName];
+        }
+        */
+
         void Shoot()
         {
 
