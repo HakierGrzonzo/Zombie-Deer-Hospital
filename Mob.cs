@@ -44,18 +44,20 @@ public class Mob : MonoBehaviour {
         }
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter2D(Collider2D collider)
     {
         if (this.gameObject.CompareTag("Enemy")){
-            if (collision.collider.CompareTag("Player"))
+            if (collider.CompareTag("Player"))
             {
-                Debug.Log("Collision");
-                collision.collider.GetComponent<Mob>().hit_received(bodyDamage*toughness);
+                Debug.Log("Player collision");
+                collider.gameObject.GetComponent<Mob>().hit_received(bodyDamage*toughness);
                 GameObject.Destroy(this.gameObject);
             }
         }
 
     }
+
+
     //deconstructor - death sequence
     ~Mob()
     {

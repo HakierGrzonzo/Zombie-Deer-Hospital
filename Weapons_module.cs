@@ -79,6 +79,7 @@ public class Weapons_Module{
             lastShotTime = Time.time;
             Transform bulletSourceTransform = bulletSource.GetComponent<Transform>();
             GameObject Bullet = MonoBehaviour.Instantiate(bulletPrefab, bulletSourceTransform.position, bulletSourceTransform.rotation);
+            Bullet.GetComponent<bulletScript>().bulletDamage = damage;
             Bullet.GetComponent<Rigidbody2D>().AddForce(Bullet.transform.up * bulletSpeed);
             GameObject.Destroy(Bullet, bulletFlightTime);
 
