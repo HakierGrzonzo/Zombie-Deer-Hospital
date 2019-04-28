@@ -14,15 +14,15 @@ public class Weapons_Module : MonoBehaviour{
         switch (weaponName)
             //Dodaje dodatkowę bronie
         {
-            case "shotgun":
+            case "Shotgun":
                 Weapons_Module.Weapon shotgun = new Weapon(weaponName, 5, 1,bulletSource, normalBulletPrefab, 70, 0.90f, speedMult * 5.5f, 0.9f, 6.5f, true);
                 return (shotgun);
 
-            case "water_gun":
+            case "Water_gun":
                 Weapons_Module.Weapon water_gun = new Weapon(weaponName, 1, 1, bulletSource, normalBulletPrefab, 15, 0.75f, speedMult * 5.0f, 1.5f, 0, false);
                 return (water_gun);
 
-            case "pistol":
+            case "Pistol":
                 Weapons_Module.Weapon pistol = new Weapon(weaponName, 0, 1, bulletSource, normalBulletPrefab, 10, 0.75f, speedMult * 7.0f, 1.7f, 0f, false);
                 return (pistol);
 
@@ -30,11 +30,11 @@ public class Weapons_Module : MonoBehaviour{
                 Weapons_Module.Weapon AK47 = new Weapon(weaponName, 3, 2, bulletSource, normalBulletPrefab, 55, 0.35f, speedMult * 7.0f, 1.7f, 0f, false);
                 return (AK47);
 
-            case "revolver":
+            case "Revolver":
                 Weapons_Module.Weapon revolver = new Weapon(weaponName, 3, 1, bulletSource, normalBulletPrefab, 84, 0.90f, speedMult * 6.0f, 1.4f, 0, false);
                 return (revolver);
 
-            case "uzi":
+            case "Uzi":
                 Weapons_Module.Weapon uzi = new Weapon(weaponName,1 ,1 , bulletSource, normalBulletPrefab, 24, 0.15f, speedMult * 7.0f, 1.4f, 0, false);
                 return (uzi);
 
@@ -42,11 +42,11 @@ public class Weapons_Module : MonoBehaviour{
                 Weapons_Module.Weapon M40 = new Weapon(weaponName,2 ,2 , bulletSource, normalBulletPrefab, 39, 0.25f, speedMult *7.0 , 1.5f, 0, false);
                 return (M40);
 
-            case "sniper_rifle":
+            case "Sniper_rifle":
                 Weapons_Module.Weapon sniper_rifle = new Weapon(weaponName,5 ,7 , bulletSource, normalBulletPrefab,76 , 1,25f, speedMult *7.0 , 1.8f, 0, false);
                 return (sniper_rifle);
 
-            case "minigun":
+            case "Minigun":
                 Weapons_Module.Weapon minigun = new Weapon(weaponName, 1, 1, bulletSource, normalBulletPrefab, 45, 0.091f, speedMult *7.0 , 1.7f, 0, false);
                 return (minigun);
 
@@ -55,8 +55,8 @@ public class Weapons_Module : MonoBehaviour{
                 return (Rocket_Launcher);
 
             case "Flame_Thrower":
-                Weapons_Module.Weapon = new Weapon(weaponName, 1, 8, bulletSource, normalBulletPrefab, 7, 0.05f, speedMult * 9.0, 1.9f, 0,false);
-                return ();
+                Weapons_Module.Weapon Flame_Thrower  = new Weapon(weaponName, 1, 8, bulletSource, normalBulletPrefab, 7, 0.05f, speedMult * 9.0, 1.9f, 0,false);
+                return (Flame_Thrower);
 
             case "Knife":
                 Weapons_Module.Weapon Knife = new Weapon(weaponName, 0, 0, bulletSource, normalBulletPrefab, 30, 0.85f, speedMult * 9.0 , 1.30f, 0,false);
