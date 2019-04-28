@@ -6,21 +6,17 @@ using TMPro;
 
 public class HealthBar : MonoBehaviour
 {
-    public Slider slider;
-    public Text Text;
-    // Start is called before the first frame update
-    void Start()
+    private Slider slider;
+    public Text text;
+
+    private void Start()
     {
-        Text = GetComponent<Text>();
+        slider = GetComponent<Slider>();
     }
-        
-    
-    // Update is called once per frame
+
     void Update()
     {
-       Text.text = slider.value.ToString() + "/100";
-    
-        
+        text.text = slider.value.ToString() + "/100";
     }
     
 }
