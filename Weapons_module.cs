@@ -15,19 +15,19 @@ public class Weapons_Module : MonoBehaviour{
             //Dodaje dodatkowę bronie
         {
             case "shotgun":
-                Weapons_Module.Weapon shotgun = new Weapon(weaponName, 5, 1,bulletSource, normalBulletPrefab, 20, 0.90f, speedMult * 5.5f, 0.9f, 6.5f, true, false);
+                Weapons_Module.Weapon shotgun = new Weapon(weaponName, 5, 1,bulletSource, normalBulletPrefab, 20, 0.90f, speedMult * 5.5f, 0.9f, 6.5f, true);
                 return (shotgun);
 
             case "water_gun":
-                Weapons_Module.Weapon water_gun = new Weapon(weaponName, 1, 1, bulletSource, normalBulletPrefab, 15, 0.30f, speedMult * 5.0f, 1.5f, 0, false, false);
+                Weapons_Module.Weapon water_gun = new Weapon(weaponName, 1, 1, bulletSource, normalBulletPrefab, 15, 0.30f, speedMult * 5.0f, 1.5f, 0, false);
                 return (water_gun);
 
             case "pistol":
-                Weapons_Module.Weapon pistol = new Weapon(weaponName, 2, 1, bulletSource, normalBulletPrefab, 10, 0.75f, speedMult * 7.0f, 1.7f, 0f, false, false);
+                Weapons_Module.Weapon pistol = new Weapon(weaponName, 2, 1, bulletSource, normalBulletPrefab, 10, 0.75f, speedMult * 7.0f, 1.7f, 0f, false);
                 return (pistol);
 
             case "machine_gun":
-                Weapons_Module.Weapon machine_Gun = new Weapon(weaponName, 1, 1, bulletSource, normalBulletPrefab, 10, 0.75f, speedMult * 7.0f, 1.7f, 0f, false, false);
+                Weapons_Module.Weapon machine_Gun = new Weapon(weaponName, 1, 1, bulletSource, normalBulletPrefab, 10, 0.75f, speedMult * 7.0f, 1.7f, 0f, false);
                 return (machine_Gun);
 
         }
@@ -47,10 +47,9 @@ public class Weapons_Module : MonoBehaviour{
         float bulletFlightTime;
         float spread;
         bool isShotgun;
-        bool isMelee;
         private float lastShotTime = Time.time;
 
-        public Weapon(string name, int selfDamage, int penetration, GameObject bulletSource, GameObject bulletPrefab, int damage, float fireRate, float bulletSpeed, float bulletFlightTime, float spread, bool isShotgun, bool isMelee)
+        public Weapon(string name, int selfDamage, int penetration, GameObject bulletSource, GameObject bulletPrefab, int damage, float fireRate, float bulletSpeed, float bulletFlightTime, float spread, bool isShotgun)
         {
             this.name = name;
             this.penetration = penetration;
@@ -63,7 +62,6 @@ public class Weapons_Module : MonoBehaviour{
             this.bulletFlightTime = bulletFlightTime;
             this.spread = spread;
             this.isShotgun = isShotgun;
-            this.isMelee = isMelee;
         }
 
         public bool CanShoot()
