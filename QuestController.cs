@@ -87,8 +87,8 @@ public class QuestController : MonoBehaviour
     Quest QuestGenerator(int TargetQuestSlot)
     {
         
-        var EnemyContainer = new List<string> { "Alcoholic", "Patient", "Contagious Patient", "Alcoholic", "Agressive Patient", "Rescuer", "Paranoic", "Druggy", "Wheelchair Patient", "Nurse", "Injured Soldier", "Guard", "Madman ", "Doctor", "Psycho", "Psychologist" };
-                                                                                                                                 //tier 2                                                //tier 3                                           //tier 4
+        var EnemyContainer = new List<string> {"Patient", "Contagious Patient", "Alcoholic", "Agressive Patient", "Rescuer", "Paranoic", "Druggy", "Wheelchair Patient", "Nurse", "Injured Soldier", "Guard", "Madman ", "Doctor", "Psycho", "Psychologist" };
+                                                                                                                    //tier 2                                                //tier 3                                           //tier 4
         var WeaponContainer = new List<string> { "Pistol", "Uzi", "Revolver", "Knife", "Katana", "Axe", "Chainsaw", "Kalashnikov", "M-40", "Sniper Rifle", "Shotgun", "Scythe", "Rocket Launcher", "Flamethrower", "Minigun" };
                                                                                                                      //tier 2                                              //Tier 3         
         int RandomizerA = Random.Range(0, EnemyContainer.Count - 1);
