@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapons_Module : MonoBehaviour {
+public class Weapons_Module{
     //Load a normalBulletPrefab from (Assets/bulletPrefabs/normalBulletPrefab)
     public static GameObject normalBulletPrefab = Resources.Load<GameObject>("BulletPrefabs/normalBulletPrefab");
     //Load a waterBulletPrefab from (Assets/bulletPrefabs/waterBulletPrefab)
@@ -73,17 +73,12 @@ public class Weapons_Module : MonoBehaviour {
             }
         }
 
-        public void Shoot() //Vector3 mousePos, Vector3 bulletSourcePos
+        public void Shoot()
         {
-            /*
-            mousePos.x = mousePos.x - bulletSourcePos.x;
-            mousePos.y = mousePos.y - bulletSourcePos.y;
-            float bulletRotation = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
-            */
 
             lastShotTime = Time.time;
             Transform bulletSourceTransform = bulletSource.GetComponent<Transform>();
-            GameObject Bullet = Instantiate(bulletPrefab, bulletSourceTransform.position, bulletSourceTransform.rotation);
+            GameObject Bullet = MonoBehaviour.Instantiate(bulletPrefab, bulletSourceTransform.position, bulletSourceTransform.rotation);
             Bullet.GetComponent<Rigidbody>().AddForce(Bullet.transform.right * bulletSpeed);
             GameObject.Destroy(Bullet, bulletFlightTime);
 
