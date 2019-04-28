@@ -2,30 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class faceMouse : MonoBehaviour
+public class FaceMouse : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        FaceMouse();
+        Vector3 mouseScreen = Input.mousePosition;
+        Vector3 mouse = Camera.main.ScreenToWorldPoint(mouseScreen);
+
+        transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x) * Mathf.Rad2Deg - 90);
     }
-
-    void FaceMouse()
-    {
-        Vector3 mousePosition = Input.mousePosition;
-        mousePosition = Camera.main.ScreenToViewportPoint(mousePosition);
-
-        Vector2 direction = new Vector2(
-            mousePosition.x - transform.position.x,
-            mousePosition.y - transform.position.y);
-        transform.up = direction;
-    }
-
-    
 }
