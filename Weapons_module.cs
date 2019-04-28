@@ -71,11 +71,11 @@ public class Weapons_Module : MonoBehaviour{
                 return (Axe);
 
             case "Scythe":
-                Weapons_Module.Weapon Scythe = new Weapon(weaponName, 5, X, bulletSource, normalBulletPrefab, 80, 0.75f, speedMult * 8.0, 1.5f, 0,);
+                Weapons_Module.Weapon Scythe = new Weapon(weaponName, 5, X, bulletSource, normalBulletPrefab, 80, 0.75f, speedMult * 8.0, 1.5f, 0,false);
                 return (Scythe);
 
             case "Chainsaw":
-                Weapons_Module.Weapon Chainsaw = new Weapon(weaponName, 5, X, bulletSource, normalBulletPrefab, 20, 0.1f, speedMult * 9.0, 1.4f, 0,);
+                Weapons_Module.Weapon Chainsaw = new Weapon(weaponName, 5, X, bulletSource, normalBulletPrefab, 20, 0.1f, speedMult * 9.0, 1.4f, 0,false);
                 return (Chainsaw);
 
         }
