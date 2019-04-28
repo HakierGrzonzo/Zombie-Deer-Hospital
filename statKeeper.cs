@@ -21,11 +21,6 @@ public class statKeeper : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        Debug.Log(KillCount["Nurse"]);
-    }
-
     public int getKillCount(string type)    
     {
         if (KillCount.TryGetValue(type, out result))
