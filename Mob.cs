@@ -23,11 +23,12 @@ public class Mob : MonoBehaviour {
     {
         Inventory = new Weapons_Module.Weapon[InventorySize];
         Inventory[0]= Weapons_Module.GetWeapon(startingWeaponStr, bulletSource);
-        if(secondWeaponStr != null)
+        currentWeapon = Inventory[0];
+        if (secondWeaponStr != null)
         {
             Inventory[1] = Weapons_Module.GetWeapon(secondWeaponStr, bulletSource);
         }
-        currentWeapon = Inventory[0];
+        
     }
 
     public string damage_deal(int damage)
@@ -60,11 +61,12 @@ public class Mob : MonoBehaviour {
     {
         if (HP > 0)
         { }
-        else
+        else if(HP<=0)
         {
+            HP = 0;
             //GameObject.Destroy(this.gameObject);
         }
-        if (HP> MaxHP)
+        else if (HP> MaxHP)
         {
             HP = MaxHP;
         }
@@ -75,7 +77,7 @@ public class Mob : MonoBehaviour {
         if (this.gameObject.CompareTag("Enemy")){
             if (collider.gameObject.CompareTag("Player"))
             {
-                if(collider.gameObject.GetComponent<Mob>().hit_received(bodyDamage*toughness) != null)
+                if(collider.gameObject.GetComponent<Mob>().damage_deal(bodyDamage*toughness) != null)
                 {
                     GameObject.Destroy(collider.gameObject);
                 }

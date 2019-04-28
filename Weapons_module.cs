@@ -134,7 +134,7 @@ public class Weapons_Module : MonoBehaviour{
 
         public void Shoot(Mob selfDamageReceiver)
         {
-            selfDamageReceiver.hit_received(selfDamage);
+            selfDamageReceiver.damage_deal(selfDamage);
             lastShotTime = Time.time;
 
             Transform bulletSourceTransform = bulletSource.GetComponent<Transform>();
@@ -147,6 +147,8 @@ public class Weapons_Module : MonoBehaviour{
             if (name == "korwins_gun")
             {
                 Bullet.AddComponent<Movement>();
+                Bullet.GetComponent<Movement>().maxSpeed = 30;
+                Bullet.GetComponent<Movement>().speed = 3;
                 Bullet.GetComponent<bulletScript>().percentDamage = 5;
             }
 
