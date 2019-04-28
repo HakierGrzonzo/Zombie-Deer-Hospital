@@ -59,8 +59,18 @@ public class Mob : MonoBehaviour {
 
 
     //deconstructor - death sequence
+
+    private void OnDestroy()
+    {
+        Camera.main.GetComponent<statKeeper>().addKill(gameObject.name);
+    }
+
+    /*
     ~Mob()
     {
-        //drop weapon, NEED WEAPON PREFAB
+        Debug.Log(gameObject.name);
+        Camera.main.GetComponent<statKeeper>().addKill(gameObject.name);
+        Debug.Log(gameObject.name);
     }
+    */
 }
