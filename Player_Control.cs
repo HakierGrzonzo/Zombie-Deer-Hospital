@@ -80,10 +80,6 @@ public class Player_Control : MonoBehaviour
                 gameObject.GetComponent<Mob>().currentWeapon = gameObject.GetComponent<Mob>().Inventory[InventoryLength-1];
             }
         }
-        if (gameObject.GetComponent<Mob>().currentWeapon.name!=null)
-        {
-            Debug.Log(gameObject.GetComponent<Mob>().currentWeapon.name);
-        }
     }
 
     private void Move()

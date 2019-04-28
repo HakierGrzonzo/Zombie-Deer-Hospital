@@ -5,12 +5,16 @@ using UnityEngine;
 public class bulletScript : MonoBehaviour
 {
     public int bulletDamage;
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collision.collider.CompareTag("Player") || collision.collider.CompareTag("Enemy"))
+        if (collider.CompareTag("Player") || collider.CompareTag("Enemy"))
         {
             Debug.Log("Hit");
-            collision.collider.gameObject.GetComponent<Mob>().hit_received(bulletDamage);
+            collider.gameObject.GetComponent<Mob>().hit_received(bulletDamage);
+        }
+        else
+        {
+            GameObject.Destroy(this.gameObject);
         }
     }
 }
