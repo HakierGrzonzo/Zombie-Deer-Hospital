@@ -47,7 +47,7 @@ public class Mob : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D collider)
     {
         if (this.gameObject.CompareTag("Enemy")){
-            if (collider.CompareTag("Player"))
+            if (collider.gameObject.CompareTag("Player"))
             {
                 Debug.Log("Player collision");
                 collider.gameObject.GetComponent<Mob>().hit_received(bodyDamage*toughness);
