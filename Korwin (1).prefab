@@ -14,10 +14,10 @@ GameObject:
   - component: {fileID: -255281621621391072}
   - component: {fileID: 3431796195606545851}
   - component: {fileID: 7046828261206765033}
-  - component: {fileID: 6513672913385277686}
+  - component: {fileID: 4489565470713733342}
   m_Layer: 0
   m_Name: Korwin (1)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,11 +96,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4e2e1a991f3e4b4c88c3f9f0c6f781d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: 
-  bodyDamage: 1
+  title: Korwin
+  bodyDamage: 20
   bulletSource: {fileID: 0}
-  HP: 9999
-  MaxHP: 10000
+  HP: 1
+  MaxHP: 2
   toughness: 1
   InventorySize: 5
   startingWeaponStr: 
@@ -157,7 +157,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!70 &6513672913385277686
+--- !u!70 &4489565470713733342
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -170,6 +170,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.016970634, y: 0.038790226}
-  m_Size: {x: 0.4315014, y: 1.0621381}
+  m_Offset: {x: -0.002576828, y: 0}
+  m_Size: {x: 0.53258896, y: 0.90371764}
   m_Direction: 0

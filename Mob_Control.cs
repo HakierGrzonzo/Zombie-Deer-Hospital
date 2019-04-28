@@ -30,48 +30,7 @@ public class Mob_Control : MonoBehaviour
     void FixedUpdate()
     {
         SpriteUpdate();
-        ChangeWeapon();
-        ShootWeapon();
     }
-
-    public void ShootWeapon()
-    {
-        if (Input.GetMouseButtonDown(0) & this.gameObject.GetComponent<Mob>().currentWeapon.CanShoot())
-        {
-            this.gameObject.GetComponent<Mob>().currentWeapon.Shoot(); //Input.mousePosition, gameObject.GetComponent<Mob>().currentWeapon.bulletSource.GetComponent<Transform>().position
-        }
-    }
-
-    public void ChangeWeapon()
-    {
-        var ScrollWheel = Input.GetAxis("Mouse ScrollWheel");
-        int currentWeaponIndex = Array.IndexOf(gameObject.GetComponent<Mob>().Inventory, gameObject.GetComponent<Mob>().currentWeapon);
-        int InventoryLength = gameObject.GetComponent<Mob>().Inventory.Length;
-
-        if (ScrollWheel > 0f)
-        {
-            //scroll up
-            if (currentWeaponIndex<InventoryLength-1)
-            {
-                gameObject.GetComponent<Mob>().currentWeapon = gameObject.GetComponent<Mob>().Inventory[currentWeaponIndex + 1];
-            }
-            else
-            {
-                gameObject.GetComponent<Mob>().currentWeapon = gameObject.GetComponent<Mob>().Inventory[0];
-            }
-        }
-        else if (ScrollWheel < 0f)
-        {
-            // scroll down
-            if (currentWeaponIndex > 0)
-            {
-                gameObject.GetComponent<Mob>().currentWeapon = gameObject.GetComponent<Mob>().Inventory[currentWeaponIndex - 1];
-            }
-            else
-            {
-                gameObject.GetComponent<Mob>().currentWeapon = gameObject.GetComponent<Mob>().Inventory[InventoryLength-1];
-            }
-        }
         /*
         if (gameObject.GetComponent<Mob>().currentWeapon.name!=null)
         {

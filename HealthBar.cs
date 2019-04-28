@@ -17,6 +17,7 @@ public class HealthBar : MonoBehaviour
     void Update()
     {
         text.text = slider.value.ToString() + "/100";
+        slider.maxValue = GameObject.FindWithTag("Player").GetComponent<Mob>().MaxHP;
     }
     
 }

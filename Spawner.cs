@@ -34,8 +34,8 @@ public class Spawner : MonoBehaviour
     void Update()
     {
         timePassed += Time.deltaTime;
-        Debug.Log(canSpawn());
-        Debug.Log(distanceToPlayer());
+        //Debug.Log(canSpawn());
+        //Debug.Log(distanceToPlayer());
         if (canSpawn())
         {
             if (timePassed > spawnrate)
