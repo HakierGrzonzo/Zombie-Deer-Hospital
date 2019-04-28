@@ -7,18 +7,19 @@ using TMPro;
 public class HealthBar : MonoBehaviour
 {
     private Slider slider;
+    private Mob playerMob;
     public Text text;
 
     private void Start()
     {
+        playerMob = GameObject.FindWithTag("Player").GetComponent<Mob>();
         slider = GetComponent<Slider>();
     }
 
     void Update()
     {
-        slider.maxValue = GameObject.FindWithTag("Player").GetComponent<Mob>().MaxHP;
-        text.text = slider.value.ToString() + "/" +slider.maxValue.ToString();
-        
+        slider.maxValue = playerMob.MaxHP;
+        slider.value = playerMob.HP;
+        text.text = playerMob.HP.ToString() + "/" + playerMob.MaxHP.ToString();
     }
-    
 }

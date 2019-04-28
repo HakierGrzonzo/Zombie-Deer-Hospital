@@ -6,7 +6,6 @@ using System;
 
 public class Player_Control : MonoBehaviour
 {
-    public Slider healthBarSlider;
     private Transform playerTransform;
     private float moveSpeed;
     public int CameraHeight;
@@ -29,17 +28,11 @@ public class Player_Control : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        UpdateHealthBar();
         Move();
         CameraFollowing();
         SpriteUpdate();
         ChangeWeapon();
         ShootWeapon();
-    }
-
-    private void UpdateHealthBar()
-    {
-        healthBarSlider.value = this.gameObject.GetComponent<Mob>().HP;
     }
 
     public void ShootWeapon()

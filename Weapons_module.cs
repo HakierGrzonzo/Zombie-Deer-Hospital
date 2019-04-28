@@ -25,7 +25,7 @@ public class Weapons_Module : MonoBehaviour{
                 Weapons_Module.Weapon pistol = new Weapon(weaponName, 2, bulletSource, normalBulletPrefab, 10, 0.75f, speedMult * 7.0f, 1.7f, 0f, false, false);
                 return (pistol);
 
-            case "machine_Gun":
+            case "machine_gun":
                 Weapons_Module.Weapon machine_Gun = new Weapon(weaponName, 1, bulletSource, normalBulletPrefab, 10, 0.75f, speedMult * 7.0f, 1.7f, 0f, false, false);
                 return (machine_Gun);
 
