@@ -12,6 +12,7 @@ public class Weapons_Module : MonoBehaviour{
     {
         float speedMult = 40f;
         switch (weaponName)
+            //Dodaje dodatkowę bronie
         {
             case "shotgun":
                 Weapons_Module.Weapon shotgun = new Weapon(weaponName, 5, bulletSource, normalBulletPrefab, 20, 0.90f, speedMult * 5.5f, 0.9f, 6.5f, true, false);
