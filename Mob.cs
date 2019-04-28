@@ -17,20 +17,18 @@ public class Mob : MonoBehaviour {
     public Weapons_Module.Weapon currentWeapon;
     public Weapons_Module.Weapon[] Inventory;
 
-
     private void Start()
     {
         Inventory = new Weapons_Module.Weapon[InventorySize];
-        Inventory[0]= Weapons_Module.GetWeapon("pistol", bulletSource);
+        Inventory[0]= Weapons_Module.GetWeapon(startingWeaponStr, bulletSource);
+        Inventory[1] = Weapons_Module.GetWeapon("shotgun", bulletSource);
         currentWeapon = Inventory[0];
     }
-
 
     public void hit_received(int damage)
     {
         HP = (int)((float)HP - ((float)damage) * toughness);
     }
-
 
     private void Update()
     {

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Player_Control : MonoBehaviour
 {
@@ -26,22 +27,64 @@ public class Player_Control : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        float vertical = Input.GetAxis("Vertical");
-        float horizontal = Input.GetAxis("Horizontal");
-        Move(vertical, horizontal);
+        Move();
         CameraFollowing();
         SpriteUpdate();
-        Debug.Log(this.gameObject.GetComponent<Mob>().Inventory[0]);
+        ChangeWeapon();
+        ShootWeapon();
+    }
+
+    public void ShootWeapon()
+    {
         if (Input.GetMouseButtonDown(0) & this.gameObject.GetComponent<Mob>().currentWeapon.CanShoot())
         {
             this.gameObject.GetComponent<Mob>().currentWeapon.Shoot();
         }
     }
 
-    private void Move(float Vertical, float Horizontal)
+    public void ChangeWeapon()
     {
+        var ScrollWheel = Input.GetAxis("Mouse ScrollWheel");
+        int currentWeaponIndex = Array.IndexOf(gameObject.GetComponent<Mob>().Inventory, gameObject.GetComponent<Mob>().currentWeapon);
+        int InventoryLength = gameObject.GetComponent<Mob>().Inventory.Length;
+
+        if (ScrollWheel > 0f)
+        {
+            //scroll up
+            if (currentWeaponIndex<InventoryLength-1)
+            {
+                gameObject.GetComponent<Mob>().currentWeapon = gameObject.GetComponent<Mob>().Inventory[currentWeaponIndex + 1];
+            }
+            else
+            {
+                gameObject.GetComponent<Mob>().currentWeapon = gameObject.GetComponent<Mob>().Inventory[0];
+            }
+        }
+        else if (ScrollWheel < 0f)
+        {
+            // scroll down
+            if (currentWeaponIndex > 0)
+            {
+                gameObject.GetComponent<Mob>().currentWeapon = gameObject.GetComponent<Mob>().Inventory[currentWeaponIndex - 1];
+            }
+            else
+            {
+                gameObject.GetComponent<Mob>().currentWeapon = gameObject.GetComponent<Mob>().Inventory[InventoryLength-1];
+            }
+        }
+        if (gameObject.GetComponent<Mob>().currentWeapon.name!=null)
+        {
+            Debug.Log(gameObject.GetComponent<Mob>().currentWeapon.name);
+        }
+        
+    }
+
+    private void Move()
+    {
+        float vertical = Input.GetAxis("Vertical");
+        float horizontal = Input.GetAxis("Horizontal");
         Vector3 currentPos = playerTransform.position;
-        Vector3 movementVector = new Vector3(Horizontal,Vertical,0.0f);
+        Vector3 movementVector = new Vector3(horizontal, vertical, 0.0f);
         //float playerRotationAngle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
         //Quaternion playerRotation =Quaternion.Euler(new Vector3(0, 0, playerRotationAngle));
 
