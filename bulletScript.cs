@@ -7,7 +7,7 @@ public class bulletScript : MonoBehaviour
     public int bulletDamage;
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.CompareTag("Player") || collider.CompareTag("Enemy"))
+        if ( collider.CompareTag("Enemy"))//collider.CompareTag("Player") ||
         {
             Debug.Log("Hit");
             collider.gameObject.GetComponent<Mob>().hit_received(bulletDamage);
