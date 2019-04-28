@@ -85,6 +85,7 @@ public class Weapons_Module : MonoBehaviour{
             Transform bulletSourceTransform = bulletSource.GetComponent<Transform>();
             GameObject Bullet = Instantiate(bulletPrefab, bulletSourceTransform.position, bulletSourceTransform.rotation);
             Bullet.GetComponent<bulletScript>().bulletDamage = damage;
+            Bullet.GetComponent<bulletScript>().bulletPenetration = penetration;
             Bullet.GetComponent<Rigidbody2D>().AddForce(Bullet.transform.up * bulletSpeed);
             GameObject.Destroy(Bullet, bulletFlightTime);
 
