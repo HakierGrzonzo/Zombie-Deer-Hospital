@@ -14,15 +14,15 @@ public class Weapons_Module : MonoBehaviour{
         switch (weaponName)
             //Dodaje dodatkowę bronie
         {
-            case "shotgun":
+            case "Shotgun":
                 Weapons_Module.Weapon shotgun = new Weapon(weaponName, 5, 1,bulletSource, normalBulletPrefab, 20, 0.90f, speedMult * 5.5f, 0.9f, 6.5f, true);
                 return (shotgun);
 
-            case "water_gun":
+            case "Water_gun":
                 Weapons_Module.Weapon water_gun = new Weapon(weaponName, 1, 1, bulletSource, normalBulletPrefab, 15, 0.30f, speedMult * 5.0f, 1.5f, 0, false);
                 return (water_gun);
 
-            case "pistol":
+            case "Pistol":
                 Weapons_Module.Weapon pistol = new Weapon(weaponName, 2, 1, bulletSource, normalBulletPrefab, 10, 0.75f, speedMult * 7.0f, 1.7f, 0f, false);
                 return (pistol);
 
