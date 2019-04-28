@@ -36,7 +36,7 @@ public class Weapons_Module : MonoBehaviour {
     public class Weapon
     {
         public string name;
-        GameObject bulletPrefeb;
+        GameObject bulletPrefab;
         public GameObject bulletSource;
         int damage;
         public float fireRate;
@@ -47,11 +47,11 @@ public class Weapons_Module : MonoBehaviour {
         bool isMelee;
         private float lastShotTime = Time.time;
 
-        public Weapon(string name, GameObject bulletSource, GameObject bulletPrefeb, int damage, float fireRate, float bulletSpeed, float bulletFlightTime, float spread, bool isShotgun, bool isMelee)
+        public Weapon(string name, GameObject bulletSource, GameObject bulletPrefab, int damage, float fireRate, float bulletSpeed, float bulletFlightTime, float spread, bool isShotgun, bool isMelee)
         {
             this.name = name;
             this.bulletSource = bulletSource;
-            this.bulletPrefeb = bulletPrefeb;
+            this.bulletPrefab = bulletPrefab;
             this.damage = damage;
             this.fireRate = fireRate;
             this.bulletSpeed = bulletSpeed;
