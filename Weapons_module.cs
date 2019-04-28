@@ -14,17 +14,69 @@ public class Weapons_Module : MonoBehaviour{
         switch (weaponName)
             //Dodaje dodatkowę bronie
         {
-            case "shotgun":
+            case "Shotgun":
                 Weapons_Module.Weapon shotgun = new Weapon(weaponName, 5, 1,bulletSource, normalBulletPrefab, 20, 0.90f, speedMult * 5.5f, 0.9f, 6.5f, true);
                 return (shotgun);
 
-            case "water_gun":
+            case "Water_gun":
                 Weapons_Module.Weapon water_gun = new Weapon(weaponName, 1, 1, bulletSource, normalBulletPrefab, 15, 0.30f, speedMult * 5.0f, 1.5f, 0, false);
                 return (water_gun);
 
-            case "pistol":
+            case "Pistol":
                 Weapons_Module.Weapon pistol = new Weapon(weaponName, 2, 1, bulletSource, normalBulletPrefab, 10, 0.75f, speedMult * 7.0f, 1.7f, 0f, false);
                 return (pistol);
+
+            case "AK47":
+                Weapons_Module.Weapon AK47 = new Weapon(weaponName, 3, 2, bulletSource, normalBulletPrefab, 55, 0.35f, speedMult * 7.0f, 1.7f, 0f, false);
+                return (AK47);
+
+            case "Revolver":
+                Weapons_Module.Weapon revolver = new Weapon(weaponName, 3, 1, bulletSource, normalBulletPrefab, 84, 0.90f, speedMult * 6.0f, 1.4f, 0, false);
+                return (revolver);
+
+            case "Uzi":
+                Weapons_Module.Weapon uzi = new Weapon(weaponName,1 ,1 , bulletSource, normalBulletPrefab, 24, 0.15f, speedMult * 7.0f, 1.4f, 0, false);
+                return (uzi);
+
+            case "M40":
+                Weapons_Module.Weapon M40 = new Weapon(weaponName,2 ,2 , bulletSource, normalBulletPrefab, 39, 0.25f, speedMult *7.0f , 1.5f, 0, false);
+                return (M40);
+
+            case "Sniper_rifle":
+                Weapons_Module.Weapon sniper_rifle = new Weapon(weaponName,5 ,7 , bulletSource, normalBulletPrefab,76 , 1.25f, speedMult *7.0f , 1.8f, 0, false);
+                return (sniper_rifle);
+
+            case "Minigun":
+                Weapons_Module.Weapon minigun = new Weapon(weaponName, 1, 1, bulletSource, normalBulletPrefab, 45, 0.091f, speedMult *7.0f , 1.7f, 0, false);
+                return (minigun);
+
+            case "Rocket_Launcher":
+                Weapons_Module.Weapon Rocket_Launcher = new Weapon(weaponName,19 ,1 , bulletSource, normalBulletPrefab, 345, 1.75f, speedMult *3.0f , 1.4f, 0,false);
+                return (Rocket_Launcher);
+
+            case "Flame_Thrower":
+                Weapons_Module.Weapon Flame_Thrower  = new Weapon(weaponName, 1, 8, bulletSource, normalBulletPrefab, 7, 0.05f, speedMult * 9.0f, 1.9f, 0,false);
+                return (Flame_Thrower);
+
+            case "Knife":
+                Weapons_Module.Weapon Knife = new Weapon(weaponName, 0, 0, bulletSource, normalBulletPrefab, 30, 0.85f, speedMult * 9.0f , 1.30f, 0,false);
+                return (Knife);
+
+            case "Katana":
+                Weapons_Module.Weapon Katana = new Weapon(weaponName, 3, 0, bulletSource, normalBulletPrefab, 64, 0.75f, speedMult * 9.0f, 1.5f, 0,false);
+                return (Katana);
+
+            case "Axe":
+                Weapons_Module.Weapon Axe = new Weapon(weaponName, 4, 0, bulletSource, normalBulletPrefab, 98, 1.35f, speedMult * 8.0f, 1.5f, 0,false);
+                return (Axe);
+
+            case "Scythe":
+                Weapons_Module.Weapon Scythe = new Weapon(weaponName, 5, 0, bulletSource, normalBulletPrefab, 80, 0.75f, speedMult * 8.0f, 1.5f, 0,false);
+                return (Scythe);
+
+            case "Chainsaw":
+                Weapons_Module.Weapon Chainsaw = new Weapon(weaponName, 5, 0, bulletSource, normalBulletPrefab, 20, 0.1f, speedMult * 9.0f, 1.4f, 0,false);
+                return (Chainsaw);
 
             case "machine_gun":
                 Weapons_Module.Weapon machine_Gun = new Weapon(weaponName, 1, 1, bulletSource, normalBulletPrefab, 10, 0.75f, speedMult * 7.0f, 1.7f, 0f, false);
@@ -92,32 +144,11 @@ public class Weapons_Module : MonoBehaviour{
             if (isShotgun)
             {               
                 GameObject Bullet2 = Instantiate(bulletPrefab, bulletSourceTransform.position, bulletSourceTransform.rotation);
-                Bullet2.GetComponent<bulletScript>().bulletDamage = damage;
-                Bullet2.GetComponent<bulletScript>().bulletPenetration = penetration;
-                Bullet2.GetComponent<bulletScript>().owner = bulletSource.GetComponentInParent<Mob>();
-                Bullet2.GetComponent<Rigidbody2D>().AddForce(Bullet.transform.up * bulletSpeed);
-
                 GameObject Bullet3 = Instantiate(bulletPrefab, bulletSourceTransform.position, bulletSourceTransform.rotation);
-                Bullet3.GetComponent<bulletScript>().bulletDamage = damage;
-                Bullet3.GetComponent<bulletScript>().bulletPenetration = penetration;
-                Bullet3.GetComponent<bulletScript>().owner = bulletSource.GetComponentInParent<Mob>();
-                Bullet3.GetComponent<Rigidbody2D>().AddForce(Bullet.transform.up * bulletSpeed);
-
                 GameObject Bullet4 = Instantiate(bulletPrefab, bulletSourceTransform.position, bulletSourceTransform.rotation);
-                Bullet4.GetComponent<bulletScript>().bulletDamage = damage;
-                Bullet4.GetComponent<bulletScript>().bulletPenetration = penetration;
-                Bullet4.GetComponent<bulletScript>().owner = bulletSource.GetComponentInParent<Mob>();
-                Bullet4.GetComponent<Rigidbody2D>().AddForce(Bullet.transform.up * bulletSpeed);
-
                 GameObject Bullet5 = Instantiate(bulletPrefab, bulletSourceTransform.position, bulletSourceTransform.rotation);
-                Bullet5.GetComponent<bulletScript>().bulletDamage = damage;
-                Bullet5.GetComponent<bulletScript>().bulletPenetration = penetration;
-                Bullet5.GetComponent<bulletScript>().owner = bulletSource.GetComponentInParent<Mob>();
-                Bullet5.GetComponent<Rigidbody2D>().AddForce(Bullet.transform.up * bulletSpeed);
 
-
-                /*
-                Vector2 FirDir = (Bullet.transform.up * bulletSpeed);
+                Vector2 FirDir = ((Input.mousePosition)-bulletSourceTransform.position);
 
                 FirDir = RotateAroundAxis(FirDir, spread, bulletSourceTransform.up);
                 Bullet2.GetComponent<Rigidbody>().AddForce(FirDir);
@@ -127,8 +158,7 @@ public class Weapons_Module : MonoBehaviour{
                 Bullet4.GetComponent<Rigidbody>().AddForce(FirDir);
                 FirDir = RotateAroundAxis(FirDir, -1 * spread, bulletSourceTransform.up);
                 Bullet5.GetComponent<Rigidbody>().AddForce(FirDir);
-                */        
-    }           
+            }           
         }
     }
     public static Vector3 RotateAroundAxis(Vector3 v, float a, Vector3 axis)
