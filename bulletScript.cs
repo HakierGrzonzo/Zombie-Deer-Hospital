@@ -18,6 +18,7 @@ public class bulletScript : MonoBehaviour
             if (collider.gameObject.GetComponent<Mob>().hit_received(bulletDamage) != null)
             {
                 owner.HP += collider.gameObject.GetComponent<Mob>().healthDrop;
+                GameObject.Destroy(collider.gameObject);
             }
 
             bulletPenetration -= 1;
