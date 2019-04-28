@@ -65,4 +65,10 @@ public class Mob : MonoBehaviour {
         }
 
     }
+
+    private void OnDestroy()
+    {
+        Camera.main.GetComponent<statKeeper>().addKill(gameObject.name);
+    }
+
 }

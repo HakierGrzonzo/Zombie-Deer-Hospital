@@ -41,7 +41,8 @@ public class Spawner : MonoBehaviour
             if (timePassed > spawnrate)
             {
                 timePassed = 0;
-                Instantiate(myPrefab, gameObject.transform.position, Quaternion.identity.normalized);
+                GameObject Enemy = Instantiate(myPrefab, gameObject.transform.position, Quaternion.identity.normalized);
+                Enemy.name = myPrefab.name;
                 enemiesSpawned++;
             }
         }
