@@ -50,6 +50,11 @@ public class QuestController : MonoBehaviour
 
 
 
+        if (Input.GetKeyDown(KeyCode.Alpha1)) { ChooseQ1(); }
+        if (Input.GetKeyDown(KeyCode.Alpha2)) { ChooseQ2(); }
+
+
+
         if (Input.GetKeyDown(KeyCode.Space)|| Mathf.Floor(TimerCountdown) == 1)        //When this statement is fulfilled 2 new quests are generated
         {
             TimerCountdown =0;
