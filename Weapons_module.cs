@@ -39,43 +39,43 @@ public class Weapons_Module : MonoBehaviour{
                 return (uzi);
 
             case "M40":
-                Weapons_Module.Weapon M40 = new Weapon(weaponName,2 ,2 , bulletSource, normalBulletPrefab, 39, 0.25f, speedMult *7.0 , 1.5f, 0, false);
+                Weapons_Module.Weapon M40 = new Weapon(weaponName,2 ,2 , bulletSource, normalBulletPrefab, 39, 0.25f, speedMult *7.0f , 1.5f, 0, false);
                 return (M40);
 
             case "Sniper_rifle":
-                Weapons_Module.Weapon sniper_rifle = new Weapon(weaponName,5 ,7 , bulletSource, normalBulletPrefab,76 , 1,25f, speedMult *7.0 , 1.8f, 0, false);
+                Weapons_Module.Weapon sniper_rifle = new Weapon(weaponName,5 ,7 , bulletSource, normalBulletPrefab,76 , 1.25f, speedMult *7.0f , 1.8f, 0, false);
                 return (sniper_rifle);
 
             case "Minigun":
-                Weapons_Module.Weapon minigun = new Weapon(weaponName, 1, 1, bulletSource, normalBulletPrefab, 45, 0.091f, speedMult *7.0 , 1.7f, 0, false);
+                Weapons_Module.Weapon minigun = new Weapon(weaponName, 1, 1, bulletSource, normalBulletPrefab, 45, 0.091f, speedMult *7.0f , 1.7f, 0, false);
                 return (minigun);
 
             case "Rocket_Launcher":
-                Weapons_Module.Weapon Rocket_Launcher = new Weapon(weaponName,19 ,1 , bulletSource, normalBulletPrefab, 345, 1.75f, speedMult *3.0 , 1.4f, 0,false);
+                Weapons_Module.Weapon Rocket_Launcher = new Weapon(weaponName,19 ,1 , bulletSource, normalBulletPrefab, 345, 1.75f, speedMult *3.0f , 1.4f, 0,false);
                 return (Rocket_Launcher);
 
             case "Flame_Thrower":
-                Weapons_Module.Weapon Flame_Thrower  = new Weapon(weaponName, 1, 8, bulletSource, normalBulletPrefab, 7, 0.05f, speedMult * 9.0, 1.9f, 0,false);
+                Weapons_Module.Weapon Flame_Thrower  = new Weapon(weaponName, 1, 8, bulletSource, normalBulletPrefab, 7, 0.05f, speedMult * 9.0f, 1.9f, 0,false);
                 return (Flame_Thrower);
 
             case "Knife":
-                Weapons_Module.Weapon Knife = new Weapon(weaponName, 0, 0, bulletSource, normalBulletPrefab, 30, 0.85f, speedMult * 9.0 , 1.30f, 0,false);
+                Weapons_Module.Weapon Knife = new Weapon(weaponName, 0, 0, bulletSource, normalBulletPrefab, 30, 0.85f, speedMult * 9.0f , 1.30f, 0,false);
                 return (Knife);
 
             case "Katana":
-                Weapons_Module.Weapon Katana = new Weapon(weaponName, 3, 0, bulletSource, normalBulletPrefab, 64, 0.75f, speedMult * 9.0, 1.5f, 0,false);
+                Weapons_Module.Weapon Katana = new Weapon(weaponName, 3, 0, bulletSource, normalBulletPrefab, 64, 0.75f, speedMult * 9.0f, 1.5f, 0,false);
                 return (Katana);
 
             case "Axe":
-                Weapons_Module.Weapon Axe = new Weapon(weaponName, 4, 0, bulletSource, normalBulletPrefab, 98, 1.35f, speedMult * 8.0, 1.5f, 0,false);
+                Weapons_Module.Weapon Axe = new Weapon(weaponName, 4, 0, bulletSource, normalBulletPrefab, 98, 1.35f, speedMult * 8.0f, 1.5f, 0,false);
                 return (Axe);
 
             case "Scythe":
-                Weapons_Module.Weapon Scythe = new Weapon(weaponName, 5, 0, bulletSource, normalBulletPrefab, 80, 0.75f, speedMult * 8.0, 1.5f, 0,false);
+                Weapons_Module.Weapon Scythe = new Weapon(weaponName, 5, 0, bulletSource, normalBulletPrefab, 80, 0.75f, speedMult * 8.0f, 1.5f, 0,false);
                 return (Scythe);
 
             case "Chainsaw":
-                Weapons_Module.Weapon Chainsaw = new Weapon(weaponName, 5, 0, bulletSource, normalBulletPrefab, 20, 0.1f, speedMult * 9.0, 1.4f, 0,false);
+                Weapons_Module.Weapon Chainsaw = new Weapon(weaponName, 5, 0, bulletSource, normalBulletPrefab, 20, 0.1f, speedMult * 9.0f, 1.4f, 0,false);
                 return (Chainsaw);
 
         }

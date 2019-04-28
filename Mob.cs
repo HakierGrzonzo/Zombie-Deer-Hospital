@@ -22,7 +22,7 @@ public class Mob : MonoBehaviour {
     {
         Inventory = new Weapons_Module.Weapon[InventorySize];
         Inventory[0]= Weapons_Module.GetWeapon(startingWeaponStr, bulletSource);
-        Inventory[1] = Weapons_Module.GetWeapon("shotgun", bulletSource);
+        Inventory[1] = Weapons_Module.GetWeapon("Shotgun", bulletSource);
         currentWeapon = Inventory[0];
     }
 
