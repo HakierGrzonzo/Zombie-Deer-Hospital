@@ -97,7 +97,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: Nurse
-  bodyDamage: 20
+  bodyDamage: 200
+  healthDrop: 10
   bulletSource: {fileID: 0}
   HP: 1
   MaxHP: 2
