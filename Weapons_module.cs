@@ -46,7 +46,7 @@ public class Weapons_Module : MonoBehaviour{
         float bulletSpeed;
         float bulletFlightTime;
         float spread;
-        bool isShotgun;
+        public bool isShotgun;
         private float lastShotTime = Time.time;
 
         public Weapon(string name, int selfDamage, int penetration, GameObject bulletSource, GameObject bulletPrefab, int damage, float fireRate, float bulletSpeed, float bulletFlightTime, float spread, bool isShotgun)
@@ -88,26 +88,30 @@ public class Weapons_Module : MonoBehaviour{
             Bullet.GetComponent<Rigidbody2D>().AddForce(Bullet.transform.up * bulletSpeed);
             GameObject.Destroy(Bullet, bulletFlightTime);
 
-            /*
+            
             if (isShotgun)
-            {
-                GameObject Bullet2 = Instantiate(bulletPrefeb, bulletSourceTransform.position + bulletSourceTransform.forward * 10, Quaternion.identity);
-                GameObject Bullet3 = Instantiate(bulletPrefeb, bulletSourceTransform.position + bulletSourceTransform.forward * 5, Quaternion.identity);
-                GameObject Bullet4 = Instantiate(bulletPrefeb, bulletSourceTransform.position + bulletSourceTransform.forward * -5, Quaternion.identity);
-                GameObject Bullet5 = Instantiate(bulletPrefeb, bulletSourceTransform.position + bulletSourceTransform.forward * -10, Quaternion.identity);
+            {               
+                GameObject Bullet2 = Instantiate(normalBulletPrefab, bulletSourceTransform.position + bulletSourceTransform.forward * 10, Quaternion.identity);
+                GameObject Bullet3 = Instantiate(normalBulletPrefab, bulletSourceTransform.position + bulletSourceTransform.forward * 5, Quaternion.identity);
+                GameObject Bullet4 = Instantiate(normalBulletPrefab, bulletSourceTransform.position + bulletSourceTransform.forward * -5, Quaternion.identity);
+                GameObject Bullet5 = Instantiate(normalBulletPrefab, bulletSourceTransform.position + bulletSourceTransform.forward * -10, Quaternion.identity);
 
-                FirDir = (bulletSourceTransform.right * 500);
+                Vector2 FirDir = ((Input.mousePosition)-bulletSourceTransform.position);
 
-                FirDir = RotateAroundAxis(FirDir, LocalSpread, bulletSourceTransform.up);
+                FirDir = RotateAroundAxis(FirDir, spread, bulletSourceTransform.up);
                 Bullet2.GetComponent<Rigidbody>().AddForce(FirDir);
-                FirDir = RotateAroundAxis(FirDir, LocalSpread, bulletSourceTransform.up);
+                FirDir = RotateAroundAxis(FirDir, spread, bulletSourceTransform.up);
                 Bullet3.GetComponent<Rigidbody>().AddForce(FirDir);
-                FirDir = RotateAroundAxis(FirDir, -3 * LocalSpread, bulletSourceTransform.up);
+                FirDir = RotateAroundAxis(FirDir, -3 * spread, bulletSourceTransform.up);
                 Bullet4.GetComponent<Rigidbody>().AddForce(FirDir);
-                FirDir = RotateAroundAxis(FirDir, -1 * LocalSpread, bulletSourceTransform.up);
+                FirDir = RotateAroundAxis(FirDir, -1 * spread, bulletSourceTransform.up);
                 Bullet5.GetComponent<Rigidbody>().AddForce(FirDir);
-            }
-            */
+            }           
         }
+    }
+    public static Vector3 RotateAroundAxis(Vector3 v, float a, Vector3 axis)
+    {
+        var q = Quaternion.AngleAxis(a, axis);
+        return q * v;
     }
 }
