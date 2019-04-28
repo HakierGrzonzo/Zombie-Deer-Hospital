@@ -46,7 +46,7 @@ public class Player_Control : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) & this.gameObject.GetComponent<Mob>().currentWeapon.CanShoot())
         {
-            this.gameObject.GetComponent<Mob>().currentWeapon.Shoot(Input.mousePosition, gameObject.GetComponent<Mob>().currentWeapon.bulletSource.GetComponent<Transform>().position);
+            this.gameObject.GetComponent<Mob>().currentWeapon.Shoot(); //Input.mousePosition, gameObject.GetComponent<Mob>().currentWeapon.bulletSource.GetComponent<Transform>().position
         }
     }
 
@@ -80,11 +80,13 @@ public class Player_Control : MonoBehaviour
                 gameObject.GetComponent<Mob>().currentWeapon = gameObject.GetComponent<Mob>().Inventory[InventoryLength-1];
             }
         }
+        /*
         if (gameObject.GetComponent<Mob>().currentWeapon.name!=null)
         {
             Debug.Log(gameObject.GetComponent<Mob>().currentWeapon.name);
         }
-        
+        */
+
     }
 
     private void Move()
@@ -113,7 +115,7 @@ public class Player_Control : MonoBehaviour
         mousePos.y = mousePos.y - objectPos.y;
         float playerRotationAngle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
 
-        
+
         if (playerRotationAngle      < -157.5 || playerRotationAngle  > 157.5) { gameObject.GetComponent<SpriteRenderer>().sprite = L; }
         else if (playerRotationAngle > -22.5  &&  playerRotationAngle < 22.5)  { gameObject.GetComponent<SpriteRenderer>().sprite = R;  }
         else if(playerRotationAngle  <  -67.5 &&  playerRotationAngle > -112.5) { gameObject.GetComponent<SpriteRenderer>().sprite = U; }
@@ -124,7 +126,7 @@ public class Player_Control : MonoBehaviour
 
         else if(playerRotationAngle  <   157.5  &&  playerRotationAngle > 112.5) { gameObject.GetComponent<SpriteRenderer>().sprite = DR;}
         else if(playerRotationAngle  >   -157.5  &&  playerRotationAngle < -112.5) { gameObject.GetComponent<SpriteRenderer>().sprite = UR;  }
-        
+
 
     }
 }
