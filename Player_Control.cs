@@ -46,7 +46,7 @@ public class Player_Control : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) & this.gameObject.GetComponent<Mob>().currentWeapon.CanShoot())
         {
-            this.gameObject.GetComponent<Mob>().currentWeapon.Shoot(Input.mousePosition, gameObject.GetComponent<Mob>().currentWeapon.bulletSource.GetComponent<Transform>().position);
+            this.gameObject.GetComponent<Mob>().currentWeapon.Shoot(); //Input.mousePosition, gameObject.GetComponent<Mob>().currentWeapon.bulletSource.GetComponent<Transform>().position
         }
     }
 
@@ -80,10 +80,12 @@ public class Player_Control : MonoBehaviour
                 gameObject.GetComponent<Mob>().currentWeapon = gameObject.GetComponent<Mob>().Inventory[InventoryLength-1];
             }
         }
+        /*
         if (gameObject.GetComponent<Mob>().currentWeapon.name!=null)
         {
             Debug.Log(gameObject.GetComponent<Mob>().currentWeapon.name);
         }
+        */
 
     }
 

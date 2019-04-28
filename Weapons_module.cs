@@ -73,16 +73,17 @@ public class Weapons_Module : MonoBehaviour {
             }
         }
 
-        public void Shoot(Vector3 mousePos, Vector3 bulletSourcePos)
+        public void Shoot() //Vector3 mousePos, Vector3 bulletSourcePos
         {
-
+            /*
             mousePos.x = mousePos.x - bulletSourcePos.x;
             mousePos.y = mousePos.y - bulletSourcePos.y;
             float bulletRotation = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
+            */
 
             lastShotTime = Time.time;
             Transform bulletSourceTransform = bulletSource.GetComponent<Transform>();
-            GameObject Bullet = Instantiate(bulletPrefeb, bulletSourceTransform.position, new Quaternion(0f, 0f, bulletRotation,1) );
+            GameObject Bullet = Instantiate(bulletPrefab, bulletSourceTransform.position, bulletSourceTransform.rotation);
             Bullet.GetComponent<Rigidbody>().AddForce(Bullet.transform.right * bulletSpeed);
             GameObject.Destroy(Bullet, bulletFlightTime);
 
