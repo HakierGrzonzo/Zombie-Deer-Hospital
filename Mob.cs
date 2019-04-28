@@ -7,6 +7,7 @@ public class Mob : MonoBehaviour {
 
     public string title;
     public int bodyDamage;
+    public int healthDrop;
     public GameObject bulletSource;
     public int HP;
     public int MaxHP;
@@ -25,9 +26,17 @@ public class Mob : MonoBehaviour {
         currentWeapon = Inventory[0];
     }
 
-    public void hit_received(int damage)
+    public string hit_received(int damage)
     {
         HP = (int)((float)HP - ((float)damage) * toughness);
+        if (HP <= 0)
+        {
+            return title;
+        }
+        else
+        {
+            return null;
+        }
     }
 
     private void Update()
@@ -36,7 +45,7 @@ public class Mob : MonoBehaviour {
         { }
         else
         {
-            GameObject.Destroy(this.gameObject);
+            //GameObject.Destroy(this.gameObject);
         }
         if (HP> MaxHP)
         {
@@ -55,12 +64,5 @@ public class Mob : MonoBehaviour {
             }
         }
 
-    }
-
-
-    //deconstructor - death sequence
-    ~Mob()
-    {
-        //drop weapon, NEED WEAPON PREFAB
     }
 }
