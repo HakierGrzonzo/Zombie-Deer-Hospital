@@ -31,14 +31,8 @@ public class Mob_Control : MonoBehaviour
     {
         SpriteUpdate();
     }
-        /*
-        if (gameObject.GetComponent<Mob>().currentWeapon.name!=null)
-        {
-            Debug.Log(gameObject.GetComponent<Mob>().currentWeapon.name);
-        }
-        */
 
-    }
+
 
     private void SpriteUpdate()
     {
