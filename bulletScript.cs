@@ -16,7 +16,7 @@ public class bulletScript : MonoBehaviour
         if (collider.CompareTag("Enemy"))//collider.CompareTag("Player") ||
         {
             Debug.Log("Hit");
-            if (collider.gameObject.GetComponent<Mob>().hit_received(bulletDamage) != null)
+            if (collider.gameObject.GetComponent<Mob>().damage_deal(bulletDamage) != null)
             {
                 owner.HP += collider.gameObject.GetComponent<Mob>().healthDrop;
                 GameObject.Destroy(collider.gameObject);
@@ -56,7 +56,6 @@ public class bulletScript : MonoBehaviour
 
         else if (collider.CompareTag("Bullet"))
         {
-            Debug.Log("bul");
         }
 
         else

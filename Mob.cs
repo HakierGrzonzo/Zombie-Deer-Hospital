@@ -51,7 +51,7 @@ public class Mob : MonoBehaviour {
             return title;
         }
         else
-        {
+        {   
             return null;
         }
     }
@@ -75,14 +75,13 @@ public class Mob : MonoBehaviour {
         if (this.gameObject.CompareTag("Enemy")){
             if (collider.gameObject.CompareTag("Player"))
             {
-                if(collider.gameObject.GetComponent<Mob>().hit_received(bodyDamage*toughness) != null)
+                if(collider.gameObject.GetComponent<Mob>().damage_deal(bodyDamage*toughness) != null)
                 {
                     GameObject.Destroy(collider.gameObject);
                 }
                 GameObject.Destroy(gameObject.gameObject);
             }
         }
-
     }
 
     private void OnDestroy()
