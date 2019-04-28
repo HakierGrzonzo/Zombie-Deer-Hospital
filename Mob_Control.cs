@@ -8,6 +8,8 @@ public class Mob_Control : MonoBehaviour
 {
     private Transform playerTransform;
     private float moveSpeed;
+    public bool shootPlayer = false;
+    public int shootPlayerDistance = 20;
     public Sprite U;
  
     public Sprite L;
@@ -30,9 +32,25 @@ public class Mob_Control : MonoBehaviour
     void FixedUpdate()
     {
         SpriteUpdate();
+        CheckAndShoot();
     }
 
+    private void CheckAndShoot()
+    {
+        if (shootPlayer)
+        {
+            if (distanceToPlayer() <= shootPlayerDistance)
+            {
+                gameObject.GetComponent<Mob>().currentWeapon.Shoot(gameObject.GetComponent<Mob>());
+            }
+        }
+    }
 
+    private float distanceToPlayer() //calculate distance form player
+    {
+        Vector2 distance = player.transform.position - gameObject.GetComponent<Rigidbody2D>().transform.position;
+        return distance.magnitude;
+    }
 
     private void SpriteUpdate()
     {

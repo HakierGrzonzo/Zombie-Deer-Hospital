@@ -14,6 +14,7 @@ public class Mob : MonoBehaviour {
     public int toughness; // it is a multiplier of a damage dealt and recived
     public int InventorySize=5;
     public string startingWeaponStr;
+    public string secondWeaponStr;
     public float speed;
     public Weapons_Module.Weapon currentWeapon;
     public Weapons_Module.Weapon[] Inventory;
@@ -22,13 +23,29 @@ public class Mob : MonoBehaviour {
     {
         Inventory = new Weapons_Module.Weapon[InventorySize];
         Inventory[0]= Weapons_Module.GetWeapon(startingWeaponStr, bulletSource);
-        Inventory[1] = Weapons_Module.GetWeapon("Shotgun", bulletSource);
+        if(secondWeaponStr != null)
+        {
+            Inventory[1] = Weapons_Module.GetWeapon(secondWeaponStr, bulletSource);
+        }
         currentWeapon = Inventory[0];
     }
 
-    public string hit_received(int damage)
+    public string damage_deal(int damage)
     {
         HP = (int)((float)HP - ((float)damage) * toughness);
+        if (HP <= 0)
+        {
+            return title;
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    public string Percent_damage_deal_MaxHP(int percentDamage)
+    {
+        MaxHP = MaxHP- MaxHP*(percentDamage/100);
         if (HP <= 0)
         {
             return title;

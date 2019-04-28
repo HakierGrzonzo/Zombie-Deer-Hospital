@@ -7,6 +7,7 @@ public class Weapons_Module : MonoBehaviour{
     public static GameObject normalBulletPrefab = Resources.Load<GameObject>("BulletPrefabs/normalBulletPrefab");
     //Load a waterBulletPrefab from (Assets/bulletPrefabs/waterBulletPrefab)
     public static GameObject waterBulletPrefab = Resources.Load<GameObject>("BulletPrefabs/waterBulletPrefab");
+    public static GameObject rocketBulletPrefab = Resources.Load<GameObject>("BulletPrefabs/rocketBulletPrefab");
 
     public static Weapon GetWeapon(string weaponName, GameObject bulletSource)
     {
@@ -82,6 +83,9 @@ public class Weapons_Module : MonoBehaviour{
                 Weapons_Module.Weapon machine_Gun = new Weapon(weaponName, 1, 1, bulletSource, normalBulletPrefab, 10, 0.75f, speedMult * 7.0f, 1.7f, 0f, false);
                 return (machine_Gun);
 
+            case "korwins_gun":
+                Weapons_Module.Weapon korwins_gun = new Weapon(weaponName, 0, 1, bulletSource, rocketBulletPrefab, 0, 2, speedMult * 10.0f, 100f, 0f, false);
+                return (korwins_gun);
         }
         return null;
     }
@@ -139,13 +143,23 @@ public class Weapons_Module : MonoBehaviour{
             Bullet.GetComponent<bulletScript>().bulletPenetration = penetration;
             Bullet.GetComponent<bulletScript>().owner = bulletSource.GetComponentInParent<Mob>();
             Bullet.GetComponent<Rigidbody2D>().AddForce(Bullet.transform.up * bulletSpeed);
+
+            if (name == "korwins_gun")
+            {
+                Bullet.AddComponent<Movement>();
+                Bullet.GetComponent<bulletScript>().percentDamage = 5;
+            }
+
             GameObject.Destroy(Bullet, bulletFlightTime);
+
+            
+
           
             if (isShotgun)
             {
                 Debug.Log("Shotty");
                 //GameObject Bullet2 = Instantiate(bulletPrefab, bulletSourceTransform.position, bulletSourceTransform.rotation);
-                selfDamageReceiver.hit_received(selfDamage);
+                selfDamageReceiver.damage_deal(selfDamage);
                 lastShotTime = Time.time;
 
                 Vector2 FirDir = (Bullet.transform.up * bulletSpeed);
