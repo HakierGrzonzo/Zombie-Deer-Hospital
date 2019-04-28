@@ -11,6 +11,7 @@ public class bulletScript : MonoBehaviour
         {
             Debug.Log("Hit");
             collider.gameObject.GetComponent<Mob>().hit_received(bulletDamage);
+            GameObject.Destroy(gameObject);
         }
         else if (collider.CompareTag("Player"))
         {
