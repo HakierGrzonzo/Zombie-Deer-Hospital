@@ -58,11 +58,11 @@ public class Mob : MonoBehaviour {
         if (this.gameObject.CompareTag("Enemy")){
             if (collider.gameObject.CompareTag("Player"))
             {
-                Debug.Log("Player collision");
                 if(collider.gameObject.GetComponent<Mob>().hit_received(bodyDamage*toughness) != null)
                 {
                     GameObject.Destroy(collider.gameObject);
                 }
+                GameObject.Destroy(gameObject.gameObject);
             }
         }
 
