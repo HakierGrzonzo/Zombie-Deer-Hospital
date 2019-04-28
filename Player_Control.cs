@@ -84,7 +84,7 @@ public class Player_Control : MonoBehaviour
         {
             Debug.Log(gameObject.GetComponent<Mob>().currentWeapon.name);
         }
-
+        
     }
 
     private void Move()
@@ -93,6 +93,7 @@ public class Player_Control : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         Vector3 currentPos = playerTransform.position;
         Vector3 movementVector = new Vector3(horizontal, vertical, 0.0f);
+
         //float playerRotationAngle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
         //Quaternion playerRotation =Quaternion.Euler(new Vector3(0, 0, playerRotationAngle));
 
@@ -112,7 +113,7 @@ public class Player_Control : MonoBehaviour
         mousePos.y = mousePos.y - objectPos.y;
         float playerRotationAngle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
 
-
+        
         if (playerRotationAngle      < -157.5 || playerRotationAngle  > 157.5) { gameObject.GetComponent<SpriteRenderer>().sprite = L; }
         else if (playerRotationAngle > -22.5  &&  playerRotationAngle < 22.5)  { gameObject.GetComponent<SpriteRenderer>().sprite = R;  }
         else if(playerRotationAngle  <  -67.5 &&  playerRotationAngle > -112.5) { gameObject.GetComponent<SpriteRenderer>().sprite = U; }
@@ -123,7 +124,7 @@ public class Player_Control : MonoBehaviour
 
         else if(playerRotationAngle  <   157.5  &&  playerRotationAngle > 112.5) { gameObject.GetComponent<SpriteRenderer>().sprite = DR;}
         else if(playerRotationAngle  >   -157.5  &&  playerRotationAngle < -112.5) { gameObject.GetComponent<SpriteRenderer>().sprite = UR;  }
-
+        
 
     }
 }
