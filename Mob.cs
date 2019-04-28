@@ -52,7 +52,7 @@ public class Mob : MonoBehaviour {
             return title;
         }
         else
-        {
+        {   
             return null;
         }
     }
@@ -84,7 +84,6 @@ public class Mob : MonoBehaviour {
                 GameObject.Destroy(gameObject.gameObject);
             }
         }
-
     }
 
     private void OnDestroy()

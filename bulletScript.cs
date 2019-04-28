@@ -56,7 +56,6 @@ public class bulletScript : MonoBehaviour
 
         else if (collider.CompareTag("Bullet"))
         {
-            Debug.Log("bul");
         }
 
         else
