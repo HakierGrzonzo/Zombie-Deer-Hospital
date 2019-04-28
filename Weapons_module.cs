@@ -59,23 +59,23 @@ public class Weapons_Module : MonoBehaviour{
                 return ();
 
             case "Knife":
-                Weapons_Module.Weapon Knife = new Weapon(weaponName, 0, X, bulletSource, normalBulletPrefab, 30, 0.85f, speedMult * 9.0 , 1.30f, 0,false);
+                Weapons_Module.Weapon Knife = new Weapon(weaponName, 0, 0, bulletSource, normalBulletPrefab, 30, 0.85f, speedMult * 9.0 , 1.30f, 0,false);
                 return (Knife);
 
             case "Katana":
-                Weapons_Module.Weapon Katana = new Weapon(weaponName, 3, X, bulletSource, normalBulletPrefab, 64, 0.75f, speedMult * 9.0, 1.5f, 0,false);
+                Weapons_Module.Weapon Katana = new Weapon(weaponName, 3, 0, bulletSource, normalBulletPrefab, 64, 0.75f, speedMult * 9.0, 1.5f, 0,false);
                 return (Katana);
 
             case "Axe":
-                Weapons_Module.Weapon Axe = new Weapon(weaponName, 4, X, bulletSource, normalBulletPrefab, 98, 1.35f, speedMult * 8.0, 1.5f, 0,false);
+                Weapons_Module.Weapon Axe = new Weapon(weaponName, 4, 0, bulletSource, normalBulletPrefab, 98, 1.35f, speedMult * 8.0, 1.5f, 0,false);
                 return (Axe);
 
             case "Scythe":
-                Weapons_Module.Weapon Scythe = new Weapon(weaponName, 5, X, bulletSource, normalBulletPrefab, 80, 0.75f, speedMult * 8.0, 1.5f, 0,false);
+                Weapons_Module.Weapon Scythe = new Weapon(weaponName, 5, 0, bulletSource, normalBulletPrefab, 80, 0.75f, speedMult * 8.0, 1.5f, 0,false);
                 return (Scythe);
 
             case "Chainsaw":
-                Weapons_Module.Weapon Chainsaw = new Weapon(weaponName, 5, X, bulletSource, normalBulletPrefab, 20, 0.1f, speedMult * 9.0, 1.4f, 0,false);
+                Weapons_Module.Weapon Chainsaw = new Weapon(weaponName, 5, 0, bulletSource, normalBulletPrefab, 20, 0.1f, speedMult * 9.0, 1.4f, 0,false);
                 return (Chainsaw);
 
         }
