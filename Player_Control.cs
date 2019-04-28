@@ -31,6 +31,7 @@ public class Player_Control : MonoBehaviour
         Move(vertical, horizontal);
         CameraFollowing();
         SpriteUpdate();
+        Debug.Log(this.gameObject.GetComponent<Mob>().Inventory[0]);
         if (Input.GetMouseButtonDown(0) & this.gameObject.GetComponent<Mob>().currentWeapon.CanShoot())
         {
             this.gameObject.GetComponent<Mob>().currentWeapon.Shoot();
