@@ -142,23 +142,50 @@ public class Weapons_Module : MonoBehaviour{
             GameObject.Destroy(Bullet, bulletFlightTime);
           
             if (isShotgun)
-            {               
+            {
+                Debug.Log("Shotty");
+                //GameObject Bullet2 = Instantiate(bulletPrefab, bulletSourceTransform.position, bulletSourceTransform.rotation);
+                selfDamageReceiver.hit_received(selfDamage);
+                lastShotTime = Time.time;
+
+                Vector2 FirDir = (Bullet.transform.up * bulletSpeed);
+
+                FirDir = RotateAroundAxis(FirDir, spread, bulletSourceTransform.forward);
+                bulletSourceTransform = bulletSource.GetComponent<Transform>();
                 GameObject Bullet2 = Instantiate(bulletPrefab, bulletSourceTransform.position, bulletSourceTransform.rotation);
+                Bullet2.GetComponent<bulletScript>().bulletDamage = damage;
+                Bullet2.GetComponent<bulletScript>().bulletPenetration = penetration;
+                Bullet2.GetComponent<bulletScript>().owner = bulletSource.GetComponentInParent<Mob>();
+                Bullet2.GetComponent<Rigidbody2D>().AddForce(FirDir);
+                GameObject.Destroy(Bullet2, bulletFlightTime);
+
+                FirDir = RotateAroundAxis(FirDir, spread, bulletSourceTransform.forward);
+                bulletSourceTransform = bulletSource.GetComponent<Transform>();
                 GameObject Bullet3 = Instantiate(bulletPrefab, bulletSourceTransform.position, bulletSourceTransform.rotation);
+                Bullet3.GetComponent<bulletScript>().bulletDamage = damage;
+                Bullet3.GetComponent<bulletScript>().bulletPenetration = penetration;
+                Bullet3.GetComponent<bulletScript>().owner = bulletSource.GetComponentInParent<Mob>();
+                Bullet3.GetComponent<Rigidbody2D>().AddForce(FirDir);
+                GameObject.Destroy(Bullet3, bulletFlightTime);
+
+                FirDir = RotateAroundAxis(FirDir, spread*-3, bulletSourceTransform.forward);
+                bulletSourceTransform = bulletSource.GetComponent<Transform>();
                 GameObject Bullet4 = Instantiate(bulletPrefab, bulletSourceTransform.position, bulletSourceTransform.rotation);
+                Bullet4.GetComponent<bulletScript>().bulletDamage = damage;
+                Bullet4.GetComponent<bulletScript>().bulletPenetration = penetration;
+                Bullet4.GetComponent<bulletScript>().owner = bulletSource.GetComponentInParent<Mob>();
+                Bullet4.GetComponent<Rigidbody2D>().AddForce(FirDir);
+                GameObject.Destroy(Bullet4, bulletFlightTime);
+
+                FirDir = RotateAroundAxis(FirDir, spread * -1, bulletSourceTransform.forward);
+                bulletSourceTransform = bulletSource.GetComponent<Transform>();
                 GameObject Bullet5 = Instantiate(bulletPrefab, bulletSourceTransform.position, bulletSourceTransform.rotation);
-
-                Vector2 FirDir = ((Input.mousePosition)-bulletSourceTransform.position);
-
-                FirDir = RotateAroundAxis(FirDir, spread, bulletSourceTransform.up);
-                Bullet2.GetComponent<Rigidbody>().AddForce(FirDir);
-                FirDir = RotateAroundAxis(FirDir, spread, bulletSourceTransform.up);
-                Bullet3.GetComponent<Rigidbody>().AddForce(FirDir);
-                FirDir = RotateAroundAxis(FirDir, -3 * spread, bulletSourceTransform.up);
-                Bullet4.GetComponent<Rigidbody>().AddForce(FirDir);
-                FirDir = RotateAroundAxis(FirDir, -1 * spread, bulletSourceTransform.up);
-                Bullet5.GetComponent<Rigidbody>().AddForce(FirDir);
-            }           
+                Bullet5.GetComponent<bulletScript>().bulletDamage = damage;
+                Bullet5.GetComponent<bulletScript>().bulletPenetration = penetration;
+                Bullet5.GetComponent<bulletScript>().owner = bulletSource.GetComponentInParent<Mob>();
+                Bullet5.GetComponent<Rigidbody2D>().AddForce(FirDir);
+                GameObject.Destroy(Bullet5, bulletFlightTime);
+            }
         }
     }
     public static Vector3 RotateAroundAxis(Vector3 v, float a, Vector3 axis)

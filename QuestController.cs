@@ -50,8 +50,8 @@ public class QuestController : MonoBehaviour
 
 
 
-        if (Input.GetKeyDown(KeyCode.Alpha1)) { ChooseQ1(); }
-        if (Input.GetKeyDown(KeyCode.Alpha2)) { ChooseQ2(); }
+        if (Input.GetKeyDown(KeyCode.Alpha1)|| Input.GetKeyDown(KeyCode.O)) { ChooseQ1(); }
+        if (Input.GetKeyDown(KeyCode.Alpha2)|| Input.GetKeyDown(KeyCode.P)) { ChooseQ2(); }
 
 
 

@@ -12,7 +12,7 @@ public class bulletScript : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if ( collider.CompareTag("Enemy"))//collider.CompareTag("Player") ||
+        if (collider.CompareTag("Enemy"))//collider.CompareTag("Player") ||
         {
             Debug.Log("Hit");
             if (collider.gameObject.GetComponent<Mob>().hit_received(bulletDamage) != null)
@@ -26,13 +26,15 @@ public class bulletScript : MonoBehaviour
             {
                 GameObject.Destroy(gameObject);
             }
-            
+
         }
 
         else if (collider.CompareTag("Player"))
         {
-            
+
         }
+
+        else if (collider.CompareTag("Bullet")) { Debug.Log("bul"); }
 
         else
         {
