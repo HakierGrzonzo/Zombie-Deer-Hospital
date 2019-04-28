@@ -87,14 +87,13 @@ public class Weapons_Module : MonoBehaviour{
             Bullet.GetComponent<bulletScript>().owner = bulletSource.GetComponentInParent<Mob>();
             Bullet.GetComponent<Rigidbody2D>().AddForce(Bullet.transform.up * bulletSpeed);
             GameObject.Destroy(Bullet, bulletFlightTime);
-
-            
+          
             if (isShotgun)
             {               
-                GameObject Bullet2 = Instantiate(normalBulletPrefab, bulletSourceTransform.position + bulletSourceTransform.forward * 10, Quaternion.identity);
-                GameObject Bullet3 = Instantiate(normalBulletPrefab, bulletSourceTransform.position + bulletSourceTransform.forward * 5, Quaternion.identity);
-                GameObject Bullet4 = Instantiate(normalBulletPrefab, bulletSourceTransform.position + bulletSourceTransform.forward * -5, Quaternion.identity);
-                GameObject Bullet5 = Instantiate(normalBulletPrefab, bulletSourceTransform.position + bulletSourceTransform.forward * -10, Quaternion.identity);
+                GameObject Bullet2 = Instantiate(bulletPrefab, bulletSourceTransform.position + bulletSourceTransform.forward * 10, Quaternion.identity);
+                GameObject Bullet3 = Instantiate(bulletPrefab, bulletSourceTransform.position + bulletSourceTransform.forward * 5, Quaternion.identity);
+                GameObject Bullet4 = Instantiate(bulletPrefab, bulletSourceTransform.position + bulletSourceTransform.forward * -5, Quaternion.identity);
+                GameObject Bullet5 = Instantiate(bulletPrefab, bulletSourceTransform.position + bulletSourceTransform.forward * -10, Quaternion.identity);
 
                 Vector2 FirDir = ((Input.mousePosition)-bulletSourceTransform.position);
 
