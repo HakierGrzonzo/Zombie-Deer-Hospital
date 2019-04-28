@@ -5,9 +5,9 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     public float speed;
-    private Vector3 position;
-    private Vector3 playerPos;
-    private Vector3 move;
+    private Vector2 position;
+    private Vector2 playerPos;
+    private Vector2 move;
     private GameObject playerObject;
     public float maxSpeed = 1;
     // Start is called before the first frame update
@@ -20,21 +20,20 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameObject.GetComponent<Rigidbody>().velocity.magnitude > maxSpeed)
+        if (gameObject.GetComponent<Rigidbody2D>().velocity.magnitude > maxSpeed)
         {
-            gameObject.GetComponent<Rigidbody>().velocity = gameObject.GetComponent<Rigidbody>().velocity.normalized * maxSpeed;
+            gameObject.GetComponent<Rigidbody2D>().velocity = gameObject.GetComponent<Rigidbody2D>().velocity.normalized * maxSpeed;
         }
         //construct movement vector
-        position = gameObject.GetComponent<Rigidbody>().transform.position;
+        position = gameObject.GetComponent<Rigidbody2D>().transform.position;
         playerPos = playerObject.transform.position;
         //Debug.Log(playerPos);
-        Vector3 move = playerPos - position;
+        Vector2 move = playerPos - position;
 
         move = move.normalized * speed;
-        move.y = 0;
         //normalize
 
-        gameObject.GetComponent<Rigidbody>().AddForce(move,ForceMode.VelocityChange);
+        gameObject.GetComponent<Rigidbody2D>().AddForce(move,ForceMode2D.Force);
     }
 
     public Movement()

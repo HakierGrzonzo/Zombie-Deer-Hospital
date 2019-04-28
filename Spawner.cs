@@ -10,7 +10,7 @@ public class Spawner : MonoBehaviour
     public int spawnLimit = -1; //max no. of spawns, -1 for infinite spawns
     private int enemiesSpawned = 0;
     public float maximalDistanceFromPlayer = -1; //How close must player get for spawner to start working
-    private Vector3 distance;
+    private Vector2 distance;
     private GameObject playerObject;
     // Start is called before the first frame update
     void Start()
@@ -20,7 +20,7 @@ public class Spawner : MonoBehaviour
 
     private float distanceToPlayer() //calculate distance form player
     {
-        Vector3 distance = playerObject.transform.position - gameObject.GetComponent<Rigidbody>().transform.position;
+        Vector2 distance = playerObject.transform.position - gameObject.GetComponent<Rigidbody2D>().transform.position;
         return distance.magnitude;
     }
 
@@ -44,6 +44,10 @@ public class Spawner : MonoBehaviour
                 Instantiate(myPrefab, gameObject.transform.position, Quaternion.identity.normalized);
                 enemiesSpawned++;
             }
+        }
+        else if (enemiesSpawned == spawnLimit)
+        {
+            Destroy(this.gameObject);
         }
     }
 }
