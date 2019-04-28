@@ -150,6 +150,8 @@ public class Weapons_Module : MonoBehaviour{
             {
                 Debug.Log("True gun is here!!!");
                 Bullet.AddComponent<Movement>();
+                Bullet.GetComponent<Movement>().maxSpeed = 30;
+                Bullet.GetComponent<Movement>().speed = 3;
                 Bullet.GetComponent<bulletScript>().percentDamage = 5;
             }
 

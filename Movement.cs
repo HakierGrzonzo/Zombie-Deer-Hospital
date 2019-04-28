@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    public float speed;
+    public float speed=0f;
     private Vector2 position;
     private Vector2 playerPos;
     private Vector2 move;
@@ -14,7 +14,10 @@ public class Movement : MonoBehaviour
     void Start()
     {
         playerObject = GameObject.FindWithTag("Player");
-        speed = gameObject.GetComponent<Mob>().speed;
+        if (speed != 0f)
+        {
+            speed = gameObject.GetComponent<Mob>().speed;
+        }
     }
 
     // Update is called once per frame
