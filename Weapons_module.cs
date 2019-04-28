@@ -14,19 +14,19 @@ public class Weapons_Module : MonoBehaviour{
         switch (weaponName)
         {
             case "shotgun":
-                Weapons_Module.Weapon shotgun = new Weapon(weaponName, 5, bulletSource, normalBulletPrefab, 20, 0.90f, speedMult * 5.5f, 0.9f, 6.5f, true, false);
+                Weapons_Module.Weapon shotgun = new Weapon(weaponName, 5, 1,bulletSource, normalBulletPrefab, 20, 0.90f, speedMult * 5.5f, 0.9f, 6.5f, true, false);
                 return (shotgun);
 
             case "water_gun":
-                Weapons_Module.Weapon water_gun = new Weapon(weaponName, 1, bulletSource, normalBulletPrefab, 15, 0.30f, speedMult * 5.0f, 1.5f, 0, false, false);
+                Weapons_Module.Weapon water_gun = new Weapon(weaponName, 1, 1, bulletSource, normalBulletPrefab, 15, 0.30f, speedMult * 5.0f, 1.5f, 0, false, false);
                 return (water_gun);
 
             case "pistol":
-                Weapons_Module.Weapon pistol = new Weapon(weaponName, 2, bulletSource, normalBulletPrefab, 10, 0.75f, speedMult * 7.0f, 1.7f, 0f, false, false);
+                Weapons_Module.Weapon pistol = new Weapon(weaponName, 2, 1, bulletSource, normalBulletPrefab, 10, 0.75f, speedMult * 7.0f, 1.7f, 0f, false, false);
                 return (pistol);
 
             case "machine_gun":
-                Weapons_Module.Weapon machine_Gun = new Weapon(weaponName, 1, bulletSource, normalBulletPrefab, 10, 0.75f, speedMult * 7.0f, 1.7f, 0f, false, false);
+                Weapons_Module.Weapon machine_Gun = new Weapon(weaponName, 1, 1, bulletSource, normalBulletPrefab, 10, 0.75f, speedMult * 7.0f, 1.7f, 0f, false, false);
                 return (machine_Gun);
 
         }
@@ -36,6 +36,7 @@ public class Weapons_Module : MonoBehaviour{
     public class Weapon
     {
         public string name;
+        private int penetration;
         GameObject bulletPrefab;
         private int selfDamage;
         public GameObject bulletSource;
@@ -48,9 +49,10 @@ public class Weapons_Module : MonoBehaviour{
         bool isMelee;
         private float lastShotTime = Time.time;
 
-        public Weapon(string name, int selfDamage, GameObject bulletSource, GameObject bulletPrefab, int damage, float fireRate, float bulletSpeed, float bulletFlightTime, float spread, bool isShotgun, bool isMelee)
+        public Weapon(string name, int selfDamage, int penetration, GameObject bulletSource, GameObject bulletPrefab, int damage, float fireRate, float bulletSpeed, float bulletFlightTime, float spread, bool isShotgun, bool isMelee)
         {
             this.name = name;
+            this.penetration = penetration;
             this.selfDamage = selfDamage;
             this.bulletSource = bulletSource;
             this.bulletPrefab = bulletPrefab;
