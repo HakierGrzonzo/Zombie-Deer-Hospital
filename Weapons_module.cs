@@ -14,16 +14,16 @@ public class Weapons_Module : MonoBehaviour{
         switch (weaponName)
             //Dodaje dodatkowę bronie
         {
-            case "Shotgun":
-                Weapons_Module.Weapon shotgun = new Weapon(weaponName, 5, 1,bulletSource, normalBulletPrefab, 70, 0.90f, speedMult * 5.5f, 0.9f, 6.5f, true);
+            case "shotgun":
+                Weapons_Module.Weapon shotgun = new Weapon(weaponName, 5, 1,bulletSource, normalBulletPrefab, 20, 0.90f, speedMult * 5.5f, 0.9f, 6.5f, true);
                 return (shotgun);
 
-            case "Water_gun":
-                Weapons_Module.Weapon water_gun = new Weapon(weaponName, 1, 1, bulletSource, normalBulletPrefab, 15, 0.75f, speedMult * 5.0f, 1.5f, 0, false);
+            case "water_gun":
+                Weapons_Module.Weapon water_gun = new Weapon(weaponName, 1, 1, bulletSource, normalBulletPrefab, 15, 0.30f, speedMult * 5.0f, 1.5f, 0, false);
                 return (water_gun);
 
-            case "Pistol":
-                Weapons_Module.Weapon pistol = new Weapon(weaponName, 0, 1, bulletSource, normalBulletPrefab, 10, 0.75f, speedMult * 7.0f, 1.7f, 0f, false);
+            case "pistol":
+                Weapons_Module.Weapon pistol = new Weapon(weaponName, 2, 1, bulletSource, normalBulletPrefab, 10, 0.75f, speedMult * 7.0f, 1.7f, 0f, false);
                 return (pistol);
 
             case "AK47":
@@ -78,6 +78,10 @@ public class Weapons_Module : MonoBehaviour{
                 Weapons_Module.Weapon Chainsaw = new Weapon(weaponName, 5, 0, bulletSource, normalBulletPrefab, 20, 0.1f, speedMult * 9.0f, 1.4f, 0,false);
                 return (Chainsaw);
 
+            case "machine_gun":
+                Weapons_Module.Weapon machine_Gun = new Weapon(weaponName, 1, 1, bulletSource, normalBulletPrefab, 10, 0.75f, speedMult * 7.0f, 1.7f, 0f, false);
+                return (machine_Gun);
+
         }
         return null;
     }
@@ -128,6 +132,7 @@ public class Weapons_Module : MonoBehaviour{
         {
             selfDamageReceiver.hit_received(selfDamage);
             lastShotTime = Time.time;
+
             Transform bulletSourceTransform = bulletSource.GetComponent<Transform>();
             GameObject Bullet = Instantiate(bulletPrefab, bulletSourceTransform.position, bulletSourceTransform.rotation);
             Bullet.GetComponent<bulletScript>().bulletDamage = damage;
@@ -138,10 +143,10 @@ public class Weapons_Module : MonoBehaviour{
           
             if (isShotgun)
             {               
-                GameObject Bullet2 = Instantiate(bulletPrefab, bulletSourceTransform.position + bulletSourceTransform.forward * 10, Quaternion.identity);
-                GameObject Bullet3 = Instantiate(bulletPrefab, bulletSourceTransform.position + bulletSourceTransform.forward * 5, Quaternion.identity);
-                GameObject Bullet4 = Instantiate(bulletPrefab, bulletSourceTransform.position + bulletSourceTransform.forward * -5, Quaternion.identity);
-                GameObject Bullet5 = Instantiate(bulletPrefab, bulletSourceTransform.position + bulletSourceTransform.forward * -10, Quaternion.identity);
+                GameObject Bullet2 = Instantiate(bulletPrefab, bulletSourceTransform.position, bulletSourceTransform.rotation);
+                GameObject Bullet3 = Instantiate(bulletPrefab, bulletSourceTransform.position, bulletSourceTransform.rotation);
+                GameObject Bullet4 = Instantiate(bulletPrefab, bulletSourceTransform.position, bulletSourceTransform.rotation);
+                GameObject Bullet5 = Instantiate(bulletPrefab, bulletSourceTransform.position, bulletSourceTransform.rotation);
 
                 Vector2 FirDir = ((Input.mousePosition)-bulletSourceTransform.position);
 
@@ -160,5 +165,5 @@ public class Weapons_Module : MonoBehaviour{
     {
         var q = Quaternion.AngleAxis(a, axis);
         return q * v;
-    }
+    } 
 }
