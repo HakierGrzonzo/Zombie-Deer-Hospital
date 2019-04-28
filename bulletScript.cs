@@ -29,7 +29,7 @@ public class bulletScript : MonoBehaviour
             }
 
         }
-        /*
+        
         else if (collider.CompareTag("Player"))
         {
             /*
@@ -52,8 +52,9 @@ public class bulletScript : MonoBehaviour
             {
                 GameObject.Destroy(gameObject);
             }
+            */
         }
-        */
+        
 
         else if (collider.CompareTag("Bullet"))
         {
