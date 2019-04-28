@@ -8,19 +8,25 @@ public class statKeeper : MonoBehaviour
     private int result;
     // Start is called before the first frame update
 
-    public void addKill(string type)
+    public void addKill(string type)    //this adds a kill of a given name
     {
         if (KillCount.TryGetValue(type, out result))
         {
-            KillCount.Add(type, result + 1);   
+            result += 1;
+            KillCount[type] = result;
         }
         else
         {
-            KillCount.Add(type, 1);
+            KillCount[type] = result;
         }
     }
 
-    public int getKillCount(string type)
+    private void Update()
+    {
+        Debug.Log(KillCount["Nurse"]);
+    }
+
+    public int getKillCount(string type)    
     {
         if (KillCount.TryGetValue(type, out result))
         {

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7046828261206765033}
   - component: {fileID: 4489565470713733342}
   m_Layer: 0
-  m_Name: Korwin (1)
+  m_Name: Nurse
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,8 +96,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4e2e1a991f3e4b4c88c3f9f0c6f781d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Korwin
-  bodyDamage: 20
+  title: Nurse
+  bodyDamage: 200
+  healthDrop: 10
   bulletSource: {fileID: 0}
   HP: 1
   MaxHP: 2

@@ -50,6 +50,11 @@ public class QuestController : MonoBehaviour
 
 
 
+        if (Input.GetKeyDown(KeyCode.Alpha1)) { ChooseQ1(); }
+        if (Input.GetKeyDown(KeyCode.Alpha2)) { ChooseQ2(); }
+
+
+
         if (Input.GetKeyDown(KeyCode.Space)|| Mathf.Floor(TimerCountdown) == 1)        //When this statement is fulfilled 2 new quests are generated
         {
             TimerCountdown =0;
@@ -81,10 +86,11 @@ public class QuestController : MonoBehaviour
 
     Quest QuestGenerator(int TargetQuestSlot)
     {
-        var EnemyContainer = new List<string> { "Nurse", "Alcoholic", "Patient", "Contagious Patient", "Alcoholic", "Agressive Patient", "Rescuer", "Paranoic", "Druggy", "Wheelchair Patient", "Nurse", "Injured Soldier", "Guard", "Madman ", "Doctor", "Psycho", "Psychologist" };
-        //tier 2                                                //tier 3                                           //tier 4
+        
+        var EnemyContainer = new List<string> { "Alcoholic", "Patient", "Contagious Patient", "Alcoholic", "Agressive Patient", "Rescuer", "Paranoic", "Druggy", "Wheelchair Patient", "Nurse", "Injured Soldier", "Guard", "Madman ", "Doctor", "Psycho", "Psychologist" };
+                                                                                                                                 //tier 2                                                //tier 3                                           //tier 4
         var WeaponContainer = new List<string> { "Pistol", "Uzi", "Revolver", "Knife", "Katana", "Axe", "Chainsaw", "Kalashnikov", "M-40", "Sniper Rifle", "Shotgun", "Scythe", "Rocket Launcher", "Flamethrower", "Minigun" };
-        //tier 2                                              //Tier 3         
+                                                                                                                     //tier 2                                              //Tier 3         
         int RandomizerA = Random.Range(0, EnemyContainer.Count - 1);
         if (RandomizerA < 5) { CurWeight = Mathf.FloorToInt(TotalWeight / 2); }
         else if (RandomizerA < 9 && RandomizerA >= 5) { CurWeight = Mathf.FloorToInt(TotalWeight / 4); }  //8?
