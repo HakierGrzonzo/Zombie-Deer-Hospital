@@ -37,13 +37,19 @@ public class Mob_Control : MonoBehaviour
     private void SpriteUpdate()
     {
         Vector2 MoveDir = player.transform.position - gameObject.transform.position;
-        float playerRotationAngle = Mathf.Atan2(MoveDir[0],MoveDir[1]) * Mathf.Rad2Deg;
+        float playerRotationAngle = Mathf.Atan2(MoveDir.y,MoveDir.x) * Mathf.Rad2Deg;
 
 
-        if (playerRotationAngle      < -45 || playerRotationAngle  > 45) { gameObject.GetComponent<SpriteRenderer>().sprite = L; }
-        else if (playerRotationAngle > -135 &&  playerRotationAngle < 135)  { gameObject.GetComponent<SpriteRenderer>().sprite = R;  }
-        else if(playerRotationAngle  <  -135 &&  playerRotationAngle > -45) { gameObject.GetComponent<SpriteRenderer>().sprite = U; }
-        else if(playerRotationAngle  >   45 &&  playerRotationAngle < 135) { gameObject.GetComponent<SpriteRenderer>().sprite = D;}
+        if (playerRotationAngle      < -45 && playerRotationAngle > -135) { gameObject.GetComponent<SpriteRenderer>().sprite = U; }
+        else if (playerRotationAngle      > 45 && playerRotationAngle < 135) { gameObject.GetComponent<SpriteRenderer>().sprite = D; }
+
+        else if (playerRotationAngle      > 135) { gameObject.GetComponent<SpriteRenderer>().sprite = L; }
+        else if (playerRotationAngle      < -135) { gameObject.GetComponent<SpriteRenderer>().sprite = L; }
+
+
+        else if (playerRotationAngle      < 45 && playerRotationAngle > -45) { gameObject.GetComponent<SpriteRenderer>().sprite = R; }
+
+
 
     }
 }
