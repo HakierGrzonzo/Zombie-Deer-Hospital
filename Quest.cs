@@ -2,17 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Quest : MonoBehaviour
+[System.Serializable]
+public class Quest
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
+    public float timeLimit;         //time to complete the quest
+    public string enemyToKill;      //type of enemy to kill
+    public int currentKills;       //number of kills neccessary
+    public int targetKills;
+    public string weaponToKillWith; //which weapon is te quest for
+    
+
     void Update()
     {
-        
+        Camera.main.GetComponent<statKeeper>().getKillCount(enemyToKill);
     }
+    public int QuestFailed()
+    {
+        return 50;
+    }
+
+    public int QuestSuccess()
+    {
+        return 100;
+    }
+    public Quest(float timelim, string enemytk, int NOK, string WTKW)                  //This gives new quest
+    {
+        this.timeLimit = timelim;
+        this.enemyToKill = enemytk;
+        this.targetKills = currentKills + NOK;
+        this.weaponToKillWith = WTKW;
+
+    }
+
+ 
 }
