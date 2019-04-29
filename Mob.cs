@@ -20,7 +20,6 @@ public class Mob : MonoBehaviour {
     public float speed;
     public Weapons_Module.Weapon currentWeapon;
     public string currentWeaponStr;
-    public int currentWeaponIndex;
     public Weapons_Module.Weapon[] Inventory;
 
     private void Start()
@@ -36,6 +35,11 @@ public class Mob : MonoBehaviour {
         {
             Inventory[2] = Weapons_Module.GetWeapon(thirdWeaponStr, bulletSource);
         }
+    }
+
+    public int GetCurrentWeaponIndex()
+    {
+        return( Array.IndexOf(Inventory, currentWeapon));
     }
 
     public string damage_deal(int damage)
@@ -54,10 +58,9 @@ public class Mob : MonoBehaviour {
     public void GiveWeapon(Weapons_Module.Weapon weapon)
     {
         int weaponToGiveTier = weapon.tier;
-
-        Inventory[weaponToGiveTier] = weapon;
+        int currentWeaponIndex = GetCurrentWeaponIndex();
+        Inventory[weaponToGiveTier-1] = weapon;
         currentWeapon = Inventory[currentWeaponIndex];
-        Debug.Log("Weapon received");
     }
 
     public void DropWeapon(int inventorySlot)
@@ -86,8 +89,15 @@ public class Mob : MonoBehaviour {
 
     private void Update()
     {
-        currentWeaponIndex = Array.IndexOf(Inventory, currentWeapon);
-        currentWeapon = Inventory[currentWeaponIndex];
+        currentWeapon = Inventory[GetCurrentWeaponIndex()];
+        if (currentWeapon != null)
+        {
+            //Debug.Log(currentWeapon.name);
+        }
+        else
+        {
+            //Debug.Log("fucked up");
+        }
         currentWeaponStr = currentWeapon.name;
         
         if (HP > 0)

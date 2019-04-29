@@ -15,9 +15,11 @@ public class WeaponPickup : MonoBehaviour
                 Mob playerMob = collision.gameObject.GetComponent<Mob>();
                 Weapons_Module.Weapon weaponToGive = Weapons_Module.GetWeapon(weaponToDropName, playerMob.bulletSource);
                 int weaponToDropTier = weaponToGive.tier;
-                playerMob.DropWeapon(weaponToDropTier);
+                playerMob.DropWeapon(weaponToDropTier-1);
                 playerMob.GiveWeapon(weaponToGive);
-                Debug.Log("Weapon Given");
+                Debug.Log("Weapon destoyed");
+                GameObject.Destroy(this.gameObject);
+                
 
 
                 /*

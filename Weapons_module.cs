@@ -267,10 +267,10 @@ public class Weapons_Module : MonoBehaviour{
         {
             selfDamageReceiver.damage_deal(selfDamage);
             lastShotTime = Time.time;
-
+            
             audioSource = bulletSource.GetComponent<AudioSource>();
             audioSource.PlayOneShot(sound);
-
+            Debug.Log("Shooooooot");
             Transform bulletSourceTransform = bulletSource.GetComponent<Transform>();
             GameObject Bullet = Instantiate(bulletPrefab, bulletSourceTransform.position, bulletSourceTransform.rotation);
             Bullet.GetComponent<bulletScript>().bulletDamage = damage;
