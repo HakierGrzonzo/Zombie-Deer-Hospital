@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
 
 public class Mob : MonoBehaviour {
 
@@ -19,6 +19,7 @@ public class Mob : MonoBehaviour {
 
     public float speed;
     public Weapons_Module.Weapon currentWeapon;
+    public int currentWeaponIndex;
     public Weapons_Module.Weapon[] Inventory;
 
     private void Start()
@@ -54,6 +55,7 @@ public class Mob : MonoBehaviour {
         int weaponToGiveTier = weapon.tier;
 
         Inventory[weaponToGiveTier] = weapon;
+        currentWeapon = Inventory[currentWeaponIndex];
     }
 
     public void DropWeapon(int inventorySlot)
@@ -65,6 +67,7 @@ public class Mob : MonoBehaviour {
             droppedWeapon.GetComponent<WeaponPickup>().weaponToDropName = Inventory[inventorySlot].name;
         }
         Inventory[inventorySlot] = null;
+        currentWeapon = Inventory[currentWeaponIndex];
     }
 
     public string Percent_damage_deal_MaxHP(int percentDamage)
@@ -82,6 +85,7 @@ public class Mob : MonoBehaviour {
 
     private void Update()
     {
+        currentWeaponIndex = Array.IndexOf(gameObject.GetComponent<Mob>().Inventory, gameObject.GetComponent<Mob>().currentWeapon);
         if (HP > 0)
         { }
         else if(HP<=0)

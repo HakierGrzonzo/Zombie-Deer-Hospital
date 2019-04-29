@@ -48,7 +48,7 @@ public class Player_Control : MonoBehaviour
     public void ChangeWeapon()
     {
         var ScrollWheel = Input.GetAxis("Mouse ScrollWheel");
-        currentWeaponIndex = Array.IndexOf(gameObject.GetComponent<Mob>().Inventory, gameObject.GetComponent<Mob>().currentWeapon);
+        currentWeaponIndex = gameObject.GetComponent<Mob>().currentWeaponIndex;
         int InventoryLength = gameObject.GetComponent<Mob>().Inventory.Length;
 
         if (ScrollWheel > 0f)

@@ -13,7 +13,7 @@ public class Weaponbar: MonoBehaviour
     {
 
         //This controls the grey highlight over the Weapon Bar
-        int Index = gameObject.GetComponent<Player_Control>().currentWeaponIndex;
+        int Index = gameObject.GetComponent<Mob>().currentWeaponIndex;
              if (Index == 0) { SelectVisualizer.transform.position = Slot1.transform.position; }
         else if (Index == 1) { SelectVisualizer.transform.position = Slot2.transform.position; }
         else if (Index == 2) { SelectVisualizer.transform.position = Slot3.transform.position; }
