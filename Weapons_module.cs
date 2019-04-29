@@ -303,7 +303,7 @@ public class Weapons_Module : MonoBehaviour{
             Bullet.GetComponent<bulletScript>().owner = bulletSource.GetComponentInParent<Mob>();
             Bullet.GetComponent<Rigidbody2D>().AddForce(Bullet.transform.up * bulletSpeed);
 
-            /* if (name == "korwins_gun")
+            if (name == "korwins_gun")
              {
                  Debug.Log("True gun is here!!!");
                  Bullet.AddComponent<Movement>();
@@ -311,11 +311,8 @@ public class Weapons_Module : MonoBehaviour{
                  Bullet.GetComponent<Movement>().speed = 3;
                  Bullet.GetComponent<bulletScript>().percentDamage = 5;
              }
-             */
+             
             GameObject.Destroy(Bullet, bulletFlightTime);
-
-
-
 
             if (isShotgun)
             {
