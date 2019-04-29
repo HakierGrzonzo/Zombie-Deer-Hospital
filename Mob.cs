@@ -118,11 +118,11 @@ public class Mob : MonoBehaviour {
             currentWeapon = Inventory[GetCurrentWeaponIndex()];
             if (currentWeapon != null)
             {
-                Debug.Log(currentWeapon.name);
+                //Debug.Log(currentWeapon.name);
             }
             else
             {
-                Debug.Log("fucked up");
+                //Debug.Log("fucked up");
             }
 
             currentWeaponStr = currentWeapon.name;
@@ -136,7 +136,7 @@ public class Mob : MonoBehaviour {
             HP = 0;
             //GameObject.Destroy(this.gameObject);
         }
-        else if (HP> MaxHP)
+        else if (HP > MaxHP)
         {
             HP = MaxHP;
         }
