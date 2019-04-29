@@ -138,23 +138,23 @@ public class Weapons_Module : MonoBehaviour{
         {
             selfDamageReceiver.damage_deal(selfDamage);
             lastShotTime = Time.time;
-
+           
             Transform bulletSourceTransform = bulletSource.GetComponent<Transform>();
             GameObject Bullet = Instantiate(bulletPrefab, bulletSourceTransform.position, bulletSourceTransform.rotation);
             Bullet.GetComponent<bulletScript>().bulletDamage = damage;
             Bullet.GetComponent<bulletScript>().bulletPenetration = penetration;
             Bullet.GetComponent<bulletScript>().owner = bulletSource.GetComponentInParent<Mob>();
             Bullet.GetComponent<Rigidbody2D>().AddForce(Bullet.transform.up * bulletSpeed);
-
-            if (name == "korwins_gun")
-            {
-                Debug.Log("True gun is here!!!");
-                Bullet.AddComponent<Movement>();
-                Bullet.GetComponent<Movement>().maxSpeed = 30;
-                Bullet.GetComponent<Movement>().speed = 3;
-                Bullet.GetComponent<bulletScript>().percentDamage = 5;
-            }
-
+       
+            /* if (name == "korwins_gun")
+             {
+                 Debug.Log("True gun is here!!!");
+                 Bullet.AddComponent<Movement>();
+                 Bullet.GetComponent<Movement>().maxSpeed = 30;
+                 Bullet.GetComponent<Movement>().speed = 3;
+                 Bullet.GetComponent<bulletScript>().percentDamage = 5;
+             }
+             */
             GameObject.Destroy(Bullet, bulletFlightTime);
 
             
@@ -162,7 +162,7 @@ public class Weapons_Module : MonoBehaviour{
           
             if (isShotgun)
             {
-                Debug.Log("Shotty");
+             
                 //GameObject Bullet2 = Instantiate(bulletPrefab, bulletSourceTransform.position, bulletSourceTransform.rotation);
                 selfDamageReceiver.damage_deal(selfDamage);
                 lastShotTime = Time.time;

@@ -27,6 +27,8 @@ public class QuestController : MonoBehaviour
 
     private void Start()
     {
+        QuestContainer[0] = QuestGenerator(0);
+        QuestContainer[1] = QuestGenerator(1);
         TimerCountdown = 1;
     }
     void Update()
@@ -37,12 +39,12 @@ public class QuestController : MonoBehaviour
        
         }       //If quest timer reaches 0 player looses >Weight< MaxHP
         
-        if (QuestContainer[0].timeLimit == 0)
+        if (QuestContainer[0].timeLimit == 0 && QuestContainer[1]!=null)
         {
             QuestContainer[1].currentKills =Camera.main.GetComponent<statKeeper>().getKillCount(QuestContainer[1].enemyToKill);
             if (QuestContainer[1].currentKills == QuestContainer[1].targetKills) { gameObject.GetComponent<Mob>().HP += TotalWeight * 2; };
         }       //if player kills suffictient enemies Q1 is completed and rewards >Weight< HP
-        if (QuestContainer[1].timeLimit == 0)
+        if (QuestContainer[1].timeLimit == 0 && QuestContainer[0] != null)
         {
             QuestContainer[0].currentKills =Camera.main.GetComponent<statKeeper>().getKillCount(QuestContainer[0].enemyToKill);
             if (QuestContainer[0].currentKills == QuestContainer[0].targetKills) { gameObject.GetComponent<Mob>().HP += TotalWeight * 2; };

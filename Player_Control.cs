@@ -9,6 +9,7 @@ public class Player_Control : MonoBehaviour
     private Transform playerTransform;
     private float moveSpeed;
     public int CameraHeight;
+    public int currentWeaponIndex;
     public Sprite U;
     public Sprite UL;
     public Sprite L;
@@ -46,7 +47,7 @@ public class Player_Control : MonoBehaviour
     public void ChangeWeapon()
     {
         var ScrollWheel = Input.GetAxis("Mouse ScrollWheel");
-        int currentWeaponIndex = Array.IndexOf(gameObject.GetComponent<Mob>().Inventory, gameObject.GetComponent<Mob>().currentWeapon);
+        currentWeaponIndex = Array.IndexOf(gameObject.GetComponent<Mob>().Inventory, gameObject.GetComponent<Mob>().currentWeapon);
         int InventoryLength = gameObject.GetComponent<Mob>().Inventory.Length;
 
         if (ScrollWheel > 0f)

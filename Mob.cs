@@ -12,9 +12,11 @@ public class Mob : MonoBehaviour {
     public int HP;
     public int MaxHP;
     public int toughness; // it is a multiplier of a damage dealt and recived
-    public int InventorySize=5;
+    public int InventorySize;
     public string startingWeaponStr;
     public string secondWeaponStr;
+    public string thirdWeaponStr;
+
     public float speed;
     public Weapons_Module.Weapon currentWeapon;
     public Weapons_Module.Weapon[] Inventory;
@@ -28,7 +30,10 @@ public class Mob : MonoBehaviour {
         {
             Inventory[1] = Weapons_Module.GetWeapon(secondWeaponStr, bulletSource);
         }
-        
+        if (thirdWeaponStr != null)
+        {
+            Inventory[2] = Weapons_Module.GetWeapon(thirdWeaponStr, bulletSource);
+        }
     }
 
     public string damage_deal(int damage)
