@@ -160,7 +160,7 @@ public class Weapons_Module : MonoBehaviour{
                 return (Pistol);
 
             case "AK47":
-                Weapons_Module.Weapon AK47 = new Weapon(weaponName,2 , 3, 2, bulletSource, normalBulletPrefab, 55, 0.35f, speedMult * 7.0f, 1.7f, 0f, false, Resources.Load<AudioClip>("SoundEffects/sdAK47"));
+                Weapons_Module.Weapon AK47 = new Weapon(weaponName,2 , 3, 2, bulletSource, normalBulletPrefab, 26, 0.16f, speedMult * 7.0f, 1.7f, 0f, false, Resources.Load<AudioClip>("SoundEffects/sdAK47"));
                 return (AK47);
 
             case "Revolver":
