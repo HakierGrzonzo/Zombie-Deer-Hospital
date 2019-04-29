@@ -5,7 +5,7 @@ using UnityEngine;
 public class Weapons_Module : MonoBehaviour{
     //Load a normalBulletPrefab from (Assets/bulletPrefabs/normalBulletPrefab)
     public static GameObject normalBulletPrefab = Resources.Load<GameObject>("BulletPrefabs/normalBulletPrefab");
-    //Load a waterBulletPrefab from (Assets/bulletPrefabs/waterBulletPrefab)
+    public static GameObject fireBulletPrefab = Resources.Load<GameObject>("BulletPrefabs/fireBulletPrefab");
     public static GameObject waterBulletPrefab = Resources.Load<GameObject>("BulletPrefabs/waterBulletPrefab");
     public static GameObject rocketBulletPrefab = Resources.Load<GameObject>("BulletPrefabs/rocketBulletPrefab");
 
@@ -188,7 +188,7 @@ public class Weapons_Module : MonoBehaviour{
                 return (Rocket_Launcher);
 
             case "Flame_Thrower":
-                Weapons_Module.Weapon Flame_Thrower  = new Weapon(weaponName,3, 1, 8, bulletSource, normalBulletPrefab, 7, 0.05f, speedMult * 7.5f, 1.9f, 0,false);
+                Weapons_Module.Weapon Flame_Thrower  = new Weapon(weaponName,3, 1, 8, bulletSource, fireBulletPrefab, 7, 0.05f, speedMult * 7.5f, 1.9f, 0,false);
                 return (Flame_Thrower);
 
             case "Knife":
