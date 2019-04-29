@@ -38,7 +38,7 @@ public class Player_Control : MonoBehaviour
 
     public void ShootWeapon()
     {
-        if (Input.GetMouseButtonDown(0) & this.gameObject.GetComponent<Mob>().currentWeapon.CanShoot())
+        if (Input.GetMouseButton(0) & this.gameObject.GetComponent<Mob>().currentWeapon.CanShoot())
         {
             this.gameObject.GetComponent<Mob>().currentWeapon.Shoot(gameObject.GetComponent<Mob>());
         }
