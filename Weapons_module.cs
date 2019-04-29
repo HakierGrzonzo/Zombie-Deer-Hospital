@@ -5,7 +5,7 @@ using UnityEngine;
 public class Weapons_Module : MonoBehaviour{
     //Load a normalBulletPrefab from (Assets/bulletPrefabs/normalBulletPrefab)
     public static GameObject normalBulletPrefab = Resources.Load<GameObject>("BulletPrefabs/normalBulletPrefab");
-    //Load a waterBulletPrefab from (Assets/bulletPrefabs/waterBulletPrefab)
+    public static GameObject fireBulletPrefab = Resources.Load<GameObject>("BulletPrefabs/fireBulletPrefab");
     public static GameObject waterBulletPrefab = Resources.Load<GameObject>("BulletPrefabs/waterBulletPrefab");
     public static GameObject rocketBulletPrefab = Resources.Load<GameObject>("BulletPrefabs/rocketBulletPrefab");
 
@@ -21,6 +21,15 @@ public class Weapons_Module : MonoBehaviour{
     public static Sprite ak47Sprite = Resources.Load<Sprite>("GunSPrefabs/ak");
     public static Sprite m16Sprite = Resources.Load<Sprite>("GunSPrefabs/m16");
     public static Sprite nothingSprite = Resources.Load<Sprite>("GunSPrefabs/nothing");
+
+    public static Sprite sniper_rifleSprite = Resources.Load<Sprite>("GunSPrefabs/sniper_rifle");
+    public static Sprite minigunSprite = Resources.Load<Sprite>("GunSPrefabs/minigun");
+    public static Sprite rocket_launcherSprite = Resources.Load<Sprite>("GunSPrefabs/rocket_launcher");
+    public static Sprite flame_throwerSprite = Resources.Load<Sprite>("GunSPrefabs/flame_thrower");
+    public static Sprite machine_gunSprite = Resources.Load<Sprite>("GunSPrefabs/machine_gun");
+    //public static Sprite korwins_gunSprite = Resources.Load<Sprite>("GunSPrefabs/korwins_gun");
+
+
 
     //Audio effect
 
@@ -103,46 +112,30 @@ public class Weapons_Module : MonoBehaviour{
                 Sprite Nothing3 = nothingSprite;
                 return (Nothing3);
 
+            case "Sniper_rifle":
+                Sprite Sniper_rifle = sniper_rifleSprite;
+                return (Sniper_rifle);
+
+            case "Minigun":
+                Sprite Minigun = minigunSprite;
+                return (Minigun);
+
+            case "Rocket_Launcher":
+                Sprite Rocket_Launcher = rocket_launcherSprite;
+                return (Rocket_Launcher);
+
+            case "Flame_Thrower":
+                Sprite Flame_Thrower = flame_throwerSprite;
+                return (Flame_Thrower);
+
+            case "machine_gun":
+                Sprite machine_Gun = machine_gunSprite;
+                return (machine_Gun);
+            
                 /*
-                case "Sniper_rifle":
-                    Sprite Sniper_rifle = sniper_rifleSprite;
-                    return (Sniper_rifle);
-
-                case "Minigun":
-                    Sprite Minigun = minigunSprite;
-                    return (Minigun);
-
-                case "Rocket_Launcher":
-                    Sprite Rocket_Launcher = rocket_launcherSprite;
-                    return (Rocket_Launcher);
-
-                case "Flame_Thrower":
-                    Sprite Flame_Thrower = flame_throwerSprite;
-                    return (Flame_Thrower);
-
-                case "Katana":
-                    Sprite Katana = katanaSprite;
-                    return (Katana);
-
-                case "Axe":
-                    Sprite Axe = axeSprite;
-                    return (Axe);
-
-                case "Scythe":
-                    Sprite Scythe = scytheSprite;
-                    return (Scythe);
-
-                case "Chainsaw":
-                    Sprite Chainsaw = chainsawSprite;
-                    return (Chainsaw);
-
-                case "machine_gun":
-                    Sprite machine_Gun = machine_gunSprite;
-                    return (machine_Gun);
-
-                case "korwins_gun":
-                    Sprite korwins_gun = korwins_gunSprite;
-                    return (korwins_gun);
+            case "korwins_gun":
+                Sprite korwins_gun = korwins_gunSprite;
+                return (korwins_gun);
                 */
         }
         return null;
@@ -195,7 +188,7 @@ public class Weapons_Module : MonoBehaviour{
                 return (Rocket_Launcher);
 
             case "Flame_Thrower":
-                Weapons_Module.Weapon Flame_Thrower  = new Weapon(weaponName,3, 1, 8, bulletSource, normalBulletPrefab, 7, 0.05f, speedMult * 7.5f, 1.9f, 0,false);
+                Weapons_Module.Weapon Flame_Thrower  = new Weapon(weaponName,3, 1, 8, bulletSource, fireBulletPrefab, 7, 0.05f, speedMult * 7.5f, 1.9f, 0,false);
                 return (Flame_Thrower);
 
             case "Knife":
