@@ -58,7 +58,7 @@ public class Movement : MonoBehaviour
             {
                 runningAway = false;
             }
-            move = new Vector2(0,0) - move;
+            move = Vector2.zero - move;
         }
 
         gameObject.GetComponent<Rigidbody2D>().AddForce(move,ForceMode2D.Force);
@@ -69,6 +69,7 @@ public class Movement : MonoBehaviour
         this.time = time;
         runningAway = true;
         timePassed = 0;
+        gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
     }
 
     public Movement()
