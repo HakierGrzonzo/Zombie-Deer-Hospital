@@ -129,7 +129,7 @@ public class Mob : MonoBehaviour {
     {
         if (gameObject.CompareTag("Player"))
         {
-            currentWeapon = Inventory[GetCurrentWeaponIndex()];
+            //currentWeapon = Inventory[GetCurrentWeaponIndex()];
             currentWeaponStr = currentWeapon.name;
 
             if (Time.time - timeLastSelfDamagePerSecond > 1.0f)
@@ -171,7 +171,7 @@ public class Mob : MonoBehaviour {
                 {
                     GameObject.Destroy(collider.gameObject);
                 }
-                gameObject.GetComponent<Movement>().RunAway(0.5f);
+                gameObject.GetComponent<Movement>().RunAway(0.1f);
             }
         }
         else if (this.gameObject.CompareTag("Player"))
