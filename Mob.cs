@@ -84,6 +84,14 @@ public class Mob : MonoBehaviour {
         if(weaponToGiveTier-1 == currentWeaponIndex)
         {
             currentWeapon = Inventory[weaponToGiveTier - 1];
+            try
+            {
+                currentWeapon = Inventory[weaponToGiveTier];
+            }
+            catch
+            {
+                currentWeapon = Inventory[weaponToGiveTier+1];
+            }
         }
     }
 
