@@ -39,6 +39,19 @@ public class bulletScript : MonoBehaviour
         
         else if (collider.CompareTag("Player"))
         {
+            if (owner.title == "Korwin")
+            {
+                if (collider.gameObject.GetComponent<Mob>().damage_deal(bulletDamage) != null)
+                {
+                    GameObject.Destroy(collider.gameObject);
+                }
+
+                bulletPenetration -= 1;
+                if (bulletPenetration <= 0)
+                {
+                    GameObject.Destroy(gameObject);
+                }
+            }
             /*
             if (collider.gameObject.GetComponent<Mob>().damage_deal(bulletDamage) != null)
             {

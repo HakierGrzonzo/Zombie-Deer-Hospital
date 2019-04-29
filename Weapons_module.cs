@@ -215,8 +215,8 @@ public class Weapons_Module : MonoBehaviour{
                 Weapons_Module.Weapon machine_Gun = new Weapon(weaponName,3, 1, 1, bulletSource, normalBulletPrefab, 10, 0.75f, speedMult * 7.0f, 1.7f, 0f, false);
                 return (machine_Gun);
 
-            case "korwins_gun":
-                Weapons_Module.Weapon korwins_gun = new Weapon(weaponName,1, 0, 1, bulletSource, rocketBulletPrefab, 0, 2, speedMult * 10.0f, 100f, 0f, false);
+            case "Korwins_gun":
+                Weapons_Module.Weapon korwins_gun = new Weapon(weaponName,1, 0, 1, bulletSource, rocketBulletPrefab, 100, 0.5f, speedMult * 0f, 100f, 0f, false);
                 return (korwins_gun);
 
             case "Nothing1":
@@ -296,12 +296,9 @@ public class Weapons_Module : MonoBehaviour{
             Bullet.GetComponent<bulletScript>().owner = bulletSource.GetComponentInParent<Mob>();
             Bullet.GetComponent<Rigidbody2D>().AddForce(Bullet.transform.up * bulletSpeed);
 
-            if (name == "korwins_gun")
+            if (name == "Korwins_gun")
              {
                  Debug.Log("True gun is here!!!");
-                 Bullet.AddComponent<Movement>();
-                 Bullet.GetComponent<Movement>().maxSpeed = 30;
-                 Bullet.GetComponent<Movement>().speed = 3;
                  Bullet.GetComponent<bulletScript>().percentDamage = 5;
              }
              

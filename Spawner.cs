@@ -8,7 +8,7 @@ public class Spawner : MonoBehaviour
     public GameObject myPrefab; //creature to spawn
     public float spawnrate = 2; //delay beetween spawns
     public int spawnLimit = -1; //max no. of spawns, -1 for infinite spawns
-    private int enemiesSpawned = 0;
+    public int enemiesSpawned = 0;
     public float maximalDistanceFromPlayer = -1; //How close must player get for spawner to start working
     private Vector2 distance;
     private GameObject playerObject;
@@ -28,7 +28,7 @@ public class Spawner : MonoBehaviour
 
     private bool canSpawn() //are conditions for spawning satisfied
     {
-        if ((spawnLimit > enemiesSpawned || spawnLimit == -1)&&((int) distanceToPlayer() < (int) maximalDistanceFromPlayer)) { return true; }
+        if ((spawnLimit > enemiesSpawned || spawnLimit == -1)&&( distanceToPlayer() < maximalDistanceFromPlayer)) { return true; }
         else { return false; }
     }
 
@@ -36,8 +36,8 @@ public class Spawner : MonoBehaviour
     void Update()
     {
         timePassed += Time.deltaTime;
-        //Debug.Log(canSpawn());
-        //Debug.Log(distanceToPlayer());
+        Debug.Log(canSpawn());
+        Debug.Log(distanceToPlayer());
         if (canSpawn())
         {
             if (timePassed > spawnrate)
@@ -49,6 +49,7 @@ public class Spawner : MonoBehaviour
                     x++;
                     Enemy.name = myPrefab.name;
                 }
+                x = 0;
                 enemiesSpawned++;
             }
         }

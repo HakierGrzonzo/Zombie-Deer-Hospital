@@ -38,7 +38,7 @@ public class statusEffect : MonoBehaviour
         }
     }
 
-    ~statusEffect()
+    private void OnDestroy()
     {
         gameObject.GetComponent<Mob>().MaxHP += MaxHPEffect;
         gameObject.GetComponent<Mob>().toughness += toughnessEffect;
