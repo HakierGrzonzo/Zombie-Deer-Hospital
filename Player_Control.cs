@@ -84,6 +84,8 @@ public class Player_Control : MonoBehaviour
 
     private void Move()
     {
+        Animator animator = gameObject.GetComponent<Animator>();
+
         float vertical = Input.GetAxis("Vertical");
         float horizontal = Input.GetAxis("Horizontal");
         Vector3 currentPos = playerTransform.position;
@@ -93,7 +95,10 @@ public class Player_Control : MonoBehaviour
         //Quaternion playerRotation =Quaternion.Euler(new Vector3(0, 0, playerRotationAngle));
 
         playerTransform.SetPositionAndRotation(currentPos+ movementVector*moveSpeed, Quaternion.identity);
-       //MOZNA TO PRZEZ TO DODAC: gameObject.GetComponent<Rigidbody2D>().AddForce()
+
+        if (movementVector.magnitude >0) { animator.SetBool("IsMoving", true); }
+        else animator.SetBool("IsMoving", false);
+        //MOZNA TO PRZEZ TO DODAC: gameObject.GetComponent<Rigidbody2D>().AddForce()
     }
 
     private void CameraFollowing()
@@ -107,8 +112,14 @@ public class Player_Control : MonoBehaviour
         mousePos.x = mousePos.x - objectPos.x;
         mousePos.y = mousePos.y - objectPos.y;
         float playerRotationAngle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
+        Animator animator = gameObject.GetComponent<Animator>();
 
-
+        animator.SetFloat("DirectionFacing", Mathf.Abs(playerRotationAngle));
+        bool IsPositive;
+        if (playerRotationAngle > 0) { IsPositive = true; }
+        else { IsPositive = false; }
+        animator.SetBool("IsPositive", IsPositive);
+        /*
         if (playerRotationAngle      < -157.5 || playerRotationAngle  > 157.5) { gameObject.GetComponent<SpriteRenderer>().sprite = L; }
         else if (playerRotationAngle > -22.5  &&  playerRotationAngle < 22.5)  { gameObject.GetComponent<SpriteRenderer>().sprite = R;  }
         else if(playerRotationAngle  <  -67.5 &&  playerRotationAngle > -112.5) { gameObject.GetComponent<SpriteRenderer>().sprite = U; }
@@ -119,7 +130,7 @@ public class Player_Control : MonoBehaviour
 
         else if(playerRotationAngle  <   157.5  &&  playerRotationAngle > 112.5) { gameObject.GetComponent<SpriteRenderer>().sprite = DR;}
         else if(playerRotationAngle  >   -157.5  &&  playerRotationAngle < -112.5) { gameObject.GetComponent<SpriteRenderer>().sprite = UR;  }
-
+        */
 
     }
 }
