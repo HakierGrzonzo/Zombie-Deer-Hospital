@@ -10,6 +10,9 @@ public class Movement : MonoBehaviour
     private Vector2 move;
     private GameObject playerObject;
     public float maxSpeed = 1;
+    private float timePassed = 0;
+    private bool runningAway = false;
+    private float time;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,8 +51,24 @@ public class Movement : MonoBehaviour
             animator.SetFloat("moveAngle", moveAngle);
         }
 
+        if (runningAway)
+        {
+            timePassed += Time.deltaTime;
+            if (time > timePassed)
+            {
+                runningAway = false;
+            }
+            move = new Vector2(0,0) - move;
+        }
 
         gameObject.GetComponent<Rigidbody2D>().AddForce(move,ForceMode2D.Force);
+    }
+
+    public void RunAway(int time)
+    {
+        this.time = time;
+        runningAway = true;
+        timePassed = 0;
     }
 
     public Movement()
