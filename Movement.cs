@@ -12,7 +12,8 @@ public class Movement : MonoBehaviour
     public float maxSpeed = 1;
     private float timePassed = 0;
     private bool runningAway = false;
-    private float time;
+    private float timeStartedRunning;
+    public float timeToRunAway;
     // Start is called before the first frame update
     void Start()
     {
@@ -54,11 +55,12 @@ public class Movement : MonoBehaviour
         if (runningAway)
         {
             timePassed += Time.deltaTime;
-            if (time > timePassed)
+            if (Time.time- timeStartedRunning > timeToRunAway)
             {
                 runningAway = false;
             }
             move = Vector2.zero - move;
+            Debug.Log("Geting the fuck out");
         }
 
         gameObject.GetComponent<Rigidbody2D>().AddForce(move,ForceMode2D.Force);
@@ -66,9 +68,9 @@ public class Movement : MonoBehaviour
 
     public void RunAway(float time)
     {
-        this.time = time;
+        timeToRunAway = time;
+        this.timeStartedRunning = Time.time;
         runningAway = true;
-        timePassed = 0;
         gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
     }
 

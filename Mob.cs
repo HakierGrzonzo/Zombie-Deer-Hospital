@@ -169,7 +169,7 @@ public class Mob : MonoBehaviour {
                 {
                     GameObject.Destroy(collider.gameObject);
                 }
-                gameObject.GetComponent<Movement>().RunAway(0.5f);
+                gameObject.GetComponent<Movement>().RunAway(0.1f);
             }
         }
         else if (this.gameObject.CompareTag("Player"))
