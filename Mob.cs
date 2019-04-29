@@ -19,6 +19,7 @@ public class Mob : MonoBehaviour {
 
     public float speed;
     public Weapons_Module.Weapon currentWeapon;
+    public string currentWeaponStr;
     public int currentWeaponIndex;
     public Weapons_Module.Weapon[] Inventory;
 
@@ -68,7 +69,6 @@ public class Mob : MonoBehaviour {
             droppedWeapon.GetComponent<WeaponPickup>().weaponToDropName = Inventory[inventorySlot].name;
         }
         Inventory[inventorySlot] = null;
-        currentWeapon = Inventory[currentWeaponIndex];
     }
 
     public string Percent_damage_deal_MaxHP(int percentDamage)
@@ -86,7 +86,7 @@ public class Mob : MonoBehaviour {
 
     private void Update()
     {
-        secondWeaponStr = currentWeapon.name;
+        currentWeaponStr = currentWeapon.name;
         currentWeaponIndex = Array.IndexOf(Inventory, currentWeapon);
         if (HP > 0)
         { }
