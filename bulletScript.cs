@@ -29,15 +29,15 @@ public class bulletScript : MonoBehaviour
             }
 
         }
-
+        
         else if (collider.CompareTag("Player"))
         {
+            /*
             if (collider.gameObject.GetComponent<Mob>().damage_deal(bulletDamage) != null)
             {
                 owner.HP += collider.gameObject.GetComponent<Mob>().healthDrop;
                 GameObject.Destroy(collider.gameObject);
             }
-
             if (percentDamage != 0)
             {
                 if (collider.gameObject.GetComponent<Mob>().damage_deal(collider.gameObject.GetComponent<Mob>().HP *(percentDamage/100) ) != null)
@@ -52,11 +52,12 @@ public class bulletScript : MonoBehaviour
             {
                 GameObject.Destroy(gameObject);
             }
+            */
         }
+        
 
         else if (collider.CompareTag("Bullet"))
         {
-            Debug.Log("bul");
         }
 
         else

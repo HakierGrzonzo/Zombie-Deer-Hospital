@@ -13,6 +13,8 @@ public class Spawner : MonoBehaviour
     private Vector2 distance;
     private GameObject playerObject;
     // Start is called before the first frame update
+    private int x = 0;
+    public int swarmSize = 1;
     void Start()
     {
         playerObject = GameObject.FindWithTag("Player");
@@ -41,8 +43,12 @@ public class Spawner : MonoBehaviour
             if (timePassed > spawnrate)
             {
                 timePassed = 0;
-                GameObject Enemy = Instantiate(myPrefab, gameObject.transform.position, Quaternion.identity.normalized);
-                Enemy.name = myPrefab.name;
+                while (x < swarmSize)
+                {
+                    GameObject Enemy = Instantiate(myPrefab, gameObject.transform.position, Quaternion.identity.normalized);
+                    x++;
+                    Enemy.name = myPrefab.name;
+                }
                 enemiesSpawned++;
             }
         }
