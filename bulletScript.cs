@@ -15,17 +15,24 @@ public class bulletScript : MonoBehaviour
     {
         if (collider.CompareTag("Enemy"))//collider.CompareTag("Player") ||
         {
-            Debug.Log("Hit");
-            if (collider.gameObject.GetComponent<Mob>().damage_deal(bulletDamage) != null)
+            if(owner.title == "Korwin")
             {
-                owner.HP += collider.gameObject.GetComponent<Mob>().healthDrop;
-                GameObject.Destroy(collider.gameObject);
+    
             }
-
-            bulletPenetration -= 1;
-            if (bulletPenetration <= 0)
+            else
             {
-                GameObject.Destroy(gameObject);
+                Debug.Log("Hit");
+                if (collider.gameObject.GetComponent<Mob>().damage_deal(bulletDamage) != null)
+                {
+                    owner.HP += collider.gameObject.GetComponent<Mob>().healthDrop;
+                    GameObject.Destroy(collider.gameObject);
+                }
+
+                bulletPenetration -= 1;
+                if (bulletPenetration <= 0)
+                {
+                    GameObject.Destroy(gameObject);
+                }
             }
 
         }
