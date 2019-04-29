@@ -8,6 +8,8 @@ public class bulletScript : MonoBehaviour
     public Mob owner;
     public int percentDamage=0;
     public int bulletPenetration;
+    public statusEffect status;
+    public statusEffect statusTarget;
 
 
 
@@ -43,6 +45,8 @@ public class bulletScript : MonoBehaviour
             {
                 if (collider.gameObject.GetComponent<Mob>().damage_deal(bulletDamage) != null)
                 {
+                    statusTarget = GameObject.FindWithTag("Player").AddComponent<statusEffect>();
+                    statusTarget = status;
                     GameObject.Destroy(collider.gameObject);
                 }
 

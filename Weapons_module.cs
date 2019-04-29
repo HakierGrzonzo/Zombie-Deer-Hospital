@@ -288,7 +288,6 @@ public class Weapons_Module : MonoBehaviour{
             
             audioSource = bulletSource.GetComponent<AudioSource>();
             audioSource.PlayOneShot(sound);
-            Debug.Log("Shooooooot");
             Transform bulletSourceTransform = bulletSource.GetComponent<Transform>();
 
             GameObject Bullet = Instantiate(bulletPrefab, bulletSourceTransform.position, bulletSourceTransform.rotation);

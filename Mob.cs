@@ -128,7 +128,7 @@ public class Mob : MonoBehaviour {
     {
         if (gameObject.CompareTag("Player"))
         {
-            currentWeapon = Inventory[GetCurrentWeaponIndex()];
+            //currentWeapon = Inventory[GetCurrentWeaponIndex()];
             currentWeaponStr = currentWeapon.name;
 
             timePassed += Time.deltaTime;
