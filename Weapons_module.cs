@@ -21,7 +21,7 @@ public class Weapons_Module : MonoBehaviour{
                 return (Shotgun);
 
             case "Water_gun":
-                Weapons_Module.Weapon Water_gun = new Weapon(weaponName,1, 1, 1, bulletSource, normalBulletPrefab, 15, 0.30f, speedMult * 5.0f, 1.5f, 0, false, );
+                Weapons_Module.Weapon Water_gun = new Weapon(weaponName,1, 1, 1, bulletSource, normalBulletPrefab, 15, 0.30f, speedMult * 5.0f, 1.5f, 0, false );
                 return (Water_gun);
 
             case "Pistol":
@@ -142,7 +142,10 @@ public class Weapons_Module : MonoBehaviour{
         {
             selfDamageReceiver.damage_deal(selfDamage);
             lastShotTime = Time.time;
-           
+
+            audioSource = bulletSource.GetComponent<AudioSource>();
+            audioSource.PlayOneShot(sound);
+
             Transform bulletSourceTransform = bulletSource.GetComponent<Transform>();
             GameObject Bullet = Instantiate(bulletPrefab, bulletSourceTransform.position, bulletSourceTransform.rotation);
             Bullet.GetComponent<bulletScript>().bulletDamage = damage;
@@ -150,8 +153,7 @@ public class Weapons_Module : MonoBehaviour{
             Bullet.GetComponent<bulletScript>().owner = bulletSource.GetComponentInParent<Mob>();
             Bullet.GetComponent<Rigidbody2D>().AddForce(Bullet.transform.up * bulletSpeed);
 
-            audioSource = bulletSource.GetComponent<AudioSource>();
-            audioSource.PlayOneShot(sound);
+            
             /* if (name == "korwins_gun")
              {
                  Debug.Log("True gun is here!!!");
