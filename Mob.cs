@@ -85,7 +85,10 @@ public class Mob : MonoBehaviour {
 
     private void Update()
     {
-        currentWeaponIndex = Array.IndexOf(gameObject.GetComponent<Mob>().Inventory, gameObject.GetComponent<Mob>().currentWeapon);
+        startingWeaponStr = Inventory[0].name;
+        secondWeaponStr = Inventory[1].name;
+        thirdWeaponStr = Inventory[2].name;
+    currentWeaponIndex = Array.IndexOf(gameObject.GetComponent<Mob>().Inventory, gameObject.GetComponent<Mob>().currentWeapon);
         if (HP > 0)
         { }
         else if(HP<=0)
