@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
 
 public class Mob : MonoBehaviour {
 
@@ -19,6 +19,7 @@ public class Mob : MonoBehaviour {
 
     public float speed;
     public Weapons_Module.Weapon currentWeapon;
+    public string currentWeaponStr;
     public Weapons_Module.Weapon[] Inventory;
 
     private void Start()
@@ -36,6 +37,11 @@ public class Mob : MonoBehaviour {
         }
     }
 
+    public int GetCurrentWeaponIndex()
+    {
+        return( Array.IndexOf(Inventory, currentWeapon));
+    }
+
     public string damage_deal(int damage)
     {
         HP = (int)((float)HP - ((float)damage) * toughness);
@@ -47,6 +53,25 @@ public class Mob : MonoBehaviour {
         {
             return null;
         }
+    }
+
+    public void GiveWeapon(Weapons_Module.Weapon weapon)
+    {
+        int weaponToGiveTier = weapon.tier;
+        int currentWeaponIndex = GetCurrentWeaponIndex();
+        Inventory[weaponToGiveTier-1] = weapon;
+        currentWeapon = Inventory[currentWeaponIndex];
+    }
+
+    public void DropWeapon(int inventorySlot)
+    {
+        if (Inventory[inventorySlot] != null)
+        {
+            GameObject droppedWeapon = Instantiate(Weapons_Module.droppedWeaponPrefab, gameObject.transform.position, Quaternion.identity);
+            droppedWeapon.GetComponent<SpriteRenderer>().sprite = Weapons_Module.GetWeaponSprite(Inventory[inventorySlot].name);
+            droppedWeapon.GetComponent<WeaponPickup>().weaponToDropName = Inventory[inventorySlot].name;
+        }
+        Inventory[inventorySlot] = null;
     }
 
     public string Percent_damage_deal_MaxHP(int percentDamage)
@@ -64,6 +89,17 @@ public class Mob : MonoBehaviour {
 
     private void Update()
     {
+        currentWeapon = Inventory[GetCurrentWeaponIndex()];
+        if (currentWeapon != null)
+        {
+            //Debug.Log(currentWeapon.name);
+        }
+        else
+        {
+            //Debug.Log("fucked up");
+        }
+        currentWeaponStr = currentWeapon.name;
+        
         if (HP > 0)
         { }
         else if(HP<=0)
