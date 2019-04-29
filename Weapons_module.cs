@@ -11,25 +11,25 @@ public class Weapons_Module : MonoBehaviour{
 
     //Audio effect
 
-    public static AudioClip shotgunSoundEffect = Resources.Load<GameObject>("SoundEffects/sdShotgun");
+    public static AudioClip shotgunSoundEffect = Resources.Load<AudioClip>("SoundEffects/sdShotgun");
 
-    public static AudioClip pistolSoundEffect = Resources.Load<GameObject>("SoundEffects/sdPistol");
+    public static AudioClip pistolSoundEffect = Resources.Load<AudioClip>("SoundEffects/sdPistol");
 
-    public static AudioClip ak47SoundEffect = Resources.Load<GameObject>("SoundEffects/sdAK47");
+    public static AudioClip ak47SoundEffect = Resources.Load<AudioClip>("SoundEffects/sdAK47");
 
-    public static AudioClip revolverSoundEffect = Resources.Load<GameObject>("SoundEffects/sdRevolver");
+    public static AudioClip revolverSoundEffect = Resources.Load<AudioClip>("SoundEffects/sdRevolver");
 
-    public static AudioClip uziSoundEffect = Resources.Load<GameObject>("SoundEffects/sdUzi");
+    public static AudioClip uziSoundEffect = Resources.Load<AudioClip>("SoundEffects/sdUzi");
 
-    public static AudioClip m16SoundEffect = Resources.Load<GameObject>("SoundEffects/sdM16");
+    public static AudioClip m16SoundEffect = Resources.Load<AudioClip>("SoundEffects/sdM16");
 
-    public static AudioClip sniperrifleSoundEffect = Resources.Load<GameObject>("SoundEffects/sdSniper");
+    public static AudioClip sniperrifleSoundEffect = Resources.Load<AudioClip>("SoundEffects/sdSniper");
 
-    public static AudioClip minigunSoundEffect = Resources.Load<GameObject>("SoundEffects/sdMinigun");
+    public static AudioClip minigunSoundEffect = Resources.Load<AudioClip>("SoundEffects/sdMinigun");
 
     //public static AudioClip rocketlauncherSoundEffect = Resources.Load<GameObject>("SoundEffects/");
 
-    public static AudioClip flamethrowerSoundEffect = Resources.Load<GameObject>("SoundEffects/");
+    public static AudioClip flamethrowerSoundEffect = Resources.Load<AudioClip>("SoundEffects/");
 
     //public static AudioClip knifeSoundEffect = Resources.Load<GameObject>("SoundEffects/");
 
@@ -54,7 +54,7 @@ public class Weapons_Module : MonoBehaviour{
 
             case "Water_gun":
                 Weapons_Module.Weapon Water_gun = new Weapon(weaponName,1, 1, 1, bulletSource, normalBulletPrefab, 15, 0.30f, speedMult * 5.0f, 1.5f, 0, false);
-                return (water_gun);
+                return (Water_gun);
 
             case "Pistol":
                 Weapons_Module.Weapon Pistol = new Weapon(weaponName,1 ,0 ,1 , bulletSource, normalBulletPrefab, 10, 0.75f, speedMult * 7.0f, 1.7f, 0f, false);
@@ -73,12 +73,12 @@ public class Weapons_Module : MonoBehaviour{
                 return (Uzi);
 
             case "M16":
-                Weapons_Module.Weapon M40 = new Weapon(weaponName,2 ,2 , bulletSource, normalBulletPrefab, 39, 0.25f, speedMult *9.0f , 1.5f, 0, false);
+                Weapons_Module.Weapon M16 = new Weapon(weaponName,2,2 ,2 , bulletSource, normalBulletPrefab, 39, 0.25f, speedMult *9.0f , 1.5f, 0, false);
                 return (M16);
 
             case "Sniper_rifle":
                 Weapons_Module.Weapon Sniper_rifle = new Weapon(weaponName,2 ,5 ,7 , bulletSource, normalBulletPrefab,76 , 1.25f, speedMult *11.0f , 1.8f, 0, false);
-                return (sniper_rifle);
+                return (Sniper_rifle);
 
             case "Minigun":
                 Weapons_Module.Weapon Minigun = new Weapon(weaponName,3, 1, 1, bulletSource, normalBulletPrefab, 45, 0.091f, speedMult *10.5f , 1.7f, 0, false);
