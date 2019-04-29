@@ -8,16 +8,18 @@ public class QuestController : MonoBehaviour
 
     //these appear when player is presented with a choice between two quest and disappear when selection is made.
     //
-    public Canvas canvas;
+    public GameObject Table1;
+    public GameObject Table2;
+
     [Header("Text Objects for first quest")]
     public Text Q1_EnemyToKill;
     public Text Q1_EnemyCount;
-    public Text Q1_Weapon;
+    //public Text Q1_Weapon;
     public Text Q1_Time;
     [Header("Text Objects for second quest")]
     public Text Q2_EnemyToKill;
     public Text Q2_EnemyCount;
-    public Text Q2_Weapon;
+    //public Text Q2_Weapon;
     public Text Q2_Time;
 
     public float TimerCountdown;
@@ -49,6 +51,7 @@ public class QuestController : MonoBehaviour
             QuestContainer[0].currentKills =Camera.main.GetComponent<statKeeper>().getKillCount(QuestContainer[0].enemyToKill);
             if (QuestContainer[0].currentKills == QuestContainer[0].targetKills) { gameObject.GetComponent<Mob>().HP += TotalWeight * 2; };
         }
+        else { }
 
 
 
@@ -60,7 +63,8 @@ public class QuestController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space)|| Mathf.Floor(TimerCountdown) == 1)        //When this statement is fulfilled 2 new quests are generated
         {
             TimerCountdown =0;
-            canvas.gameObject.SetActive(true);
+            Table1.gameObject.SetActive(true);
+            Table2.gameObject.SetActive(true);
             QuestContainer[0] = QuestGenerator(0);                                          //first time 2 quets are generated
             if (QuestContainer[2].timeLimit != 0) { QuestContainer[1] = QuestContainer[2]; }       
             else QuestContainer[1] = QuestGenerator(1);                                     //the rejected quest is introduced again as requested
@@ -73,7 +77,10 @@ public class QuestController : MonoBehaviour
     {
         QuestContainer[2] = QuestContainer[1];
         QuestContainer[1] = null;
-        canvas.gameObject.SetActive(false);
+        //Table1.gameObject.transform.position.Set(1000, 100, -88.65f);// = new Vector3(-1700, -174, -88.65f)/250;
+        Table1.transform.position = new Vector3(-60, 7, -450);
+
+        Table2.gameObject.SetActive(false);
         TimerCountdown = QuestContainer[0].timeLimit;
         UpdateTextObject();       
     }                   //These are called when player chooses either quest by presing according button
@@ -81,7 +88,9 @@ public class QuestController : MonoBehaviour
     {
         QuestContainer[2] = QuestContainer[0];
         QuestContainer[0] = null;
-        canvas.gameObject.SetActive(false);
+        //Table2.gameObject.transform.position = new Vector3(-1700, -174, -88.65f);
+        Table2.transform.position = new Vector3(-60, 7, -450);
+        Table1.gameObject.SetActive(false);
         TimerCountdown = QuestContainer[1].timeLimit;
         UpdateTextObject();
     }
@@ -91,7 +100,7 @@ public class QuestController : MonoBehaviour
         
         var EnemyContainer = new List<string> {"Patient", "Contagious Patient", "Alcoholic", "Agressive Patient", "Rescuer", "Paranoic", "Druggy", "Wheelchair Patient", "Nurse", "Injured Soldier", "Guard", "Madman ", "Doctor", "Psycho", "Psychologist" };
                                                                                                                     //tier 2                                                //tier 3                                           //tier 4
-        var WeaponContainer = new List<string> { "Pistol", "Uzi", "Revolver", "Knife", "Katana", "Axe", "Chainsaw", "Kalashnikov", "M-40", "Sniper Rifle", "Shotgun", "Scythe", "Rocket Launcher", "Flamethrower", "Minigun" };
+        var WeaponContainer = new List<string> { "Pistol", "Uzi", "Revolver", "AK47", "M16", "Sniper Rifle", "Shotgun", "Rocket_Launcher", "Flame_Thrower", "Minigun" };
                                                                                                                      //tier 2                                              //Tier 3         
         int RandomizerA = Random.Range(0, EnemyContainer.Count - 1);
         if (RandomizerA < 5) { CurWeight = Mathf.FloorToInt(TotalWeight / 2); }
@@ -119,12 +128,12 @@ public class QuestController : MonoBehaviour
         Q1_EnemyToKill.text = QuestContainer[0].enemyToKill;
         Q1_EnemyCount.text = QuestContainer[0].targetKills.ToString();
         Q1_Time.text = QuestContainer[0].timeLimit.ToString();
-        Q1_Weapon.text = QuestContainer[0].weaponToKillWith;
+        //Q1_Weapon.text = QuestContainer[0].weaponToKillWith;
 
         Q2_EnemyToKill.text = QuestContainer[1].enemyToKill;
         Q2_EnemyCount.text = QuestContainer[1].targetKills.ToString();
         Q2_Time.text = QuestContainer[1].timeLimit.ToString();
-        Q2_Weapon.text = QuestContainer[1].weaponToKillWith;
+       // Q2_Weapon.text = QuestContainer[1].weaponToKillWith;
 
     }
 }
