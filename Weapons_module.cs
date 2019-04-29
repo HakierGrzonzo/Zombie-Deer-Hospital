@@ -188,7 +188,7 @@ public class Weapons_Module : MonoBehaviour{
                 return (Rocket_Launcher);
 
             case "Flame_Thrower":
-                Weapons_Module.Weapon Flame_Thrower  = new Weapon(weaponName,3, 1, 8, bulletSource, fireBulletPrefab, 7, 0.05f, speedMult * 7.5f, 1.9f, 0,false);
+                Weapons_Module.Weapon Flame_Thrower  = new Weapon(weaponName,3, 1, 8, bulletSource, fireBulletPrefab, 7, 0.05f, speedMult * 7.5f, 1.9f, 10,true);
                 return (Flame_Thrower);
 
             case "Knife":
@@ -306,6 +306,8 @@ public class Weapons_Module : MonoBehaviour{
 
             if (isShotgun)
             {
+                if (name == "Flame_Thrower") { spread = Random.Range(3, 20); } ;
+
 
                 //GameObject Bullet2 = Instantiate(bulletPrefab, bulletSourceTransform.position, bulletSourceTransform.rotation);
                 selfDamageReceiver.damage_deal(selfDamage);
