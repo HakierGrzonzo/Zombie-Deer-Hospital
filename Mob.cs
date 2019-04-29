@@ -145,7 +145,7 @@ public class Mob : MonoBehaviour {
             HP = 0;
             //GameObject.Destroy(this.gameObject);
         }
-        else if (HP > MaxHP)
+        if (HP > MaxHP)
         {
             HP = MaxHP;
         }
