@@ -20,6 +20,7 @@ public class Weapons_Module : MonoBehaviour{
     public static Sprite shotgunSprite =  Resources.Load<Sprite>("GunSPrefabs/shotgun");
     public static Sprite ak47Sprite = Resources.Load<Sprite>("GunSPrefabs/ak");
     public static Sprite m16Sprite = Resources.Load<Sprite>("GunSPrefabs/m16");
+    public static Sprite nothingSprite = Resources.Load<Sprite>("GunSPrefabs/nothing");
 
     //Audio effect
 
@@ -89,6 +90,18 @@ public class Weapons_Module : MonoBehaviour{
             case "Knife":
                 Sprite Knife = knifeSprite;
                 return (Knife);
+
+            case "Nothing1":
+                Sprite Nothing1 = nothingSprite;
+                return (Nothing1);
+
+            case "Nothing2":
+                Sprite Nothing2 = nothingSprite;
+                return (Nothing2);
+
+            case "Nothing3":
+                Sprite Nothing3 = nothingSprite;
+                return (Nothing3);
 
                 /*
                 case "Sniper_rifle":
@@ -212,6 +225,18 @@ public class Weapons_Module : MonoBehaviour{
             case "korwins_gun":
                 Weapons_Module.Weapon korwins_gun = new Weapon(weaponName,1, 0, 1, bulletSource, rocketBulletPrefab, 0, 2, speedMult * 10.0f, 100f, 0f, false);
                 return (korwins_gun);
+
+            case "Nothing1":
+                Weapons_Module.Weapon Nothing1 = new Weapon(weaponName, 1, 0, 0, bulletSource, normalBulletPrefab, 0, 0.0f, 0.0f, 0.0f, 0f, false);
+                return (Nothing1);
+
+            case "Nothing2":
+                Weapons_Module.Weapon Nothing2 = new Weapon(weaponName, 2, 0, 0, bulletSource, normalBulletPrefab, 0, 0.0f, 0.0f, 0.0f, 0f, false);
+                return (Nothing2);
+
+            case "Nothing3":
+                Weapons_Module.Weapon Nothing3 = new Weapon(weaponName, 3, 0, 0, bulletSource, normalBulletPrefab, 0, 0.0f, 0.0f, 0.0f, 0f, false);
+                return (Nothing3);
         }
         return null;
     }

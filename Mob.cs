@@ -24,16 +24,37 @@ public class Mob : MonoBehaviour {
 
     private void Start()
     {
-        Inventory = new Weapons_Module.Weapon[InventorySize];
-        Inventory[0]= Weapons_Module.GetWeapon(startingWeaponStr, bulletSource);
-        currentWeapon = Inventory[0];
+        if (InventorySize > 0)
+        {
+            Inventory = new Weapons_Module.Weapon[InventorySize];
+        }
+
+        if (startingWeaponStr != null)
+        {
+            Inventory[0] = Weapons_Module.GetWeapon(startingWeaponStr, bulletSource);
+            currentWeapon = Inventory[0];
+        }
+        else
+        {
+            Inventory[0] = Weapons_Module.GetWeapon("Nothing1", bulletSource);
+        }
+
         if (secondWeaponStr != null)
         {
             Inventory[1] = Weapons_Module.GetWeapon(secondWeaponStr, bulletSource);
         }
+        else
+        {
+            Inventory[1] = Weapons_Module.GetWeapon("Nothing2", bulletSource);
+        }
+
         if (thirdWeaponStr != null)
         {
             Inventory[2] = Weapons_Module.GetWeapon(thirdWeaponStr, bulletSource);
+        }
+        else
+        {
+            Inventory[2] = Weapons_Module.GetWeapon("Nothing3", bulletSource);
         }
     }
 
@@ -60,7 +81,10 @@ public class Mob : MonoBehaviour {
         int weaponToGiveTier = weapon.tier;
         int currentWeaponIndex = GetCurrentWeaponIndex();
         Inventory[weaponToGiveTier-1] = weapon;
-        currentWeapon = Inventory[currentWeaponIndex];
+        if(weaponToGiveTier-1 == currentWeaponIndex)
+        {
+            currentWeapon = Inventory[weaponToGiveTier - 1];
+        }
     }
 
     public void DropWeapon(int inventorySlot)
@@ -71,7 +95,7 @@ public class Mob : MonoBehaviour {
             droppedWeapon.GetComponent<SpriteRenderer>().sprite = Weapons_Module.GetWeaponSprite(Inventory[inventorySlot].name);
             droppedWeapon.GetComponent<WeaponPickup>().weaponToDropName = Inventory[inventorySlot].name;
         }
-        Inventory[inventorySlot] = null;
+        Inventory[inventorySlot] = Weapons_Module.GetWeapon("Nothing"+(inventorySlot +1).ToString(), bulletSource);
     }
 
     public string Percent_damage_deal_MaxHP(int percentDamage)
