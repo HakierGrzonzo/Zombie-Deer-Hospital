@@ -64,7 +64,7 @@ public class Movement : MonoBehaviour
         gameObject.GetComponent<Rigidbody2D>().AddForce(move,ForceMode2D.Force);
     }
 
-    public void RunAway(int time)
+    public void RunAway(float time)
     {
         this.time = time;
         runningAway = true;
