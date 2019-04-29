@@ -14,9 +14,27 @@ public class Weaponbar: MonoBehaviour
 
         //This controls the grey highlight over the Weapon Bar
         int Index = gameObject.GetComponentInParent<Mob>().GetCurrentWeaponIndex();
-        if (Index == 0) { SelectVisualizer.transform.position = Slot1.transform.position; }
-        else if (Index == 1) { SelectVisualizer.transform.position = Slot2.transform.position; }
-        else if (Index == 2) { SelectVisualizer.transform.position = Slot3.transform.position; }
+        if (Index == 0)
+        {
+            float x = Slot1.transform.position.x;
+            float y = Slot1.transform.position.y;
+            float z=87;
+            SelectVisualizer.transform.position = new Vector3(x,y,z);
+        }
+        else if (Index == 1)
+        {
+            float x = Slot2.transform.position.x;
+            float y = Slot2.transform.position.y;
+            float z = 87;
+            SelectVisualizer.transform.position = new Vector3(x, y, z);
+        }
+        else if (Index == 2)
+        {
+            float x = Slot3.transform.position.x;
+            float y = Slot3.transform.position.y;
+            float z = 87;
+            SelectVisualizer.transform.position = new Vector3(x, y, z);
+        }
 
 
         //This ensures that the weapon picked up is equipped to the correct slot

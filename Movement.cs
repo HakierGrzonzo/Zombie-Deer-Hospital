@@ -21,7 +21,7 @@ public class Movement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (gameObject.GetComponent<Rigidbody2D>().velocity.magnitude > maxSpeed)
         {
