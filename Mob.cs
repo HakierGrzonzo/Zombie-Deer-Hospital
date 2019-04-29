@@ -22,11 +22,12 @@ public class Mob : MonoBehaviour {
     public string currentWeaponStr;
     public Weapons_Module.Weapon[] Inventory;
     public bool selfDamage = false;
-    private float timePassed = 0;
+    private float timeLastSelfDamagePerSecond;
     public int selfDamagePerSecond = 0;
 
     private void Start()
     {
+        timeLastSelfDamagePerSecond = Time.time;
         if (InventorySize > 0)
         {
             Inventory = new Weapons_Module.Weapon[InventorySize];
@@ -131,8 +132,7 @@ public class Mob : MonoBehaviour {
             currentWeapon = Inventory[GetCurrentWeaponIndex()];
             currentWeaponStr = currentWeapon.name;
 
-            timePassed += Time.deltaTime;
-            if (timePassed > 1&&selfDamage)
+            if (Time.time - timeLastSelfDamagePerSecond > 1.0f)
             {
                 DealSelfDamage(selfDamagePerSecond);
             }
