@@ -33,18 +33,7 @@ public class Movement : MonoBehaviour
         //Debug.Log(playerPos);
         Vector2 move = playerPos - position;
 
-
         move = move.normalized * speed;
-
-
-        Animator animator = gameObject.GetComponent<Animator>();
-        float moveAngle = Mathf.Atan2(move.y, move.x) * Mathf.Rad2Deg;
-        bool IsPositive;
-        if (moveAngle > 0) { IsPositive = true; }
-        else { IsPositive = false; }
-        animator.SetBool("IsPositive", IsPositive);
-        animator.SetFloat("moveAngle", moveAngle);
-
         //normalize
 
         gameObject.GetComponent<Rigidbody2D>().AddForce(move,ForceMode2D.Force);
