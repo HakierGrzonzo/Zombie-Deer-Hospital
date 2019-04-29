@@ -9,6 +9,39 @@ public class Weapons_Module : MonoBehaviour{
     public static GameObject waterBulletPrefab = Resources.Load<GameObject>("BulletPrefabs/waterBulletPrefab");
     public static GameObject rocketBulletPrefab = Resources.Load<GameObject>("BulletPrefabs/rocketBulletPrefab");
 
+    //Audio effect
+
+    public static AudioClip shotgunSoundEffect = Resources.Load<GameObject>("SoundEffects/sdShotgun");
+
+    public static AudioClip pistolSoundEffect = Resources.Load<GameObject>("SoundEffects/sdPistol");
+
+    public static AudioClip ak47SoundEffect = Resources.Load<GameObject>("SoundEffects/sdAK47");
+
+    public static AudioClip revolverSoundEffect = Resources.Load<GameObject>("SoundEffects/sdRevolver");
+
+    public static AudioClip uziSoundEffect = Resources.Load<GameObject>("SoundEffects/sdUzi");
+
+    public static AudioClip m16SoundEffect = Resources.Load<GameObject>("SoundEffects/sdM16");
+
+    public static AudioClip sniperrifleSoundEffect = Resources.Load<GameObject>("SoundEffects/sdSniper");
+
+    public static AudioClip minigunSoundEffect = Resources.Load<GameObject>("SoundEffects/sdMinigun");
+
+    //public static AudioClip rocketlauncherSoundEffect = Resources.Load<GameObject>("SoundEffects/");
+
+    public static AudioClip flamethrowerSoundEffect = Resources.Load<GameObject>("SoundEffects/");
+
+    //public static AudioClip knifeSoundEffect = Resources.Load<GameObject>("SoundEffects/");
+
+    //public static AudioClip katanaSoundEffect = Resources.Load<GameObject>("SoundEffects/");
+
+    //public static AudioClip axeSoundEffect = Resources.Load<GameObject>("SoundEffects/");
+
+    //public static AudioClip scytheSoundEffect = Resources.Load<GameObject>("SoundEffects/");
+
+    //public static AudioClip chainsawSoundEffect = Resources.Load<GameObject>("SoundEffects/");
+
+
     public static Weapon GetWeapon(string weaponName, GameObject bulletSource)
     {
         float speedMult = 40f;
@@ -39,7 +72,7 @@ public class Weapons_Module : MonoBehaviour{
                 Weapons_Module.Weapon uzi = new Weapon(weaponName,1 ,1 , bulletSource, normalBulletPrefab, 24, 0.15f, speedMult * 7.0f, 1.4f, 0, false);
                 return (uzi);
 
-            case "M40":
+            case "M16":
                 Weapons_Module.Weapon M40 = new Weapon(weaponName,2 ,2 , bulletSource, normalBulletPrefab, 39, 0.25f, speedMult *7.0f , 1.5f, 0, false);
                 return (M40);
 
