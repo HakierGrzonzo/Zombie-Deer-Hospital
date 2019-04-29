@@ -113,16 +113,21 @@ public class Mob : MonoBehaviour {
 
     private void Update()
     {
-        currentWeapon = Inventory[GetCurrentWeaponIndex()];
-        if (currentWeapon != null)
+        if (gameObject.CompareTag("Player"))
         {
-            //Debug.Log(currentWeapon.name);
+            currentWeapon = Inventory[GetCurrentWeaponIndex()];
+            if (currentWeapon != null)
+            {
+                Debug.Log(currentWeapon.name);
+            }
+            else
+            {
+                Debug.Log("fucked up");
+            }
+
+            currentWeaponStr = currentWeapon.name;
         }
-        else
-        {
-            //Debug.Log("fucked up");
-        }
-        currentWeaponStr = currentWeapon.name;
+        
         
         if (HP > 0)
         { }
