@@ -22,30 +22,36 @@ public class Weaponbar: MonoBehaviour
         //This ensures that the weapon picked up is equipped to the correct slot
         foreach (Weapons_Module.Weapon Gun in gameObject.GetComponent<Mob>().Inventory)
         {
-            if (Gun.tier == 1)
+            if (Gun != null)
             {
-                Slot1.sprite = Weapons_Module.GetWeaponSprite(Gun.name);
+                /*
+                if (Gun.tier == 1)
+                {
+                    Slot1.sprite = Weapons_Module.GetWeaponSprite(Gun.name);
+                }
+
+                else if (Gun.tier == 2)
+                {
+                    Slot2.sprite = Weapons_Module.GetWeaponSprite(Gun.name);
+                }
+
+                else if (Gun.tier == 3)
+                {
+                    Slot3.sprite = Weapons_Module.GetWeaponSprite(Gun.name);
+                }
+                */
+
+                
+                if (Gun.name=="Pistol") { Slot1.sprite = Weapons_Module.GetWeaponSprite("Pistol"); }
+                else if (Gun.name=="Uzi") { Slot1.sprite = Weapons_Module.GetWeaponSprite("Uzi"); }
+                else if (Gun.name== "Revolver") { Slot1.sprite = Weapons_Module.GetWeaponSprite("Revolver"); }
+                else if (Gun.name== "Knife") { Slot1.sprite = Weapons_Module.GetWeaponSprite("Knife"); }
+                else if (Gun.name== "Shotgun") { Slot2.sprite = Weapons_Module.GetWeaponSprite("Shotgun"); }
+                else if (Gun.name== "AK47") { Slot2.sprite = Weapons_Module.GetWeaponSprite("AK47"); }
+                else if (Gun.name== "M40"|| Gun.name == "M16") {Slot2.sprite = Weapons_Module.GetWeaponSprite("M16"); }
+                
             }
 
-            else if (Gun.tier == 2)
-            {
-                Slot2.sprite = Weapons_Module.GetWeaponSprite(Gun.name);
-            }
-
-            else if (Gun.tier == 3)
-            {
-                Slot3.sprite = Weapons_Module.GetWeaponSprite(Gun.name);
-            }
-
-            /*
-            if (Gun.name=="Pistol") { Slot1.sprite = Weapons_Module.GetWeaponSprite("Pistol"); }
-            else if (Gun.name=="Uzi") { Slot1.sprite = Weapons_Module.GetWeaponSprite("Uzi"); }
-            else if (Gun.name== "Revolver") { Slot1.sprite = Weapons_Module.GetWeaponSprite("Revolver"); }
-            else if (Gun.name== "Knife") { Slot1.sprite = Weapons_Module.GetWeaponSprite("Knife"); }
-            else if (Gun.name== "Shotgun") { Slot2.sprite = Weapons_Module.GetWeaponSprite("Shotgun"); }
-            else if (Gun.name== "AK47") { Slot2.sprite = Weapons_Module.GetWeaponSprite("AK47"); }
-            else if (Gun.name== "M40"|| Gun.name == "M16") {Slot2.sprite = Weapons_Module.GetWeaponSprite("M16"); }
-            */
         }
     }
 }

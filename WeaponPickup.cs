@@ -17,6 +17,7 @@ public class WeaponPickup : MonoBehaviour
                 int weaponToDropTier = weaponToGive.tier;
                 playerMob.DropWeapon(weaponToDropTier);
                 playerMob.GiveWeapon(weaponToGive);
+                Debug.Log("Weapon Given");
 
 
                 /*
