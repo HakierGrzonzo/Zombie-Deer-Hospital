@@ -134,6 +134,7 @@ public class Mob : MonoBehaviour {
 
             if (Time.time - timeLastSelfDamagePerSecond > 1.0f)
             {
+                timeLastSelfDamagePerSecond = Time.time;
                 DealSelfDamage(selfDamagePerSecond);
             }
         }
