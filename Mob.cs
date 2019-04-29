@@ -56,6 +56,7 @@ public class Mob : MonoBehaviour {
 
         Inventory[weaponToGiveTier] = weapon;
         currentWeapon = Inventory[currentWeaponIndex];
+        Debug.Log("Weapon received");
     }
 
     public void DropWeapon(int inventorySlot)
@@ -85,10 +86,8 @@ public class Mob : MonoBehaviour {
 
     private void Update()
     {
-        startingWeaponStr = Inventory[0].name;
-        secondWeaponStr = Inventory[1].name;
-        thirdWeaponStr = Inventory[2].name;
-    currentWeaponIndex = Array.IndexOf(gameObject.GetComponent<Mob>().Inventory, gameObject.GetComponent<Mob>().currentWeapon);
+        secondWeaponStr = currentWeapon.name;
+        currentWeaponIndex = Array.IndexOf(Inventory, currentWeapon);
         if (HP > 0)
         { }
         else if(HP<=0)
