@@ -8,13 +8,14 @@ public class Spawner : MonoBehaviour
     public GameObject myPrefab; //creature to spawn
     public float spawnrate = 2; //delay beetween spawns
     public int spawnLimit = -1; //max no. of spawns, -1 for infinite spawns
-    public int enemiesSpawned = 0;
+    private int enemiesSpawned = 0;
     public float maximalDistanceFromPlayer = -1; //How close must player get for spawner to start working
     private Vector2 distance;
     private GameObject playerObject;
     // Start is called before the first frame update
     private int x = 0;
     public int swarmSize = 1;
+    public bool DestroyOnLimit = true;
     void Start()
     {
         playerObject = GameObject.FindWithTag("Player");
@@ -53,7 +54,7 @@ public class Spawner : MonoBehaviour
                 enemiesSpawned++;
             }
         }
-        else if (enemiesSpawned == spawnLimit)
+        else if (enemiesSpawned == spawnLimit && DestroyOnLimit)
         {
             Destroy(this.gameObject);
         }
