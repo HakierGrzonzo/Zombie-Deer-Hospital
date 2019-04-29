@@ -143,7 +143,7 @@ public class Mob : MonoBehaviour {
         else if(HP<=0)
         {
             HP = 0;
-            //GameObject.Destroy(this.gameObject);
+            //GameObject.Destroy(this.gameObject); DONT TOUCH!!!!!!!!!!!!!!!
         }
         if (HP > MaxHP)
         {
@@ -154,7 +154,7 @@ public class Mob : MonoBehaviour {
     public void DealSelfDamage(int damage)
     {
         HP -= damage;
-        if (HP == 0)
+        if (HP <= 0)
         {
             Destroy(gameObject);
         }
