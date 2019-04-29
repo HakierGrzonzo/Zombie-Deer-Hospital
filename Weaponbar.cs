@@ -18,21 +18,21 @@ public class Weaponbar: MonoBehaviour
         {
             float x = Slot1.transform.position.x;
             float y = Slot1.transform.position.y;
-            float z=87;
+            float z=1;
             SelectVisualizer.transform.position = new Vector3(x,y,z);
         }
         else if (Index == 1)
         {
             float x = Slot2.transform.position.x;
             float y = Slot2.transform.position.y;
-            float z = 87;
+            float z = 1;
             SelectVisualizer.transform.position = new Vector3(x, y, z);
         }
         else if (Index == 2)
         {
             float x = Slot3.transform.position.x;
             float y = Slot3.transform.position.y;
-            float z = 87;
+            float z = 1;
             SelectVisualizer.transform.position = new Vector3(x, y, z);
         }
 
