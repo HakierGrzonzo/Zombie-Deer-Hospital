@@ -283,7 +283,7 @@ public class Weapons_Module : MonoBehaviour{
 
         public void Shoot(Mob selfDamageReceiver)
         {
-            selfDamageReceiver.damage_deal(selfDamage);
+            selfDamageReceiver.DealSelfDamage(selfDamage);
             lastShotTime = Time.time;
             
             audioSource = bulletSource.GetComponent<AudioSource>();
@@ -317,7 +317,7 @@ public class Weapons_Module : MonoBehaviour{
 
                 FirDir = RotateAroundAxis(FirDir, spread, bulletSourceTransform.forward);
                 bulletSourceTransform = bulletSource.GetComponent<Transform>();
-                GameObject Bullet2 = Instantiate(bulletPrefab, bulletSourceTransform.position, bulletSourceTransform.rotation);
+                GameObject Bullet2 = Instantiate(bulletPrefab, bulletSourceTransform.position, new Quaternion(0, 0, Random.Range(0,180), 1));
                 Bullet2.GetComponent<bulletScript>().bulletDamage = damage;
                 Bullet2.GetComponent<bulletScript>().bulletPenetration = penetration;
                 Bullet2.GetComponent<bulletScript>().owner = bulletSource.GetComponentInParent<Mob>();
@@ -326,7 +326,7 @@ public class Weapons_Module : MonoBehaviour{
 
                 FirDir = RotateAroundAxis(FirDir, spread, bulletSourceTransform.forward);
                 bulletSourceTransform = bulletSource.GetComponent<Transform>();
-                GameObject Bullet3 = Instantiate(bulletPrefab, bulletSourceTransform.position, bulletSourceTransform.rotation);
+                GameObject Bullet3 = Instantiate(bulletPrefab, bulletSourceTransform.position, new Quaternion(0, 0, Random.Range(0, 180), 1));
                 Bullet3.GetComponent<bulletScript>().bulletDamage = damage;
                 Bullet3.GetComponent<bulletScript>().bulletPenetration = penetration;
                 Bullet3.GetComponent<bulletScript>().owner = bulletSource.GetComponentInParent<Mob>();
@@ -335,7 +335,7 @@ public class Weapons_Module : MonoBehaviour{
 
                 FirDir = RotateAroundAxis(FirDir, spread*-3, bulletSourceTransform.forward);
                 bulletSourceTransform = bulletSource.GetComponent<Transform>();
-                GameObject Bullet4 = Instantiate(bulletPrefab, bulletSourceTransform.position, bulletSourceTransform.rotation);
+                GameObject Bullet4 = Instantiate(bulletPrefab, bulletSourceTransform.position, new Quaternion(0, 0, Random.Range(0, 180), 1));
                 Bullet4.GetComponent<bulletScript>().bulletDamage = damage;
                 Bullet4.GetComponent<bulletScript>().bulletPenetration = penetration;
                 Bullet4.GetComponent<bulletScript>().owner = bulletSource.GetComponentInParent<Mob>();
@@ -344,7 +344,7 @@ public class Weapons_Module : MonoBehaviour{
 
                 FirDir = RotateAroundAxis(FirDir, spread * -1, bulletSourceTransform.forward);
                 bulletSourceTransform = bulletSource.GetComponent<Transform>();
-                GameObject Bullet5 = Instantiate(bulletPrefab, bulletSourceTransform.position, bulletSourceTransform.rotation);
+                GameObject Bullet5 = Instantiate(bulletPrefab, bulletSourceTransform.position, new Quaternion(0, 0, Random.Range(0, 180), 1));
                 Bullet5.GetComponent<bulletScript>().bulletDamage = damage;
                 Bullet5.GetComponent<bulletScript>().bulletPenetration = penetration;
                 Bullet5.GetComponent<bulletScript>().owner = bulletSource.GetComponentInParent<Mob>();
