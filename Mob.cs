@@ -151,6 +151,15 @@ public class Mob : MonoBehaviour {
         }
     }
 
+    public void DealSelfDamage(int damage)
+    {
+        HP -= damage;
+        if (HP == 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     void OnCollisionEnter2D(Collision2D collider)
     {
         if (this.gameObject.CompareTag("Enemy")){
