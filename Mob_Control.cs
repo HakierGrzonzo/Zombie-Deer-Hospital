@@ -54,6 +54,7 @@ public class Mob_Control : MonoBehaviour
 
     private void SpriteUpdate()
     {
+        /*
         Vector2 MoveDir = player.transform.position - gameObject.transform.position;
         float playerRotationAngle = Mathf.Atan2(MoveDir.y,MoveDir.x) * Mathf.Rad2Deg;
 
@@ -68,6 +69,6 @@ public class Mob_Control : MonoBehaviour
         else if (playerRotationAngle      < 45 && playerRotationAngle > -45) { gameObject.GetComponent<SpriteRenderer>().sprite = R; }
 
 
-
+    */
     }
 }
