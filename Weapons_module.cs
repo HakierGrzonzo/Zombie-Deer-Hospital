@@ -291,7 +291,7 @@ public class Weapons_Module : MonoBehaviour{
             Debug.Log("Shooooooot");
             Transform bulletSourceTransform = bulletSource.GetComponent<Transform>();
 
-            GameObject Bullet = Instantiate(bulletPrefab, bulletSourceTransform.position, new Quaternion(0, 0, Random.Range(0, 360), 1));
+            GameObject Bullet = Instantiate(bulletPrefab, bulletSourceTransform.position, bulletSourceTransform.rotation);
             Bullet.GetComponent<bulletScript>().bulletDamage = damage;
             Bullet.GetComponent<bulletScript>().bulletPenetration = penetration;
             Bullet.GetComponent<bulletScript>().owner = bulletSource.GetComponentInParent<Mob>();
