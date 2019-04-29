@@ -49,11 +49,11 @@ public class Weapons_Module : MonoBehaviour{
             //Dodaje dodatkowę bronie
         {
             case "Shotgun":
-                Weapons_Module.Weapon Shotgun = new Weapon(weaponName,2 , 5, 1,bulletSource, normalBulletPrefab, 20, 0.90f, speedMult * 9.0f, 0.9f, 6.5f, true);
+                Weapons_Module.Weapon Shotgun = new Weapon(weaponName,2 , 5, 1,bulletSource, normalBulletPrefab, 20, 0.90f, speedMult * 9.0f, 0.9f, 6.5f, true, Resources.Load<AudioClip>("SoundEffects/sdShotgun"));
                 return (Shotgun);
 
             case "Water_gun":
-                Weapons_Module.Weapon Water_gun = new Weapon(weaponName,1, 1, 1, bulletSource, normalBulletPrefab, 15, 0.30f, speedMult * 5.0f, 1.5f, 0, false);
+                Weapons_Module.Weapon Water_gun = new Weapon(weaponName,1, 1, 1, bulletSource, normalBulletPrefab, 15, 0.30f, speedMult * 5.0f, 1.5f, 0, false, Resources.Load<AudioClip>("SoundEffects/sdPistol"));
                 return (Water_gun);
 
             case "Pistol":
@@ -138,8 +138,10 @@ public class Weapons_Module : MonoBehaviour{
         float spread;
         public bool isShotgun;
         private float lastShotTime = Time.time;
+        private AudioSource audioSource;
+        private AudioClip sound;
 
-        public Weapon(string name, int tier, int selfDamage, int penetration, GameObject bulletSource, GameObject bulletPrefab, int damage, float fireRate, float bulletSpeed, float bulletFlightTime, float spread, bool isShotgun)
+        public Weapon(string name, int tier, int selfDamage, int penetration, GameObject bulletSource, GameObject bulletPrefab, int damage, float fireRate, float bulletSpeed, float bulletFlightTime, float spread, bool isShotgun, AudioClip sound = null)
         {
             this.name = name;
             this.tier = tier;
@@ -153,6 +155,7 @@ public class Weapons_Module : MonoBehaviour{
             this.bulletFlightTime = bulletFlightTime;
             this.spread = spread;
             this.isShotgun = isShotgun;
+            this.sound = sound;
         }
 
         public bool CanShoot()
@@ -178,6 +181,9 @@ public class Weapons_Module : MonoBehaviour{
             Bullet.GetComponent<bulletScript>().bulletPenetration = penetration;
             Bullet.GetComponent<bulletScript>().owner = bulletSource.GetComponentInParent<Mob>();
             Bullet.GetComponent<Rigidbody2D>().AddForce(Bullet.transform.up * bulletSpeed);
+
+            audioSource = bulletSource.GetComponent<AudioSource>();
+            audioSource.clip = sound;
        
             /* if (name == "korwins_gun")
              {
