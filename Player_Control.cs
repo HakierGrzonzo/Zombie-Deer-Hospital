@@ -34,6 +34,12 @@ public class Player_Control : MonoBehaviour
         SpriteUpdate();
         ChangeWeapon();
         ShootWeapon();
+        DropWeapon();
+    }
+
+    public void DropWeapon()
+    {
+
     }
 
     public void ShootWeapon()
