@@ -48,6 +48,7 @@ public class Movement : MonoBehaviour
             bool IsPositive;
             if (moveAngle > 0) { IsPositive = true; }
             else { IsPositive = false; }
+            moveAngle = Mathf.Abs(moveAngle);
             animator.SetBool("IsPositive", IsPositive);
             animator.SetFloat("moveAngle", moveAngle);
         }
