@@ -29,7 +29,7 @@ public class Weapons_Module : MonoBehaviour{
 
     //public static AudioClip rocketlauncherSoundEffect = Resources.Load<GameObject>("SoundEffects/");
 
-    public static AudioClip flamethrowerSoundEffect = Resources.Load<AudioClip>("SoundEffects/");
+    //public static AudioClip flamethrowerSoundEffect = Resources.Load<AudioClip>("SoundEffects/");
 
     //public static AudioClip knifeSoundEffect = Resources.Load<GameObject>("SoundEffects/");
 
