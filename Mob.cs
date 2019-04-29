@@ -86,8 +86,10 @@ public class Mob : MonoBehaviour {
 
     private void Update()
     {
-        currentWeaponStr = currentWeapon.name;
         currentWeaponIndex = Array.IndexOf(Inventory, currentWeapon);
+        currentWeapon = Inventory[currentWeaponIndex];
+        currentWeaponStr = currentWeapon.name;
+        
         if (HP > 0)
         { }
         else if(HP<=0)
