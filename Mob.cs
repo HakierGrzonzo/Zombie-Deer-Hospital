@@ -23,7 +23,7 @@ public class Mob : MonoBehaviour {
     public Weapons_Module.Weapon[] Inventory;
     public bool selfDamage = false;
     private float timePassed = 0;
-    public int selfDamageHP = 0;
+    public int selfDamagePerSecond = 0;
 
     private void Start()
     {
@@ -127,21 +127,12 @@ public class Mob : MonoBehaviour {
         if (gameObject.CompareTag("Player"))
         {
             currentWeapon = Inventory[GetCurrentWeaponIndex()];
-            if (currentWeapon != null)
-            {
-                //Debug.Log(currentWeapon.name);
-            }
-            else
-            {
-                //Debug.Log("fucked up");
-            }
-
             currentWeaponStr = currentWeapon.name;
 
             timePassed += Time.deltaTime;
             if (timePassed > 1&&selfDamage)
             {
-                DealSelfDamage(selfDamageHP);
+                DealSelfDamage(selfDamagePerSecond);
             }
         }
 
@@ -178,7 +169,17 @@ public class Mob : MonoBehaviour {
                 {
                     GameObject.Destroy(collider.gameObject);
                 }
-                GameObject.Destroy(gameObject.gameObject);
+                gameObject.GetComponent<Movement>().RunAway(0.5f);
+            }
+        }
+        else if (this.gameObject.CompareTag("Player"))
+        {
+            if (collider.gameObject.CompareTag("Enemy"))
+            {
+                if (collider.gameObject.GetComponent<Mob>().damage_deal(bodyDamage * toughness) != null)
+                {
+                    GameObject.Destroy(collider.gameObject);
+                }
             }
         }
     }
