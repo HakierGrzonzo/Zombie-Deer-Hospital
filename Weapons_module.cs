@@ -11,7 +11,7 @@ public class Weapons_Module : MonoBehaviour{
 
     //Audio effect
 
-    public static AudioClip shotgunSoundEffect = Resources.Load<AudioClip>("SoundEffects/sdShotgun");
+    /*public static AudioClip shotgunSoundEffect = Resources.Load<AudioClip>("SoundEffects/sdShotgun");
 
     public static AudioClip pistolSoundEffect = Resources.Load<AudioClip>("SoundEffects/sdPistol");
 
@@ -25,7 +25,7 @@ public class Weapons_Module : MonoBehaviour{
 
     public static AudioClip sniperrifleSoundEffect = Resources.Load<AudioClip>("SoundEffects/sdSniper");
 
-    public static AudioClip minigunSoundEffect = Resources.Load<AudioClip>("SoundEffects/sdMinigun");
+    public static AudioClip minigunSoundEffect = Resources.Load<AudioClip>("SoundEffects/sdMinigun");*/
 
     //public static AudioClip rocketlauncherSoundEffect = Resources.Load<GameObject>("SoundEffects/");
 
@@ -183,8 +183,7 @@ public class Weapons_Module : MonoBehaviour{
             Bullet.GetComponent<Rigidbody2D>().AddForce(Bullet.transform.up * bulletSpeed);
 
             audioSource = bulletSource.GetComponent<AudioSource>();
-            audioSource.clip = sound;
-       
+            audioSource.PlayOneShot(sound);
             /* if (name == "korwins_gun")
              {
                  Debug.Log("True gun is here!!!");
