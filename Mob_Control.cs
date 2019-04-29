@@ -39,7 +39,7 @@ public class Mob_Control : MonoBehaviour
     {
         if (shootPlayer)
         {
-            if (distanceToPlayer() <= shootPlayerDistance)
+            if ((distanceToPlayer() <= shootPlayerDistance)& this.gameObject.GetComponent<Mob>().currentWeapon.CanShoot())
             {
                 gameObject.GetComponent<Mob>().currentWeapon.Shoot(gameObject.GetComponent<Mob>());
             }
