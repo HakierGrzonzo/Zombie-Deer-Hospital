@@ -10,26 +10,28 @@ public class statKeeper : MonoBehaviour
 
     public void addKill(string type)    //this adds a kill of a given name
     {
-        if (KillCount.TryGetValue(type, out result))
+        try
         {
-            result += 1;
-            KillCount[type] = result;
+            KillCount[type] = KillCount[type] + 1;
         }
-        else
+
+        catch
         {
-            KillCount[type] = result;
+            KillCount[type] = 1;
         }
     }
 
     public int getKillCount(string type)    
     {
-        if (KillCount.TryGetValue(type, out result))
+        try
         {
-            return KillCount[type];
+            return (KillCount[type]);
         }
-        else
+
+        catch
         {
-            return 0;
+            KillCount[type] = 1;
+            return (KillCount[type]);
         }
     }
 }
