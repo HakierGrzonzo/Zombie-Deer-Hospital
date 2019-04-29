@@ -114,7 +114,7 @@ public class Mob : MonoBehaviour {
             return title;
         }
         else
-        {   
+        {
             return null;
         }
     }
@@ -135,8 +135,8 @@ public class Mob : MonoBehaviour {
 
             currentWeaponStr = currentWeapon.name;
         }
-        
-        
+
+
         if (HP > 0)
         {
         }
