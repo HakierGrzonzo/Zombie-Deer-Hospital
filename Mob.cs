@@ -130,7 +130,8 @@ public class Mob : MonoBehaviour {
         
         
         if (HP > 0)
-        { }
+        {
+        }
         else if(HP<=0)
         {
             HP = 0;

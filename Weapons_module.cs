@@ -22,6 +22,15 @@ public class Weapons_Module : MonoBehaviour{
     public static Sprite m16Sprite = Resources.Load<Sprite>("GunSPrefabs/m16");
     public static Sprite nothingSprite = Resources.Load<Sprite>("GunSPrefabs/nothing");
 
+    public static Sprite sniper_rifleSprite = Resources.Load<Sprite>("GunSPrefabs/sniper_rifle");
+    public static Sprite minigunSprite = Resources.Load<Sprite>("GunSPrefabs/minigun");
+    public static Sprite rocket_launcherSprite = Resources.Load<Sprite>("GunSPrefabs/rocket_launcher");
+    public static Sprite flame_throwerSprite = Resources.Load<Sprite>("GunSPrefabs/flame_thrower");
+    public static Sprite machine_gunSprite = Resources.Load<Sprite>("GunSPrefabs/machine_gun");
+    //public static Sprite korwins_gunSprite = Resources.Load<Sprite>("GunSPrefabs/korwins_gun");
+
+
+
     //Audio effect
 
     public static AudioClip shotgunSoundEffect = Resources.Load<AudioClip>("SoundEffects/sdShotgun");
@@ -103,46 +112,30 @@ public class Weapons_Module : MonoBehaviour{
                 Sprite Nothing3 = nothingSprite;
                 return (Nothing3);
 
+            case "Sniper_rifle":
+                Sprite Sniper_rifle = sniper_rifleSprite;
+                return (Sniper_rifle);
+
+            case "Minigun":
+                Sprite Minigun = minigunSprite;
+                return (Minigun);
+
+            case "Rocket_Launcher":
+                Sprite Rocket_Launcher = rocket_launcherSprite;
+                return (Rocket_Launcher);
+
+            case "Flame_Thrower":
+                Sprite Flame_Thrower = flame_throwerSprite;
+                return (Flame_Thrower);
+
+            case "machine_gun":
+                Sprite machine_Gun = machine_gunSprite;
+                return (machine_Gun);
+            
                 /*
-                case "Sniper_rifle":
-                    Sprite Sniper_rifle = sniper_rifleSprite;
-                    return (Sniper_rifle);
-
-                case "Minigun":
-                    Sprite Minigun = minigunSprite;
-                    return (Minigun);
-
-                case "Rocket_Launcher":
-                    Sprite Rocket_Launcher = rocket_launcherSprite;
-                    return (Rocket_Launcher);
-
-                case "Flame_Thrower":
-                    Sprite Flame_Thrower = flame_throwerSprite;
-                    return (Flame_Thrower);
-
-                case "Katana":
-                    Sprite Katana = katanaSprite;
-                    return (Katana);
-
-                case "Axe":
-                    Sprite Axe = axeSprite;
-                    return (Axe);
-
-                case "Scythe":
-                    Sprite Scythe = scytheSprite;
-                    return (Scythe);
-
-                case "Chainsaw":
-                    Sprite Chainsaw = chainsawSprite;
-                    return (Chainsaw);
-
-                case "machine_gun":
-                    Sprite machine_Gun = machine_gunSprite;
-                    return (machine_Gun);
-
-                case "korwins_gun":
-                    Sprite korwins_gun = korwins_gunSprite;
-                    return (korwins_gun);
+            case "korwins_gun":
+                Sprite korwins_gun = korwins_gunSprite;
+                return (korwins_gun);
                 */
         }
         return null;
