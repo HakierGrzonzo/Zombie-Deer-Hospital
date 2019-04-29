@@ -49,6 +49,24 @@ public class Mob : MonoBehaviour {
         }
     }
 
+    public void GiveWeapon(Weapons_Module.Weapon weapon)
+    {
+        int weaponToGiveTier = weapon.tier;
+
+        Inventory[weaponToGiveTier] = weapon;
+    }
+
+    public void DropWeapon(int inventorySlot)
+    {
+        if (Inventory[inventorySlot] != null)
+        {
+            GameObject droppedWeapon = Instantiate(Weapons_Module.droppedWeaponPrefab, gameObject.transform.position, Quaternion.identity);
+            droppedWeapon.GetComponent<SpriteRenderer>().sprite = Weapons_Module.GetWeaponSprite(Inventory[inventorySlot].name);
+            droppedWeapon.GetComponent<WeaponPickup>().weaponToDropName = Inventory[inventorySlot].name;
+        }
+        Inventory[inventorySlot] = null;
+    }
+
     public string Percent_damage_deal_MaxHP(int percentDamage)
     {
         MaxHP = MaxHP- MaxHP*(percentDamage/100);
