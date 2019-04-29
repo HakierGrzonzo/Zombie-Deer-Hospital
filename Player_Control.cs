@@ -50,7 +50,7 @@ public class Player_Control : MonoBehaviour
         int currentWeaponIndex = gameObject.GetComponent<Mob>().GetCurrentWeaponIndex();
         int InventoryLength = gameObject.GetComponent<Mob>().Inventory.Length;
 
-        if (ScrollWheel > 0f)
+        if (ScrollWheel < 0f)
         {
             //scroll up
             if (currentWeaponIndex<InventoryLength-1)
@@ -62,7 +62,7 @@ public class Player_Control : MonoBehaviour
                 gameObject.GetComponent<Mob>().currentWeapon = gameObject.GetComponent<Mob>().Inventory[0];
             }
         }
-        else if (ScrollWheel < 0f)
+        else if (ScrollWheel > 0f)
         {
             // scroll down
             if (currentWeaponIndex > 0)
