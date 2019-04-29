@@ -307,7 +307,7 @@ public class Weapons_Module : MonoBehaviour{
 
             if (isShotgun)
             {
-                if (name == "Flame_Thrower") { spread = Random.Range(3, 20); } ;
+                if (name == "Flame_Thrower") { spread = Random.Range(3, 20); }
 
 
                 //GameObject Bullet2 = Instantiate(bulletPrefab, bulletSourceTransform.position, bulletSourceTransform.rotation);
