@@ -5,14 +5,14 @@ using UnityEngine;
 public class Weapons_Module : MonoBehaviour{
     //Load a normalBulletPrefab from (Assets/bulletPrefabs/normalBulletPrefab)
     public static GameObject normalBulletPrefab = Resources.Load<GameObject>("BulletPrefabs/normalBulletPrefab");
-    public static GameObject bdeer = Resources.Load<GameObject>("BulletPrefabs/bdeer");
+    public static GameObject bdeer = Resources.Load<GameObject>("BulletPrefabs/bdeerBulletPrefab");
 
-    public static GameObject bshotgun = Resources.Load<GameObject>("BulletPrefabs/bshotgun");
-    public static GameObject bpistol = Resources.Load<GameObject>("BulletPrefabs/bpistol");
-    public static GameObject bak47 = Resources.Load<GameObject>("BulletPrefabs/bak47");
-    public static GameObject buzi = Resources.Load<GameObject>("BulletPrefabs/buzi");
-    public static GameObject bm16 = Resources.Load<GameObject>("BulletPrefabs/bm16");
-    public static GameObject bsniper_rifle = Resources.Load<GameObject>("BulletPrefabs/bsniper");
+    public static GameObject bshotgun = Resources.Load<GameObject>("BulletPrefabs/bshotgunBulletPrefab");
+    public static GameObject bpistol = Resources.Load<GameObject>("BulletPrefabs/bpistolBulletPrefab");
+    public static GameObject bak47 = Resources.Load<GameObject>("BulletPrefabs/bak47BulletPrefab");
+    public static GameObject buzi = Resources.Load<GameObject>("BulletPrefabs/buziBulletPrefab");
+    public static GameObject bm16 = Resources.Load<GameObject>("BulletPrefabs/bm16BulletPrefab");
+    public static GameObject bsniper_rifle = Resources.Load<GameObject>("BulletPrefabs/bsniperBulletPrefab");
     public static GameObject bfire = Resources.Load<GameObject>("BulletPrefabs/bfire");
 
 
