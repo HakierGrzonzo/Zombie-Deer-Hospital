@@ -5,7 +5,7 @@ using UnityEngine;
 public class Weapons_Module : MonoBehaviour{
     //Load a normalBulletPrefab from (Assets/bulletPrefabs/normalBulletPrefab)
     public static GameObject normalBulletPrefab = Resources.Load<GameObject>("BulletPrefabs/normalBulletPrefab");
-    public static GameObject rocketBulletPrefab = Resources.Load<GameObject>("BulletPrefabs/rocketBulletPrefab");
+    public static GameObject bdeer = Resources.Load<GameObject>("BulletPrefabs/bdeer");
 
     public static GameObject bshotgun = Resources.Load<GameObject>("BulletPrefabs/bshotgun");
     public static GameObject bpistol = Resources.Load<GameObject>("BulletPrefabs/bpistol");
@@ -219,13 +219,13 @@ public class Weapons_Module : MonoBehaviour{
             case "Chainsaw":
                 Weapons_Module.Weapon Chainsaw = new Weapon(weaponName,1 ,5 ,0 ,bulletSource , normalBulletPrefab, 20, 0.1f, speedMult * 9.0f, 1.4f, 0,false);
                 return (Chainsaw);
-            */
+            
             case "machine_gun":
                 Weapons_Module.Weapon machine_Gun = new Weapon(weaponName,3, 1, 1, bulletSource, bmachine_gun, 10, 0.75f, speedMult * 7.0f, 1.7f, 0f, false);
                 return (machine_Gun);
-
+            */
             case "Korwins_gun":
-                Weapons_Module.Weapon korwins_gun = new Weapon(weaponName,1, 0, 1, bulletSource, rocketBulletPrefab, 100, 0.5f, speedMult * 0f, 100f, 0f, false);
+                Weapons_Module.Weapon korwins_gun = new Weapon(weaponName,1, 0, 1, bulletSource, bdeer, 100, 0.5f, speedMult * 0f, 100f, 0f, false);
                 return (korwins_gun);
 
             case "Nothing1":
