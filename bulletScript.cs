@@ -26,7 +26,6 @@ public class bulletScript : MonoBehaviour
                 if (collider.gameObject.GetComponent<Mob>().damage_deal(bulletDamage) != null)
                 {
                     owner.HP += collider.gameObject.GetComponent<Mob>().healthDrop;
-                    GameObject.FindWithTag("Player").AddComponent<statusEffect>().statusMake(statusTarget);
                   
                     GameObject.Destroy(collider.gameObject);
                 }
@@ -46,7 +45,6 @@ public class bulletScript : MonoBehaviour
             {
                 if (collider.gameObject.GetComponent<Mob>().damage_deal(bulletDamage) != null)
                 {
-                    GameObject.FindWithTag("Player").AddComponent<statusEffect>().statusMake(statusTarget);
                     GameObject.Destroy(collider.gameObject);
                 }
 

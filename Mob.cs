@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Mob : MonoBehaviour {
 
@@ -171,7 +172,6 @@ public class Mob : MonoBehaviour {
                 if(collider.gameObject.GetComponent<Mob>().damage_deal(bodyDamage*toughness) != null)
                 {
                     GameObject.Destroy(collider.gameObject);
-                    GameObject.FindWithTag("Player").AddComponent<statusEffect>().statusMake(statusTarget);
                 }
                 gameObject.GetComponent<Movement>().RunAway(0.1f);
             }
@@ -190,7 +190,11 @@ public class Mob : MonoBehaviour {
 
     private void OnDestroy()
     {
+
         Camera.main.GetComponent<statKeeper>().addKill(gameObject.name);
+
+        if (gameObject.name == "Player") { SceneManager.LoadScene(0); }
+
     }
 
 }
