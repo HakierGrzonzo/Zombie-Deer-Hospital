@@ -10,6 +10,9 @@ public class QuestController : MonoBehaviour
     //
     public GameObject Table1;
     public GameObject Table2;
+    public Sprite Q1;
+    public Sprite Q2;
+    public Sprite Qempty;
 
     [Header("Text Objects for first quest")]
     public Text Q1_EnemyToKill;
@@ -26,6 +29,7 @@ public class QuestController : MonoBehaviour
     public int TotalWeight;
     public int CurWeight;
     public Quest[] QuestContainer = new Quest[3];
+    public int QuestChosen;
 
     private void Start()
     {
@@ -58,13 +62,26 @@ public class QuestController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1)|| Input.GetKeyDown(KeyCode.O)) { ChooseQ1(); }
         if (Input.GetKeyDown(KeyCode.Alpha2)|| Input.GetKeyDown(KeyCode.P)) { ChooseQ2(); }
 
+        if (QuestChosen == 1) { Q1_Time.text = TimerCountdown.ToString(); }
+        else if (QuestChosen == 2) { Q2_Time.text = TimerCountdown.ToString(); }
+        else { }
+            if (QuestChosen == 1) { Q1_EnemyCount.text = (QuestContainer[0].targetKills - QuestContainer[0].currentKills).ToString(); }
+            else if (QuestChosen == 2) { Q2_EnemyCount.text = (QuestContainer[1].targetKills - QuestContainer[1].currentKills).ToString(); }
+            else { }
+
+
 
 
         if (Input.GetKeyDown(KeyCode.Space)|| Mathf.Floor(TimerCountdown) == 1)        //When this statement is fulfilled 2 new quests are generated
         {
             TimerCountdown =0;
             Table1.gameObject.SetActive(true);
+            Table1.transform.position = new Vector3(-71.5f, 6, -440);
             Table2.gameObject.SetActive(true);
+            Table2.transform.position = new Vector3(-61.5f, 6, -440);
+            Table1.GetComponent<SpriteRenderer>().sprite = Q1;
+            Table2.GetComponent<SpriteRenderer>().sprite = Q2;
+
             QuestContainer[0] = QuestGenerator(0);                                          //first time 2 quets are generated
             if (QuestContainer[2].timeLimit != 0) { QuestContainer[1] = QuestContainer[2]; }       
             else QuestContainer[1] = QuestGenerator(1);                                     //the rejected quest is introduced again as requested
@@ -79,7 +96,8 @@ public class QuestController : MonoBehaviour
         QuestContainer[1] = null;
         //Table1.gameObject.transform.position.Set(1000, 100, -88.65f);// = new Vector3(-1700, -174, -88.65f)/250;
         Table1.transform.position = new Vector3(-60, 7, -450);
-
+        Table1.GetComponent<SpriteRenderer>().sprite = Qempty;
+        QuestChosen = 1;
         Table2.gameObject.SetActive(false);
         TimerCountdown = QuestContainer[0].timeLimit;
         UpdateTextObject();       
@@ -90,6 +108,8 @@ public class QuestController : MonoBehaviour
         QuestContainer[0] = null;
         //Table2.gameObject.transform.position = new Vector3(-1700, -174, -88.65f);
         Table2.transform.position = new Vector3(-60, 7, -450);
+        QuestChosen = 2;
+        Table2.GetComponent<SpriteRenderer>().sprite = Qempty;
         Table1.gameObject.SetActive(false);
         TimerCountdown = QuestContainer[1].timeLimit;
         UpdateTextObject();
@@ -98,7 +118,7 @@ public class QuestController : MonoBehaviour
     Quest QuestGenerator(int TargetQuestSlot)
     {
         
-        var EnemyContainer = new List<string> {"Patient", "Contagious Patient", "Alcoholic", "Agressive Patient", "Rescuer", "Paranoic", "Druggy", "Wheelchair Patient", "Nurse", "Injured Soldier", "Guard", "Madman ", "Doctor", "Psycho", "Psychologist" };
+        var EnemyContainer = new List<string> {"Patient", "Contagious Patient", "Alcoholic", "Rescuer", "Druggy", "Wheelchair Patient", "Injured Soldier", "Madman ", "Doctor" };
                                                                                                                     //tier 2                                                //tier 3                                           //tier 4
         var WeaponContainer = new List<string> { "Pistol", "Uzi", "Revolver", "AK47", "M16", "Sniper Rifle", "Shotgun", "Rocket_Launcher", "Flame_Thrower", "Minigun" };
                                                                                                                      //tier 2                                              //Tier 3         
