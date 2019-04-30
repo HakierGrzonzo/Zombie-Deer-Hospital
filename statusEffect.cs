@@ -22,6 +22,16 @@ public class statusEffect : MonoBehaviour
         gameObject.GetComponent<Mob>().toughness -= toughnessEffect;
     }
 
+    public void statusMake(statusEffect status)
+    {
+        this.Title = status.Title;
+        this.toughnessEffect = status.toughnessEffect;
+        this.HPEffect = status.HPEffect;
+        this.MaxHPEffect = status.MaxHPEffect;
+        this.tickLength = status.tickLength;
+        this.tickNum = status.tickNum;
+    }
+
     // aplay status effect
     void Update()
     {

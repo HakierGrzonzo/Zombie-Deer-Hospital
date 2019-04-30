@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
-using System;
 
 public class Mob : MonoBehaviour {
 
@@ -24,6 +22,8 @@ public class Mob : MonoBehaviour {
     public bool selfDamage = false;
     private float timeLastSelfDamagePerSecond;
     public int selfDamagePerSecond = 0;
+    public statusEffect statusTarget;
+
 
     private void Start()
     {
@@ -171,6 +171,7 @@ public class Mob : MonoBehaviour {
                 if(collider.gameObject.GetComponent<Mob>().damage_deal(bodyDamage*toughness) != null)
                 {
                     GameObject.Destroy(collider.gameObject);
+                    GameObject.FindWithTag("Player").AddComponent<statusEffect>().statusMake(statusTarget);
                 }
                 gameObject.GetComponent<Movement>().RunAway(0.1f);
             }
