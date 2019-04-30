@@ -189,7 +189,7 @@ public class Weapons_Module : MonoBehaviour{
                 return (Sniper_rifle);
 
             case "Minigun":
-                Weapons_Module.Weapon Minigun = new Weapon(weaponName,3, 1, 1, bulletSource, buzi, 45, 0.091f, speedMult *10.5f , 1.7f, 0, false, Resources.Load<AudioClip>("SoundEffects/sdMinigun"));
+                Weapons_Module.Weapon Minigun = new Weapon(weaponName,3, 1, 1, bulletSource, buzi, 35, 0.091f, speedMult *10.5f , 1.7f, 0, false, Resources.Load<AudioClip>("SoundEffects/sdMinigun"));
                 return (Minigun);
             /*
             case "Rocket_Launcher":
