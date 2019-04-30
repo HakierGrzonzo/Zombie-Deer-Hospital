@@ -5,9 +5,18 @@ using UnityEngine;
 public class Weapons_Module : MonoBehaviour{
     //Load a normalBulletPrefab from (Assets/bulletPrefabs/normalBulletPrefab)
     public static GameObject normalBulletPrefab = Resources.Load<GameObject>("BulletPrefabs/normalBulletPrefab");
-    public static GameObject fireBulletPrefab = Resources.Load<GameObject>("BulletPrefabs/fireBulletPrefab");
-    public static GameObject waterBulletPrefab = Resources.Load<GameObject>("BulletPrefabs/waterBulletPrefab");
     public static GameObject rocketBulletPrefab = Resources.Load<GameObject>("BulletPrefabs/rocketBulletPrefab");
+
+    public static GameObject bshotgun = Resources.Load<GameObject>("BulletPrefabs/bshotgun");
+    public static GameObject bpistol = Resources.Load<GameObject>("BulletPrefabs/bpistol");
+    public static GameObject bak47 = Resources.Load<GameObject>("BulletPrefabs/bak47");
+    public static GameObject buzi = Resources.Load<GameObject>("BulletPrefabs/buzi");
+    public static GameObject bm16 = Resources.Load<GameObject>("BulletPrefabs/bm16");
+    public static GameObject bsniper_rifle = Resources.Load<GameObject>("BulletPrefabs/bsniper");
+    public static GameObject bfire = Resources.Load<GameObject>("BulletPrefabs/bfire");
+
+
+
 
     public static GameObject droppedWeaponPrefab = Resources.Load<GameObject>("GunSPrefabs/droppedWeaponPrefab");
 
@@ -148,7 +157,7 @@ public class Weapons_Module : MonoBehaviour{
             //Dodaje dodatkowę bronie
         {
             case "Shotgun":
-                Weapons_Module.Weapon Shotgun = new Weapon(weaponName,2 , 5, 1,bulletSource, normalBulletPrefab, 20, 0.90f, speedMult * 9.0f, 0.9f, 6.5f, true, Resources.Load<AudioClip>("SoundEffects/sdShotgun"));
+                Weapons_Module.Weapon Shotgun = new Weapon(weaponName,2 , 5, 1,bulletSource, bshotgun, 20, 0.90f, speedMult * 9.0f, 0.9f, 6.5f, true, Resources.Load<AudioClip>("SoundEffects/sdShotgun"));
                 return (Shotgun);
 
             case "Water_gun":
@@ -156,41 +165,41 @@ public class Weapons_Module : MonoBehaviour{
                 return (Water_gun);
 
             case "Pistol":
-                Weapons_Module.Weapon Pistol = new Weapon(weaponName,1 ,0 ,1 , bulletSource, normalBulletPrefab, 10, 0.75f, speedMult * 7.0f, 1.7f, 0f, false, Resources.Load<AudioClip>("SoundEffects/sdPistol"));
+                Weapons_Module.Weapon Pistol = new Weapon(weaponName,1 ,0 ,1 , bulletSource, bpistol, 10, 0.75f, speedMult * 7.0f, 1.7f, 0f, false, Resources.Load<AudioClip>("SoundEffects/sdPistol"));
                 return (Pistol);
 
             case "AK47":
-                Weapons_Module.Weapon AK47 = new Weapon(weaponName,2 , 3, 2, bulletSource, normalBulletPrefab, 26, 0.16f, speedMult * 7.0f, 1.7f, 0f, false, Resources.Load<AudioClip>("SoundEffects/sdAK47"));
+                Weapons_Module.Weapon AK47 = new Weapon(weaponName,2 , 3, 2, bulletSource, bak47, 26, 0.16f, speedMult * 7.0f, 1.7f, 0f, false, Resources.Load<AudioClip>("SoundEffects/sdAK47"));
                 return (AK47);
 
             case "Revolver":
-                Weapons_Module.Weapon Revolver = new Weapon(weaponName,1 ,3 ,1 , bulletSource, normalBulletPrefab, 84, 0.90f, speedMult * 9.0f, 1.4f, 0, false, Resources.Load<AudioClip>("SoundEffects/sdRevolver"));
+                Weapons_Module.Weapon Revolver = new Weapon(weaponName,1 ,3 ,1 , bulletSource, bshotgun, 84, 0.90f, speedMult * 9.0f, 1.4f, 0, false, Resources.Load<AudioClip>("SoundEffects/sdRevolver"));
                 return (Revolver);
 
             case "Uzi":
-                Weapons_Module.Weapon Uzi = new Weapon(weaponName,1 ,1 ,1 , bulletSource, normalBulletPrefab, 24, 0.15f, speedMult * 10.0f, 1.4f, 0, false, Resources.Load<AudioClip>("SoundEffects/sdUzi"));
+                Weapons_Module.Weapon Uzi = new Weapon(weaponName,1 ,1 ,1 , bulletSource, buzi, 24, 0.15f, speedMult * 10.0f, 1.4f, 0, false, Resources.Load<AudioClip>("SoundEffects/sdUzi"));
                 return (Uzi);
 
             case "M16":
-                Weapons_Module.Weapon M16 = new Weapon(weaponName,2,2 ,2 , bulletSource, normalBulletPrefab, 39, 0.25f, speedMult *9.0f , 1.5f, 0, false, Resources.Load<AudioClip>("SoundEffects/sdM16"));
+                Weapons_Module.Weapon M16 = new Weapon(weaponName,2,2 ,2 , bulletSource, bm16, 39, 0.25f, speedMult *9.0f , 1.5f, 0, false, Resources.Load<AudioClip>("SoundEffects/sdM16"));
                 return (M16);
 
             case "Sniper_rifle":
-                Weapons_Module.Weapon Sniper_rifle = new Weapon(weaponName,2 ,5 ,7 , bulletSource, normalBulletPrefab,76 , 1.25f, speedMult *11.0f , 1.8f, 0, false, Resources.Load<AudioClip>("SoundEffects/sdSniper"));
+                Weapons_Module.Weapon Sniper_rifle = new Weapon(weaponName,2 ,5 ,7 , bulletSource, bsniper_rifle,76 , 1.25f, speedMult *11.0f , 1.8f, 0, false, Resources.Load<AudioClip>("SoundEffects/sdSniper"));
                 return (Sniper_rifle);
 
             case "Minigun":
-                Weapons_Module.Weapon Minigun = new Weapon(weaponName,3, 1, 1, bulletSource, normalBulletPrefab, 45, 0.091f, speedMult *10.5f , 1.7f, 0, false, Resources.Load<AudioClip>("SoundEffects/sdMinigun"));
+                Weapons_Module.Weapon Minigun = new Weapon(weaponName,3, 1, 1, bulletSource, buzi, 45, 0.091f, speedMult *10.5f , 1.7f, 0, false, Resources.Load<AudioClip>("SoundEffects/sdMinigun"));
                 return (Minigun);
-
+            /*
             case "Rocket_Launcher":
                 Weapons_Module.Weapon Rocket_Launcher = new Weapon(weaponName,3,19 ,1 , bulletSource, normalBulletPrefab, 345, 1.75f, speedMult *3.0f , 1.4f, 0,false);
                 return (Rocket_Launcher);
-
+            */
             case "Flame_Thrower":
-                Weapons_Module.Weapon Flame_Thrower  = new Weapon(weaponName,3, 2, 8, bulletSource, fireBulletPrefab, 7, 0.05f, speedMult * 7.5f, 1.9f, 10,true);
+                Weapons_Module.Weapon Flame_Thrower  = new Weapon(weaponName,3, 2, 8, bulletSource, bfire, 7, 0.05f, speedMult * 7.5f, 1.9f, 10,true);
                 return (Flame_Thrower);
-
+            /*
             case "Knife":
                 Weapons_Module.Weapon Knife = new Weapon(weaponName,1 ,0 ,0 , bulletSource, normalBulletPrefab, 30, 0.85f, speedMult * 9.0f , 1.30f, 0,false);
                 return (Knife);
@@ -206,13 +215,13 @@ public class Weapons_Module : MonoBehaviour{
             case "Scythe":
                 Weapons_Module.Weapon Scythe = new Weapon(weaponName,2, 5, 0, bulletSource, normalBulletPrefab, 80, 0.75f, speedMult * 8.0f, 1.5f, 0,false);
                 return (Scythe);
-
+            
             case "Chainsaw":
                 Weapons_Module.Weapon Chainsaw = new Weapon(weaponName,1 ,5 ,0 ,bulletSource , normalBulletPrefab, 20, 0.1f, speedMult * 9.0f, 1.4f, 0,false);
                 return (Chainsaw);
-
+            */
             case "machine_gun":
-                Weapons_Module.Weapon machine_Gun = new Weapon(weaponName,3, 1, 1, bulletSource, normalBulletPrefab, 10, 0.75f, speedMult * 7.0f, 1.7f, 0f, false);
+                Weapons_Module.Weapon machine_Gun = new Weapon(weaponName,3, 1, 1, bulletSource, bmachine_gun, 10, 0.75f, speedMult * 7.0f, 1.7f, 0f, false);
                 return (machine_Gun);
 
             case "Korwins_gun":
