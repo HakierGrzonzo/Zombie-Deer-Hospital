@@ -48,7 +48,7 @@ public class Mob : MonoBehaviour {
         {
             Inventory[1] = Weapons_Module.GetWeapon(secondWeaponStr, bulletSource);
         }
-        else
+        else if(InventorySize>1)
         {
             Inventory[1] = Weapons_Module.GetWeapon("Nothing2", bulletSource);
         }
@@ -57,7 +57,7 @@ public class Mob : MonoBehaviour {
         {
             Inventory[2] = Weapons_Module.GetWeapon(thirdWeaponStr, bulletSource);
         }
-        else
+        else if (InventorySize > 1)
         {
             Inventory[2] = Weapons_Module.GetWeapon("Nothing3", bulletSource);
         }
