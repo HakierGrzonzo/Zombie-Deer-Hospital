@@ -197,7 +197,9 @@ public class Weapons_Module : MonoBehaviour{
                 return (Rocket_Launcher);
             */
             case "Flame_Thrower":
-                Weapons_Module.Weapon Flame_Thrower  = new Weapon(weaponName,3, 2, 8, bulletSource, bfire, 7, 0.05f, speedMult * 7.5f, 1.9f, 10,true);
+
+                Weapons_Module.Weapon Flame_Thrower  = new Weapon(weaponName,3, 2, 8, bulletSource, bfire, 7, 0.05f, speedMult * 7.5f, 1.9f, 10,true, Resources.Load < AudioClip >("SoundEffects/sdFlamethrower"));
+
                 return (Flame_Thrower);
             /*
             case "Knife":
