@@ -77,12 +77,7 @@ public class bulletScript : MonoBehaviour
             */
         }
 
-
-        else if (collider.CompareTag("Bullet"))
-        {
-        }
-
-        else if (collider.CompareTag("Water"))
+        else if (collider.CompareTag("Water") | collider.CompareTag("Pickup") | collider.CompareTag("Bullet"))
         {
         }
 
