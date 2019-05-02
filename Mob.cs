@@ -86,7 +86,8 @@ public class Mob : MonoBehaviour {
         int weaponToGiveTier = weapon.tier;
         int currentWeaponIndex = GetCurrentWeaponIndex();
         Inventory[weaponToGiveTier-1] = weapon;
-
+        currentWeapon = Inventory[currentWeaponIndex];
+        /*
         if(weaponToGiveTier-1 == currentWeaponIndex)
         {
             Debug.Log("HOUSTON WE HAVE A PROBLEM!");
@@ -100,6 +101,7 @@ public class Mob : MonoBehaviour {
                 currentWeapon = Inventory[weaponToGiveTier+1];
             }
         }
+        */
     }
 
     public void DropWeapon(int inventorySlot)
