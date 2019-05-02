@@ -18,7 +18,7 @@ public class bulletScript : MonoBehaviour
         {
             if(owner.title == "Korwin")
             {
-    
+
             }
             else
             {
@@ -26,7 +26,7 @@ public class bulletScript : MonoBehaviour
                 if (collider.gameObject.GetComponent<Mob>().damage_deal(bulletDamage) != null)
                 {
                     owner.HP += collider.gameObject.GetComponent<Mob>().healthDrop;
-                  
+
                     GameObject.Destroy(collider.gameObject);
                 }
 
@@ -38,7 +38,7 @@ public class bulletScript : MonoBehaviour
             }
 
         }
-        
+
         else if (collider.CompareTag("Player"))
         {
             if (owner.title == "Korwin")
@@ -76,9 +76,13 @@ public class bulletScript : MonoBehaviour
             }
             */
         }
-        
+
 
         else if (collider.CompareTag("Bullet"))
+        {
+        }
+
+        else if (collider.CompareTag("Water"))
         {
         }
 
