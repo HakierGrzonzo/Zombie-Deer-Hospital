@@ -46,7 +46,7 @@ public class Spawner : MonoBehaviour
                 timePassed = 0;
                 while (x < swarmSize)
                 {
-                    GameObject Enemy = Instantiate(myPrefab, gameObject.transform.position + new Vector2(0, 0, -499), Quaternion.identity.normalized);
+                    GameObject Enemy = Instantiate(myPrefab, gameObject.transform.position + new Vector3(0, 0, -499), Quaternion.identity.normalized);
                     x++;
                     Enemy.name = myPrefab.name;
                 }
