@@ -111,6 +111,7 @@ public class Mob : MonoBehaviour {
             GameObject droppedWeapon = Instantiate(Weapons_Module.droppedWeaponPrefab, gameObject.transform.position, Quaternion.identity);
             droppedWeapon.GetComponent<SpriteRenderer>().sprite = Weapons_Module.GetWeaponSprite(Inventory[inventorySlot].name);
             droppedWeapon.GetComponent<WeaponPickup>().weaponToDropName = Inventory[inventorySlot].name;
+            droppedWeapon.tag = "Pickup";
         }
     }
 
