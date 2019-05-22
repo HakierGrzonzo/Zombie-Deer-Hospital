@@ -194,7 +194,7 @@ public class Mob : MonoBehaviour {
     {
 
         Camera.main.GetComponent<statKeeper>().addKill(gameObject.name);
-
+        Debug.Log("Killed " + Camera.main.GetComponent<statKeeper>().getKillCount(gameObject.name) + "th " + gameObject.name);
         if (gameObject.name == "Player") { SceneManager.LoadScene(0); }
 
     }

@@ -60,7 +60,7 @@ public class Weapons_Module : MonoBehaviour{
 
     //public static AudioClip rocketlauncherSoundEffect = Resources.Load<GameObject>("SoundEffects/");
 
-    //public static AudioClip flamethrowerSoundEffect = Resources.Load<AudioClip>("SoundEffects/");
+    public static AudioClip flamethrowerSoundEffect = Resources.Load<AudioClip>("SoundEffects/");
 
     //public static AudioClip knifeSoundEffect = Resources.Load<GameObject>("SoundEffects/");
 
@@ -198,7 +198,7 @@ public class Weapons_Module : MonoBehaviour{
             */
             case "Flame_Thrower":
 
-                Weapons_Module.Weapon Flame_Thrower  = new Weapon(weaponName,3, 2, 8, bulletSource, bfire, 7, 0.05f, speedMult * 7.5f, 1.9f, 10,true, Resources.Load < AudioClip >("SoundEffects/sdFlamethrower"));
+                Weapons_Module.Weapon Flame_Thrower  = new Weapon(weaponName,3, 5, 8, bulletSource, bfire, 7, 0.05f, speedMult * 7.5f, 1.9f, 10,true, Resources.Load < AudioClip >("SoundEffects/sdFlamethrower"));
 
                 return (Flame_Thrower);
             /*

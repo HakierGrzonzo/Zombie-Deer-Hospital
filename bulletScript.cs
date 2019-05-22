@@ -22,7 +22,6 @@ public class bulletScript : MonoBehaviour
             }
             else
             {
-                Debug.Log("Hit");
                 if (collider.gameObject.GetComponent<Mob>().damage_deal(bulletDamage) != null)
                 {
                     owner.HP += collider.gameObject.GetComponent<Mob>().healthDrop;

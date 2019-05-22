@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class statKeeper : MonoBehaviour
 {
-    private Dictionary<string, int> KillCount = new Dictionary<string, int>();
+    public Dictionary<string, int> KillCount = new Dictionary<string, int>();
     private int result;
     // Start is called before the first frame update
 

@@ -8,17 +8,20 @@ public class Player_Control : MonoBehaviour
 {
     private Transform playerTransform;
     private float moveSpeed;
+    public GameObject MinimapCamera;
     public int CameraHeight;
+
+    /*
     public Sprite U;
-    public Sprite UL;
+    public Sprite UL;       These are not needed as they are overwritten by animated clips
     public Sprite L;
     public Sprite DL;
     public Sprite D;
     public Sprite DR;
     public Sprite R;
     public Sprite UR;
+    */
 
-    // Start is called before the first frame update
     void Start()
     {
         playerTransform = GetComponent<Transform>();
@@ -98,6 +101,7 @@ public class Player_Control : MonoBehaviour
     private void CameraFollowing()
     {
         Camera.main.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -1* CameraHeight);
+        MinimapCamera.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -499);
     }
     private void SpriteUpdate()
     {

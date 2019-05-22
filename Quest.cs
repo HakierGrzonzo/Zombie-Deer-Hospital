@@ -15,17 +15,9 @@ public class Quest
 
     void Update()
     {
-        Camera.main.GetComponent<statKeeper>().getKillCount(enemyToKill);
-    }
-    public int QuestFailed()
-    {
-        return 50;
+        //currentKills = Camera.main.GetComponent<statKeeper>().getKillCount(enemyToKill);
     }
 
-    public int QuestSuccess()
-    {
-        return 100;
-    }
     public Quest(float timelim, string enemytk, int NOK, string WTKW)                  //This gives new quest
     {
         this.timeLimit = timelim;

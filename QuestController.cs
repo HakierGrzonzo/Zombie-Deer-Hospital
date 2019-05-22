@@ -12,7 +12,8 @@ public class QuestController : MonoBehaviour
     public GameObject Table2;
     public Sprite Q1;
     public Sprite Q2;
-    public Sprite Qempty;
+    public Sprite Qempty1;
+    public Sprite Qempty2;
 
     [Header("Text Objects for first quest")]
     public Text Q1_EnemyToKill;
@@ -39,90 +40,35 @@ public class QuestController : MonoBehaviour
     }
     void Update()
     {
-        if (Mathf.Floor(TimerCountdown) == 1)
-        {
-            if (TotalWeight != 40) { gameObject.GetComponent<Mob>().MaxHP -= TotalWeight; }
-       
-        }       //If quest timer reaches 0 player looses >Weight< MaxHP
-        
-        if (QuestContainer[0].timeLimit == 0 && QuestContainer[1]!=null)
-        {
-            QuestContainer[1].currentKills =Camera.main.GetComponent<statKeeper>().getKillCount(QuestContainer[1].enemyToKill);
-            if (QuestContainer[1].currentKills == QuestContainer[1].targetKills) { gameObject.GetComponent<Mob>().HP += TotalWeight * 2; };
-        }       //if player kills suffictient enemies Q1 is completed and rewards >Weight< HP
-        if (QuestContainer[1].timeLimit == 0 && QuestContainer[0] != null)
-        {
-            QuestContainer[0].currentKills =Camera.main.GetComponent<statKeeper>().getKillCount(QuestContainer[0].enemyToKill);
-            if (QuestContainer[0].currentKills == QuestContainer[0].targetKills) { gameObject.GetComponent<Mob>().HP += TotalWeight * 2; };
-        }
-        else { }
-
-
-
-        if (Input.GetKeyDown(KeyCode.Alpha1)|| Input.GetKeyDown(KeyCode.O)) { ChooseQ1(); }
-        if (Input.GetKeyDown(KeyCode.Alpha2)|| Input.GetKeyDown(KeyCode.P)) { ChooseQ2(); }
-
-        if (QuestChosen == 1) { Q1_Time.text = TimerCountdown.ToString(); }
-        else if (QuestChosen == 2) { Q2_Time.text = TimerCountdown.ToString(); }
-        else { }
-            if (QuestChosen == 1) { Q1_EnemyCount.text = (QuestContainer[0].targetKills - QuestContainer[0].currentKills).ToString(); }
-            else if (QuestChosen == 2) { Q2_EnemyCount.text = (QuestContainer[1].targetKills - QuestContainer[1].currentKills).ToString(); }
-            else { }
-
-
-
-
-        if (Input.GetKeyDown(KeyCode.Space)|| Mathf.Floor(TimerCountdown) == 1)        //When this statement is fulfilled 2 new quests are generated
-        {
-            TimerCountdown =0;
-            Table1.gameObject.SetActive(true);
-            Table1.transform.position = new Vector3(-71.5f, 6, -440);
-            Table2.gameObject.SetActive(true);
-            Table2.transform.position = new Vector3(-61.5f, 6, -440);
-            Table1.GetComponent<SpriteRenderer>().sprite = Q1;
-            Table2.GetComponent<SpriteRenderer>().sprite = Q2;
-
-            QuestContainer[0] = QuestGenerator(0);                                          //first time 2 quets are generated
-            if (QuestContainer[2].timeLimit != 0) { QuestContainer[1] = QuestContainer[2]; }       
-            else QuestContainer[1] = QuestGenerator(1);                                     //the rejected quest is introduced again as requested
-            TotalWeight += 1;
-            UpdateTextObject();
-        }
-        TimerCountdown -= Time.deltaTime;
+        if (Mathf.Floor(TimerCountdown) < 0) { FailQuest();}  //If quest timer reaches 0 player looses >Weight< MaxHP
+        UpdateTextObject(); //updates quest textboxes
+        PresentNewQuests(); //shows new quests
+        if (QuestChosen == 1 || QuestChosen == 2) TimerCountdown -= Time.deltaTime; //countdown unless no current quest
     }
     public void ChooseQ1()
     {
-        QuestContainer[2] = QuestContainer[1];
-        QuestContainer[1] = null;
-        //Table1.gameObject.transform.position.Set(1000, 100, -88.65f);// = new Vector3(-1700, -174, -88.65f)/250;
-        Table1.transform.position = new Vector3(-60, 7, -450);
-        Table1.GetComponent<SpriteRenderer>().sprite = Qempty;
+        Table1.GetComponent<SpriteRenderer>().sprite = Qempty1;
         QuestChosen = 1;
         Table2.gameObject.SetActive(false);
-        TimerCountdown = QuestContainer[0].timeLimit;
-        UpdateTextObject();       
+        TimerCountdown = QuestContainer[0].timeLimit;      
     }                   //These are called when player chooses either quest by presing according button
     public void ChooseQ2()
     {
-        QuestContainer[2] = QuestContainer[0];
-        QuestContainer[0] = null;
-        //Table2.gameObject.transform.position = new Vector3(-1700, -174, -88.65f);
-        Table2.transform.position = new Vector3(-60, 7, -450);
         QuestChosen = 2;
-        Table2.GetComponent<SpriteRenderer>().sprite = Qempty;
+        Table2.GetComponent<SpriteRenderer>().sprite = Qempty2;
         Table1.gameObject.SetActive(false);
         TimerCountdown = QuestContainer[1].timeLimit;
-        UpdateTextObject();
     }
 
     Quest QuestGenerator(int TargetQuestSlot)
     {
         
-        var EnemyContainer = new List<string> {"Patient", "Contagious Patient", "Alcoholic", "Rescuer", "Druggy", "Wheelchair Patient", "Injured Soldier", "Madman ", "Doctor" };
+        var EnemyContainer = new List<string> { "CommonInfected","Crazy", "ContagiousInfected", "Alcoholic", "Rescuer", "Druggy", "Wheelchair", "Soldier", "Doctor" };
                                                                                                                     //tier 2                                                //tier 3                                           //tier 4
         var WeaponContainer = new List<string> { "Pistol", "Uzi", "Revolver", "AK47", "M16", "Sniper Rifle", "Shotgun", "Rocket_Launcher", "Flame_Thrower", "Minigun" };
                                                                                                                      //tier 2                                              //Tier 3         
-        int RandomizerA = Random.Range(0, EnemyContainer.Count - 1);
+        int RandomizerA = Random.Range( 0, EnemyContainer.Count - 1);
+        //
         if (RandomizerA < 5) { CurWeight = Mathf.FloorToInt(TotalWeight / 2); }
         else if (RandomizerA < 9 && RandomizerA >= 5) { CurWeight = Mathf.FloorToInt(TotalWeight / 4); }  //8?
         else if (RandomizerA < 13 && RandomizerA >= 9) { CurWeight = Mathf.FloorToInt(TotalWeight / 8); }
@@ -131,7 +77,8 @@ public class QuestController : MonoBehaviour
         //CurWeight = TotalWeight / Mathf.FloorToInt(RandomizerA);
         int RandomizerB = Random.Range(0, WeaponContainer.Count - 1);
         CurWeight -= (5 - RandomizerB);
-        int CountRandomizer = Random.Range(1, CurWeight);
+        int CountRandomizer = Random.Range(Camera.main.GetComponent<statKeeper>().getKillCount(EnemyContainer[RandomizerA])+2, Camera.main.GetComponent<statKeeper>().getKillCount(EnemyContainer[RandomizerA]) + CurWeight);
+        //int CountRandomizer = Random.Range(QuestContainer[TargetQuestSlot].currentKills, QuestContainer[TargetQuestSlot].currentKills + CurWeight);
         CurWeight -= CountRandomizer;
 
         int TimeRandomizer;
@@ -140,20 +87,78 @@ public class QuestController : MonoBehaviour
         else if (CurWeight < 10 && CurWeight >= 6) { TimeRandomizer = Random.Range(6, 12) * 10; }
         else { TimeRandomizer = Random.Range(3, 6) * 10; }
 
-        return new Quest(TimeRandomizer, (EnemyContainer[RandomizerA]), CountRandomizer, (WeaponContainer[RandomizerB]));
-
-    }   //This generates quests for storage in QuestContainer[]
-    public void UpdateTextObject()
-    {
         Q1_EnemyToKill.text = QuestContainer[0].enemyToKill;
-        Q1_EnemyCount.text = QuestContainer[0].targetKills.ToString();
-        Q1_Time.text = QuestContainer[0].timeLimit.ToString();
-        //Q1_Weapon.text = QuestContainer[0].weaponToKillWith;
-
         Q2_EnemyToKill.text = QuestContainer[1].enemyToKill;
-        Q2_EnemyCount.text = QuestContainer[1].targetKills.ToString();
-        Q2_Time.text = QuestContainer[1].timeLimit.ToString();
-       // Q2_Weapon.text = QuestContainer[1].weaponToKillWith;
 
+        return new Quest(TimeRandomizer, (EnemyContainer[RandomizerA]), CountRandomizer, (WeaponContainer[RandomizerB]));
+    }   //This generates quests for storage in QuestContainer[]
+
+    public void UpdateTextObject()      //timer update failure- find out why the text is not updated.   QuestChosen ==1 error?
+    {
+        if (QuestChosen == 1)
+        {
+            Q1_Time.text = Mathf.FloorToInt(TimerCountdown).ToString();
+            //Q1_EnemyCount.text = QuestContainer[0].targetKills.ToString();
+            Q1_Time.text = Mathf.FloorToInt(TimerCountdown).ToString();
+            QuestContainer[0].currentKills = Camera.main.GetComponent<statKeeper>().getKillCount(QuestContainer[0].enemyToKill);
+            Q1_EnemyCount.text = (QuestContainer[0].targetKills - QuestContainer[0].currentKills).ToString();
+            if (QuestContainer[0].targetKills - QuestContainer[0].currentKills <= 0) { WinQuest(); }
+        }
+        else if (QuestChosen == 2)
+        {
+            Q2_Time.text = Mathf.FloorToInt(TimerCountdown).ToString();
+            //Q2_EnemyCount.text = QuestContainer[1].targetKills.ToString();
+            Q2_Time.text = Mathf.FloorToInt(TimerCountdown).ToString();
+            QuestContainer[1].currentKills = Camera.main.GetComponent<statKeeper>().getKillCount(QuestContainer[1].enemyToKill);
+            Q2_EnemyCount.text = (QuestContainer[1].targetKills - QuestContainer[1].currentKills).ToString();
+            if (QuestContainer[1].targetKills - QuestContainer[1].currentKills <= 0) { WinQuest(); }
+        }
+        else
+        {
+            Q1_EnemyToKill.text = QuestContainer[0].enemyToKill;
+            Q2_EnemyToKill.text = QuestContainer[1].enemyToKill;
+            Q1_Time.text = Mathf.FloorToInt(QuestContainer[0].timeLimit).ToString();
+            Q2_Time.text = Mathf.FloorToInt(QuestContainer[1].timeLimit).ToString();
+            QuestContainer[0].currentKills = Camera.main.GetComponent<statKeeper>().getKillCount(QuestContainer[0].enemyToKill);
+            QuestContainer[1].currentKills = Camera.main.GetComponent<statKeeper>().getKillCount(QuestContainer[1].enemyToKill);
+            Q1_EnemyCount.text = (QuestContainer[0].targetKills - QuestContainer[0].currentKills).ToString();
+            Q2_EnemyCount.text = (QuestContainer[1].targetKills - QuestContainer[1].currentKills).ToString();
+        }
     }
+
+    public void GenerateQuests()
+    {
+
+
+            TimerCountdown = 0;
+            Table1.gameObject.SetActive(true);
+            Table2.gameObject.SetActive(true);;
+            Table1.GetComponent<SpriteRenderer>().sprite = Q1;
+            Table2.GetComponent<SpriteRenderer>().sprite = Q2;
+
+        QuestContainer[0] = QuestGenerator(0);
+        QuestContainer[1] = QuestGenerator(1);
+        TotalWeight += 1;
+        QuestChosen = 0;
+    }
+
+    public void PresentNewQuests()
+    {
+            if (Input.GetKeyDown(KeyCode.Alpha1) && QuestChosen == 0 ) { ChooseQ1(); }
+            if (Input.GetKeyDown(KeyCode.Alpha2) && QuestChosen == 0 ) { ChooseQ2(); }
+    }
+
+    public void FailQuest()
+    {
+        gameObject.GetComponent<Mob>().MaxHP -= TotalWeight;
+        GenerateQuests();
+        PresentNewQuests();
+    }
+    public void WinQuest()
+    {
+        gameObject.GetComponent<Mob>().HP += TotalWeight*2;
+        GenerateQuests();
+        PresentNewQuests();
+    }
+
 }
