@@ -15,6 +15,7 @@ public class Weapons_Module : MonoBehaviour{
     public static GameObject bm16 = Resources.Load<GameObject>("BulletPrefabs/bm16BulletPrefab");
     public static GameObject bsniper_rifle = Resources.Load<GameObject>("BulletPrefabs/bsniperBulletPrefab");
     public static GameObject bfire = Resources.Load<GameObject>("BulletPrefabs/bfire");
+    public static GameObject bmelee = Resources.Load<GameObject>("BulletPrefabs/bmelee");
 
 
 
@@ -27,6 +28,9 @@ public class Weapons_Module : MonoBehaviour{
     public static Sprite revolverSprite = Resources.Load<Sprite>("GunSPrefabs/revolver");
     public static Sprite uziSprite = Resources.Load<Sprite>("GunSPrefabs/uzi");
     public static Sprite knifeSprite = Resources.Load<Sprite>("GunSPrefabs/knife");
+    public static Sprite katanaSprite = Resources.Load<Sprite>("GunSPrefabs/katana");
+
+
     public static Sprite shotgunSprite =  Resources.Load<Sprite>("GunSPrefabs/shotgun");
     public static Sprite ak47Sprite = Resources.Load<Sprite>("GunSPrefabs/ak");
     public static Sprite m16Sprite = Resources.Load<Sprite>("GunSPrefabs/m16");
@@ -61,7 +65,7 @@ public class Weapons_Module : MonoBehaviour{
 
     //public static AudioClip rocketlauncherSoundEffect = Resources.Load<GameObject>("SoundEffects/");
 
-    public static AudioClip flamethrowerSoundEffect = Resources.Load<AudioClip>("SoundEffects/");
+    public static AudioClip flamethrowerSoundEffect = Resources.Load<AudioClip>("SoundEffects/sdFlamethrower");
 
     //public static AudioClip knifeSoundEffect = Resources.Load<GameObject>("SoundEffects/");
 
@@ -109,6 +113,10 @@ public class Weapons_Module : MonoBehaviour{
             case "Knife":
                 Sprite Knife = knifeSprite;
                 return (Knife);
+
+            case "Katana":
+                Sprite Katana = katanaSprite;
+                return (Katana);
 
             case "Nothing1":
                 Sprite Nothing1 = nothingSprite;
@@ -196,41 +204,32 @@ public class Weapons_Module : MonoBehaviour{
             case "Minigun":
                 Weapons_Module.Weapon Minigun = new Weapon(weaponName,3, 1, 1, bulletSource, buzi, 35, 0.091f, speedMult *10.5f , 1.7f, 0, false, Resources.Load<AudioClip>("SoundEffects/sdMinigun"));
                 return (Minigun);
-            /*
-            case "Rocket_Launcher":
-                Weapons_Module.Weapon Rocket_Launcher = new Weapon(weaponName,3,19 ,1 , bulletSource, normalBulletPrefab, 345, 1.75f, speedMult *3.0f , 1.4f, 0,false);
-                return (Rocket_Launcher);
-            */
+            
             case "Flame_Thrower":
-
                 Weapons_Module.Weapon Flame_Thrower  = new Weapon(weaponName,3, 5, 8, bulletSource, bfire, 7, 0.05f, speedMult * 7.5f, 1.9f, 10,true, Resources.Load < AudioClip >("SoundEffects/sdFlamethrower"));
-
                 return (Flame_Thrower);
-            /*
-            case "Knife":
-                Weapons_Module.Weapon Knife = new Weapon(weaponName,1 ,0 ,0 , bulletSource, normalBulletPrefab, 30, 0.85f, speedMult * 9.0f , 1.30f, 0,false);
-                return (Knife);
 
             case "Katana":
-                Weapons_Module.Weapon Katana = new Weapon(weaponName,1 ,3 ,0 , bulletSource, normalBulletPrefab, 64, 0.75f, speedMult * 9.0f, 1.5f, 0,false);
+                Weapons_Module.Weapon Katana = new Weapon(weaponName, 1, 2, 7, bulletSource, bmelee, 100, 0.75f, speedMult * 1.75f, 0.3f, 0, false);
                 return (Katana);
+            
+            case "Knife":
+                Weapons_Module.Weapon Knife = new Weapon(weaponName,1 ,0 ,4 , bulletSource, normalBulletPrefab, 30, 0.85f, speedMult * 1.75f, 0.3f, 0,false);
+                return (Knife);
 
             case "Axe":
-                Weapons_Module.Weapon Axe = new Weapon(weaponName,1 ,4 ,0 , bulletSource, normalBulletPrefab, 98, 1.35f, speedMult * 8.0f, 1.5f, 0,false);
+                Weapons_Module.Weapon Axe = new Weapon(weaponName,1 ,4 ,5 , bulletSource, normalBulletPrefab, 98, 1.35f, speedMult * 1.75f, 0.3f, 0,false);
                 return (Axe);
 
             case "Scythe":
-                Weapons_Module.Weapon Scythe = new Weapon(weaponName,2, 5, 0, bulletSource, normalBulletPrefab, 80, 0.75f, speedMult * 8.0f, 1.5f, 0,false);
+                Weapons_Module.Weapon Scythe = new Weapon(weaponName,2, 5, 8, bulletSource, normalBulletPrefab, 80, 0.75f, speedMult * 1.75f, 0.3f, 0,false);
                 return (Scythe);
             
             case "Chainsaw":
-                Weapons_Module.Weapon Chainsaw = new Weapon(weaponName,1 ,5 ,0 ,bulletSource , normalBulletPrefab, 20, 0.1f, speedMult * 9.0f, 1.4f, 0,false);
+                Weapons_Module.Weapon Chainsaw = new Weapon(weaponName,1 ,5 ,10 ,bulletSource , normalBulletPrefab, 20, 0.1f, speedMult * 1.75f, 0.3f, 0,false);
                 return (Chainsaw);
             
-            case "machine_gun":
-                Weapons_Module.Weapon machine_Gun = new Weapon(weaponName,3, 1, 1, bulletSource, bmachine_gun, 10, 0.75f, speedMult * 7.0f, 1.7f, 0f, false);
-                return (machine_Gun);
-            */
+            
             case "Korwins_gun":
                 Weapons_Module.Weapon korwins_gun = new Weapon(weaponName,1, 0, 1, bulletSource, bdeer, 100, 0.5f, speedMult * 0f, 100f, 0f, false);
                 return (korwins_gun);
