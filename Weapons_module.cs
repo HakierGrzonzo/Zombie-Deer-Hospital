@@ -6,6 +6,7 @@ public class Weapons_Module : MonoBehaviour{
     //Load a normalBulletPrefab from (Assets/bulletPrefabs/normalBulletPrefab)
     public static GameObject normalBulletPrefab = Resources.Load<GameObject>("BulletPrefabs/normalBulletPrefab");
     public static GameObject bdeer = Resources.Load<GameObject>("BulletPrefabs/bdeerBulletPrefab");
+    public static GameObject brocket = Resources.Load<GameObject>("BulletPrefabs/brocketPrefab");
 
     public static GameObject bshotgun = Resources.Load<GameObject>("BulletPrefabs/bshotgunBulletPrefab");
     public static GameObject bpistol = Resources.Load<GameObject>("BulletPrefabs/bpistolBulletPrefab");
@@ -159,6 +160,10 @@ public class Weapons_Module : MonoBehaviour{
             case "Shotgun":
                 Weapons_Module.Weapon Shotgun = new Weapon(weaponName,2 , 5, 1,bulletSource, bshotgun, 20, 0.90f, speedMult * 9.0f, 0.9f, 6.5f, true, Resources.Load<AudioClip>("SoundEffects/sdShotgun"));
                 return (Shotgun);
+
+            case "Rocket_Launcher":
+                Weapons_Module.Weapon Rocket_Launcher = new Weapon(weaponName, 3, 20, 5, bulletSource, brocket,300,2,speedMult*9.0f,2.0f,0,false,Resources.Load<AudioClip>("SoundEffects/sdFlamethrower"));
+                return (Rocket_Launcher);
 
             case "Water_gun":
                 Weapons_Module.Weapon Water_gun = new Weapon(weaponName,1, 1, 1, bulletSource, normalBulletPrefab, 15, 0.30f, speedMult * 5.0f, 1.5f, 0, false );
@@ -321,7 +326,6 @@ public class Weapons_Module : MonoBehaviour{
 
 
                 //GameObject Bullet2 = Instantiate(bulletPrefab, bulletSourceTransform.position, bulletSourceTransform.rotation);
-                selfDamageReceiver.damage_deal(selfDamage);
                 lastShotTime = Time.time;
 
                 Vector2 FirDir = (Bullet.transform.up * bulletSpeed);

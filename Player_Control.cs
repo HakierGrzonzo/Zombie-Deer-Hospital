@@ -10,6 +10,8 @@ public class Player_Control : MonoBehaviour
     private float moveSpeed;
     public GameObject MinimapCamera;
     public int CameraHeight;
+    public GameObject MaximapDisplay;
+    public GameObject MaximapMarkers;
 
     /*
     public Sprite U;
@@ -29,13 +31,14 @@ public class Player_Control : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         Move();
         CameraFollowing();
         SpriteUpdate();
         ChangeWeapon();
         ShootWeapon();
+        PauseGame();
     }
 
 
@@ -82,20 +85,22 @@ public class Player_Control : MonoBehaviour
     private void Move()
     {
         Animator animator = gameObject.GetComponent<Animator>();
+        if (Time.timeScale > 0)
+        {
 
-        float vertical = Input.GetAxis("Vertical");
-        float horizontal = Input.GetAxis("Horizontal");
-        Vector3 currentPos = playerTransform.position;
-        Vector3 movementVector = new Vector3(horizontal, vertical, 0.0f);
+            float vertical = Input.GetAxis("Vertical");
+            float horizontal = Input.GetAxis("Horizontal");
+            Vector3 currentPos = playerTransform.position;
+            Vector3 movementVector = new Vector3(horizontal, vertical, 0.0f);
 
-        //float playerRotationAngle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
-        //Quaternion playerRotation =Quaternion.Euler(new Vector3(0, 0, playerRotationAngle));
+            //float playerRotationAngle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
+            //Quaternion playerRotation =Quaternion.Euler(new Vector3(0, 0, playerRotationAngle));
 
-        playerTransform.SetPositionAndRotation(currentPos+ movementVector*moveSpeed, Quaternion.identity);
+            playerTransform.SetPositionAndRotation(currentPos + movementVector * moveSpeed, Quaternion.identity);
 
-        if (movementVector.magnitude >0) { animator.SetBool("IsMoving", true); }
-        else animator.SetBool("IsMoving", false);
-        //MOZNA TO PRZEZ TO DODAC: gameObject.GetComponent<Rigidbody2D>().AddForce()
+            if (movementVector.magnitude > 0) { animator.SetBool("IsMoving", true); }
+            else animator.SetBool("IsMoving", false);
+        }
     }
 
     private void CameraFollowing()
@@ -129,6 +134,28 @@ public class Player_Control : MonoBehaviour
         else if(playerRotationAngle  <   157.5  &&  playerRotationAngle > 112.5) { gameObject.GetComponent<SpriteRenderer>().sprite = DR;}
         else if(playerRotationAngle  >   -157.5  &&  playerRotationAngle < -112.5) { gameObject.GetComponent<SpriteRenderer>().sprite = UR;  }
         */
+
+    }
+
+
+    public void PauseGame()
+    {
+        Time.timeScale = 1;
+        if (Input.GetKey(KeyCode.Escape)|| Input.GetKey(KeyCode.Backspace) || Input.GetKey(KeyCode.M))
+        {
+            Time.timeScale = 0.0f;
+            MaximapDisplay.SetActive(true);
+            MaximapMarkers.SetActive(true);
+        }
+        if (Input.GetKeyUp(KeyCode.Escape) || Input.GetKeyUp(KeyCode.Backspace) || Input.GetKeyUp(KeyCode.M))
+        {
+            Time.timeScale = 1;
+            MaximapDisplay.SetActive(false);
+            MaximapMarkers.SetActive(false);
+        }
+
+
+
 
     }
 }
