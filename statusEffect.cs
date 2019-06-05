@@ -98,7 +98,7 @@ public class statusEffect : MonoBehaviour
             //Debug.Log(AppliedTo.HP);
         }
         else { Timer++; }
-        if (Length >= LengthCounter)
+        if (Length <= LengthCounter)
         {
             Destroy(this);
         }
