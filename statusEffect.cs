@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class statusEffect : MonoBehaviour
+/*public class statusEffect : MonoBehaviour
 {
     public string Title; //name e.g. "Bleeding"
     public int toughnessEffect; //during effect
@@ -52,5 +52,55 @@ public class statusEffect : MonoBehaviour
     {
         gameObject.GetComponent<Mob>().MaxHP += MaxHPEffect;
         gameObject.GetComponent<Mob>().toughness += toughnessEffect;
+    }
+}*/
+public class statusEffect : MonoBehaviour
+{
+    public int HpLossPerTick = 0;
+    public int HpLoss = 0;
+    public string Name;
+    public int Length;
+    private int LengthCounter;
+    private static int TickTimer = 30; //How often should the effect be applied, 50 = 1 second, unless staticDeltaTime was changed
+    private int Timer = 0;
+    public Mob AppliedTo;
+    //will add more later
+
+    public statusEffect(Mob AppliedTo, int HPlossPerTick, int HPloss, string Name, int Length)
+    {
+        this.HpLossPerTick = HPlossPerTick;
+        this.HpLoss = HPloss;
+        this.Name = Name;
+        this.Length = Length;
+        this.AppliedTo = AppliedTo;
+    }
+
+    private void Start()
+    {
+        AppliedTo.HP -= HpLoss;
+        if (TickTimer <= 0)
+        {
+            throw new System.InvalidOperationException("Ticktimer can not be less then or equal to 0");
+        }
+        if (Length <= 0)
+        {
+            throw new System.InvalidOperationException("Length can not be less then or equal to 0");
+        }
+    }
+    private void FixedUpdate()
+    {
+        if (Timer == TickTimer)
+        {
+            AppliedTo.HP += -HpLossPerTick;
+            LengthCounter++;
+            Timer = 0;
+            Debug.Log("applied effect");
+            Debug.Log(AppliedTo.HP);
+        }
+        else { Timer++; }
+        if (Length == LengthCounter)
+        {
+            Destroy(this);
+        }
     }
 }
