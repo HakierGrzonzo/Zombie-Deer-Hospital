@@ -61,7 +61,7 @@ public class statusEffect : MonoBehaviour
     public string Name;
     public int Length;
     private int LengthCounter;
-    private static int TickTimer = 30; //How often should the effect be applied, 50 = 1 second, unless staticDeltaTime was changed
+    private static int TickTimer = 50; //How often should the effect be applied, 50 = 1 second, unless FixedDeltaTime() was changed
     private int Timer = 0;
     public Mob AppliedTo;
     //will add more later
@@ -89,16 +89,16 @@ public class statusEffect : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (Timer == TickTimer)
+        if (Timer >= TickTimer)
         {
             AppliedTo.HP += -HpLossPerTick;
             LengthCounter++;
             Timer = 0;
-            Debug.Log("applied effect");
-            Debug.Log(AppliedTo.HP);
+            //Debug.Log("applied effect");
+            //Debug.Log(AppliedTo.HP);
         }
         else { Timer++; }
-        if (Length == LengthCounter)
+        if (Length >= LengthCounter)
         {
             Destroy(this);
         }
