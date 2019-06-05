@@ -64,20 +64,24 @@ public class statusEffect : MonoBehaviour
     private static int TickTimer = 50; //How often should the effect be applied, 50 = 1 second, unless FixedDeltaTime() was changed
     private int Timer = 0;
     public Mob AppliedTo;
+    public float SpeedFactor = 1;
+    private float OriginalSpeed;
     //will add more later
 
-    public statusEffect(Mob AppliedTo, int HPlossPerTick, int HPloss, string Name, int Length)
+    public statusEffect(Mob AppliedTo, int HPlossPerTick, int HPloss, float SpeedFactor, string Name, int Length)
     {
         this.HpLossPerTick = HPlossPerTick;
         this.HpLoss = HPloss;
         this.Name = Name;
         this.Length = Length;
         this.AppliedTo = AppliedTo;
+        this.SpeedFactor = SpeedFactor;
     }
 
     private void Start()
     {
         AppliedTo.HP -= HpLoss;
+        
         if (TickTimer <= 0)
         {
             throw new System.InvalidOperationException("Ticktimer can not be less then or equal to 0");

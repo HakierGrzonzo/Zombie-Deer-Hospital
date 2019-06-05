@@ -7,11 +7,12 @@ using System;
 public class Player_Control : MonoBehaviour
 {
     private Transform playerTransform;
-    private float moveSpeed;
+    //private float moveSpeed;
     public GameObject MinimapCamera;
     public int CameraHeight;
     public GameObject MaximapDisplay;
     public GameObject MaximapMarkers;
+    private Mob Self;
 
     /*
     public Sprite U;
@@ -27,7 +28,7 @@ public class Player_Control : MonoBehaviour
     void Start()
     {
         playerTransform = GetComponent<Transform>();
-        moveSpeed = this.gameObject.GetComponent<Mob>().speed;
+        Self = gameObject.GetComponent<Mob>();
     }
 
     // Update is called once per frame
@@ -44,28 +45,28 @@ public class Player_Control : MonoBehaviour
 
     public void ShootWeapon()
     {
-        if (Input.GetMouseButton(0) & this.gameObject.GetComponent<Mob>().currentWeapon.CanShoot())
+        if (Input.GetMouseButton(0) & Self.currentWeapon.CanShoot())
         {
-            this.gameObject.GetComponent<Mob>().currentWeapon.Shoot(gameObject.GetComponent<Mob>());
+            Self.currentWeapon.Shoot(Self);
         }
     }
 
     public void ChangeWeapon()
     {
         var ScrollWheel = Input.GetAxis("Mouse ScrollWheel");
-        int currentWeaponIndex = gameObject.GetComponent<Mob>().GetCurrentWeaponIndex();
-        int InventoryLength = gameObject.GetComponent<Mob>().Inventory.Length;
+        int currentWeaponIndex = Self.GetCurrentWeaponIndex();
+        int InventoryLength = Self.Inventory.Length;
 
         if (ScrollWheel < 0f)
         {
             //scroll up
             if (currentWeaponIndex<InventoryLength-1)
             {
-                gameObject.GetComponent<Mob>().currentWeapon = gameObject.GetComponent<Mob>().Inventory[currentWeaponIndex + 1];
+                Self.currentWeapon = Self.Inventory[currentWeaponIndex + 1];
             }
             else
             {
-                gameObject.GetComponent<Mob>().currentWeapon = gameObject.GetComponent<Mob>().Inventory[0];
+                Self.currentWeapon = Self.Inventory[0];
             }
         }
         else if (ScrollWheel > 0f)
@@ -73,11 +74,11 @@ public class Player_Control : MonoBehaviour
             // scroll down
             if (currentWeaponIndex > 0)
             {
-                gameObject.GetComponent<Mob>().currentWeapon = gameObject.GetComponent<Mob>().Inventory[currentWeaponIndex - 1];
+                Self.currentWeapon =Self.Inventory[currentWeaponIndex - 1];
             }
             else
             {
-                gameObject.GetComponent<Mob>().currentWeapon = gameObject.GetComponent<Mob>().Inventory[InventoryLength-1];
+                Self.currentWeapon = Self.Inventory[InventoryLength-1];
             }
         }
     }
@@ -96,7 +97,7 @@ public class Player_Control : MonoBehaviour
             //float playerRotationAngle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
             //Quaternion playerRotation =Quaternion.Euler(new Vector3(0, 0, playerRotationAngle));
 
-            playerTransform.SetPositionAndRotation(currentPos + movementVector * moveSpeed, Quaternion.identity);
+            playerTransform.SetPositionAndRotation(currentPos + movementVector * Self.speed, Quaternion.identity);
 
             if (movementVector.magnitude > 0) { animator.SetBool("IsMoving", true); }
             else animator.SetBool("IsMoving", false);

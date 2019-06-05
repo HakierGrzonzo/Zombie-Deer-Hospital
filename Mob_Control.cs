@@ -7,7 +7,7 @@ using System;
 public class Mob_Control : MonoBehaviour
 {
     private Transform playerTransform;
-    private float moveSpeed;
+    //private float moveSpeed;
     public bool shootPlayer = false;
     public int shootPlayerDistance = 20;
     public Sprite U;
@@ -25,7 +25,7 @@ public class Mob_Control : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         playerTransform = GetComponent<Transform>();
-        moveSpeed = this.gameObject.GetComponent<Mob>().speed;
+        //moveSpeed = this.gameObject.GetComponent<Mob>().speed;
     }
 
     // Update is called once per frame

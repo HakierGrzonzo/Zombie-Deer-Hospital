@@ -16,14 +16,15 @@ public class Mob : MonoBehaviour {
     public string secondWeaponStr;
     public string thirdWeaponStr;
 
-    public float speed;
+    public float speed; //Moved from movement!!!
+    public float maxSpeed;
+
     public Weapons_Module.Weapon currentWeapon;
     public string currentWeaponStr;
     public Weapons_Module.Weapon[] Inventory;
     public bool selfDamage = false;
     private float timeLastSelfDamagePerSecond;
     public int selfDamagePerSecond = 0;
-    public statusEffect statusTarget;
 
 
     private void Start()
