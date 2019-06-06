@@ -93,6 +93,8 @@ public class Player_Control : MonoBehaviour
             float horizontal = Input.GetAxis("Horizontal");
             Vector3 currentPos = playerTransform.position;
             Vector3 movementVector = new Vector3(horizontal, vertical, 0.0f);
+            
+            movementVector.Normalize(); //nerf straifingu
 
             //float playerRotationAngle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
             //Quaternion playerRotation =Quaternion.Euler(new Vector3(0, 0, playerRotationAngle));
