@@ -4,32 +4,30 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    public float speed=0f;
+    //private float speed; //Obselate, moved to mob
     private Vector2 position;
     private Vector2 playerPos;
     private Vector2 move;
     private GameObject playerObject;
-    public float maxSpeed = 1;
+    //public float maxSpeed = 1; //Obselate, moved to mob
     private float timePassed = 0;
     private bool runningAway = false;
     private float timeStartedRunning;
     public float timeToRunAway;
+    private Mob Self;
     // Start is called before the first frame update
     void Start()
     {
         playerObject = GameObject.FindWithTag("Player");
-        if (speed != 0f)
-        {
-            speed = gameObject.GetComponent<Mob>().speed;
-        }
+        Self = gameObject.GetComponent<Mob>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (gameObject.GetComponent<Rigidbody2D>().velocity.magnitude > maxSpeed)
+        if (gameObject.GetComponent<Rigidbody2D>().velocity.magnitude > Self.maxSpeed)
         {
-            gameObject.GetComponent<Rigidbody2D>().velocity = gameObject.GetComponent<Rigidbody2D>().velocity.normalized * maxSpeed;
+            gameObject.GetComponent<Rigidbody2D>().velocity = gameObject.GetComponent<Rigidbody2D>().velocity.normalized * Self.maxSpeed;
         }
         //construct movement vector
         position = gameObject.GetComponent<Rigidbody2D>().transform.position;
@@ -37,10 +35,10 @@ public class Movement : MonoBehaviour
         //Debug.Log(playerPos);
         Vector2 move = playerPos - position;
 
-        move = move.normalized * speed;
+        move = move.normalized * Self.speed;
         //normalize
 
-       
+        //animation stuff
         Animator animator = gameObject.GetComponent<Animator>();
         if (animator != null)
         { 
