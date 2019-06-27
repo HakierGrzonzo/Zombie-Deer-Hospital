@@ -26,6 +26,15 @@ public class Mob : MonoBehaviour {
     private float timeLastSelfDamagePerSecond;
     public int selfDamagePerSecond = 0;
 
+    [Space]
+    [Header("Status effects")]
+    public bool Poison;
+    public bool Slow;
+    public bool Fear;
+    public bool Heal;
+    public bool Inspire;
+    public bool Silence = false;
+
 
     private void Start()
     {
@@ -71,7 +80,22 @@ public class Mob : MonoBehaviour {
 
     public string damage_deal(int damage)
     {
+        //dealing demage
         HP = (int)((float)HP - ((float)damage) * toughness);
+        
+        //OnHit Status Effect infliction
+        if (title == "ContagiousInfected") //poison
+        {
+ 
+
+            Debug.Log("Poisoned!");
+        }
+        if (title == "Alcoholic") //slow
+        {
+            statusEffect Slow = new statusEffect(GameObject.Find("Player").GetComponent<Mob>(), 0, 0, 0.5f, 1, "Slow", 3);
+            Debug.Log("Slowed!");
+        }
+
         if (HP <= 0)
         {
             return title;
@@ -80,6 +104,7 @@ public class Mob : MonoBehaviour {
         {
             return null;
         }
+
     }
 
     public void GiveWeapon(Weapons_Module.Weapon weapon)
@@ -105,7 +130,7 @@ public class Mob : MonoBehaviour {
         */
     }
 
-    public void DropWeapon(int inventorySlot)
+    public void DropWeapon(int inventorySlot)       //player - unique
     {
         if (Inventory[inventorySlot] != null)
         {

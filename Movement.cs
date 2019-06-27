@@ -59,7 +59,7 @@ public class Movement : MonoBehaviour
                 runningAway = false;
             }
             move = Vector2.zero - move;
-            Debug.Log("Geting the fuck out");
+            //Debug.Log("Geting the fuck out");
         }
 
         gameObject.GetComponent<Rigidbody2D>().AddForce(move,ForceMode2D.Force);

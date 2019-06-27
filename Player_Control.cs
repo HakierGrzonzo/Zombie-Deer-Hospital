@@ -121,23 +121,13 @@ public class Player_Control : MonoBehaviour
         Animator animator = gameObject.GetComponent<Animator>();
 
         animator.SetFloat("DirectionFacing", Mathf.Abs(playerRotationAngle));
+        /*
         bool IsPositive;
         if (playerRotationAngle > 0) { IsPositive = true; }
         else { IsPositive = false; }
         animator.SetBool("IsPositive", IsPositive);
-        /*
-        if (playerRotationAngle      < -157.5 || playerRotationAngle  > 157.5) { gameObject.GetComponent<SpriteRenderer>().sprite = L; }
-        else if (playerRotationAngle > -22.5  &&  playerRotationAngle < 22.5)  { gameObject.GetComponent<SpriteRenderer>().sprite = R;  }
-        else if(playerRotationAngle  <  -67.5 &&  playerRotationAngle > -112.5) { gameObject.GetComponent<SpriteRenderer>().sprite = U; }
-        else if(playerRotationAngle  >   67.5 &&  playerRotationAngle < 112.5) { gameObject.GetComponent<SpriteRenderer>().sprite = D;}
-
-        else if(playerRotationAngle  >   22.5 &&  playerRotationAngle < 67.5) { gameObject.GetComponent<SpriteRenderer>().sprite = DL;  }
-        else if(playerRotationAngle  <   -22.5 &&  playerRotationAngle > -67.5) { gameObject.GetComponent<SpriteRenderer>().sprite = UL; }
-
-        else if(playerRotationAngle  <   157.5  &&  playerRotationAngle > 112.5) { gameObject.GetComponent<SpriteRenderer>().sprite = DR;}
-        else if(playerRotationAngle  >   -157.5  &&  playerRotationAngle < -112.5) { gameObject.GetComponent<SpriteRenderer>().sprite = UR;  }
         */
-
+        animator.SetFloat("Vertical", mousePos.y);
     }
 
 
